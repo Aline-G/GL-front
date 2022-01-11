@@ -1,0 +1,39 @@
+
+/* positionnement des éléments */
+
+.slip{
+  height: 0px;
+  position: absolute;
+}
+
+.bill{
+  width:1000px;
+  height:500px;
+  position:fixed;
+  left:20px;
+  top:150px;
+}
+
+.advances{
+  width:700px;
+  height:500px;
+  position:fixed;
+  left:20px;
+  top:700px;
+}
+
+.expenses{
+  width:1000px;
+  height:1000px;
+  position:fixed;
+  right:20px;
+  top:150px;
+}
+
+.total{
+  width:1000px;
+  height:150px;
+  position:fixed;
+  right:20px;
+  bottom:0px;
+}
