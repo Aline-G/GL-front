@@ -1,0 +1,9 @@
+.container-fluid{
+  border-style: outset;
+  border-width: medium;
+  max-height: 110px;
+
+}
+* {
+  font-family: 'Ubuntu', sans-serif;
+}

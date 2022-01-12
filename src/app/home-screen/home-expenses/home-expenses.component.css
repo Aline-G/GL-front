@@ -1,4 +1,11 @@
-.container-fluid{
+.container-fluid {
   border-style: outset;
   border-width: medium;
+  max-height: 750px; /*a passer en max-height si on veut que le contenu s'dapate dynamiquement" */
 }
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
