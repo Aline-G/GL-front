@@ -1,3 +1,4 @@
+import {LineBill} from "./lineBill";
 
 enum BillStates {
   DRAFT = "DRAFT",
