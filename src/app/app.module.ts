@@ -11,6 +11,8 @@ import { HomeBillComponent } from './home-screen/home-bill/home-bill.component';
 import { HomeAdvanceComponent } from './home-screen/home-advance/home-advance.component';
 import { HomeExpensesComponent } from './home-screen/home-expenses/home-expenses.component';
 import { HomeTotalComponent } from './home-screen/home-total/home-total.component';
+import {HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { HomeTotalComponent } from './home-screen/home-total/home-total.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

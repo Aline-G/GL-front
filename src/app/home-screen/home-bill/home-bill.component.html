@@ -24,28 +24,20 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nom de la note</th>
-        <th scope="col">Montant total de la note</th>
+        <th scope="col">Montant</th>
         <th scope="col">Etat de la note</th>
+        <th scope="col">Date</th>
+
       </tr>
       </thead>
       <tbody>
       <tr>
-        <th scope="row">1</th>
-        <td>Note 1475</td>
-        <td>25</td>
-        <td>En cours de validation</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Note 1476</td>
-        <td>1200</td>
-        <td>Validée</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Note 1477</td>
-        <td>1536</td>
-        <td>En cours d'édition</td>
+        <tr *ngFor="let expenseBill of expenseBills ">
+        <td>{{expenseBill.id}}</td>
+        <td>{{expenseBill.name}}</td>
+        <td>{{expenseBill.amount}}</td>
+        <td>{{expenseBill.state}}</td>
+        <td>{{expenseBill.date}}</td>
       </tr>
       </tbody>
     </table>
