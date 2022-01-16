@@ -13,13 +13,11 @@ export class HomeBillComponent implements OnInit {
 
   constructor(private apiService: ApiService) {}
 
-
   ngOnInit(): void {
     this.apiService.getExpenseBillList()
       .subscribe({
         next: (res) => {
           this.expenseBills = res;
-          console.log("mes couilles");
           console.log(res);
         },
         error: (e) => console.error(e)
