@@ -11,6 +11,9 @@ import { HomeBillComponent } from './home-screen/home-bill/home-bill.component';
 import { HomeAdvanceComponent } from './home-screen/home-advance/home-advance.component';
 import { HomeExpensesComponent } from './home-screen/home-expenses/home-expenses.component';
 import { HomeTotalComponent } from './home-screen/home-total/home-total.component';
+import {FormsModule} from "@angular/forms";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PopUpComponent } from './home-screen/pop-up/pop-up.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,15 @@ import { HomeTotalComponent } from './home-screen/home-total/home-total.componen
     HomeBillComponent,
     HomeAdvanceComponent,
     HomeExpensesComponent,
-    HomeTotalComponent
+    HomeTotalComponent,
+    PopUpComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        NgbModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
