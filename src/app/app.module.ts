@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopUpComponent } from './home-screen/pop-up/pop-up.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
