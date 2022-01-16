@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {LineBill} from "../../model/lineBill";
 import {ApiService} from "../../services/api.service";
+import {SharedService} from "../../services/dynamical-functions/SharedService";
+import {error} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-home-expenses',
@@ -9,7 +11,25 @@ import {ApiService} from "../../services/api.service";
 })
 export class HomeExpensesComponent implements OnInit {
   lineBills!: LineBill[];
-  constructor(private apiService:ApiService) { }
+  filteredlineBills!: LineBill[];
+
+  billId!: number;
+
+  get filteredExpense(): LineBill[]{
+      this.lineBills = this.lineBills?.filter(
+        lineBill => lineBill?.idExpenseBill == this?.billId
+      );
+    return this.lineBills;
+  }
+
+  constructor(private apiService:ApiService, private sharedService : SharedService) {
+    sharedService.clickOnBillEvent.subscribe(
+      (billId: number) => {
+        this.billId = billId;
+    },
+    this.filteredlineBills = this.filteredExpense
+    );
+  }
 
   ngOnInit(): void {
     this.apiService.getLineBillList()
@@ -20,6 +40,8 @@ export class HomeExpensesComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+
+    this.filteredlineBills=this.lineBills;
   }
 
 }
