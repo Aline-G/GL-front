@@ -100,19 +100,19 @@
     <input type="text" class="form-control" id="TVA" [(ngModel)]="tva">
 
     <label for="rate">Taux :</label>
-    <input type="text" class="form-control" id="rate" [(ngModel)]="rate">
+    <select type="text" class="form-control" id="rate" [(ngModel)]="rate">
+      <option value="20">20 %</option>
+      <option value="10">10 %</option>
+      <option value="5.5">5.5 %</option>
+      <option value="2.1">2.1 %</option>
+    </select>
 
-    <label for="Description">TTC :</label>
-    <input type="textarea" rows="5" cols="30" class="form-control" id="lineDescription" [(ngModel)]="lineDescription">
-
-    <label for="supporting_documents">Justificatif :</label>
-    <input type="file" class="form-control" id="supporting_documents" accept="image/png, image/jpeg, image/pdf" [(ngModel)]="supporting_documents">
-
+    <label for="supportingDocuments">Justificatif :</label>
+    <input type="file" class="form-control" id="supportingDocuments" accept="image/png, image/jpeg, image/pdf" [(ngModel)]="supportingDocuments">
 
     <p></p>
 
     <li>Nom de la note : {{ noteName }}</li>
-    <li>Mission : {{ noteMission }}</li>
     <li>Description : {{ noteDescription }}</li>
 
   </div>

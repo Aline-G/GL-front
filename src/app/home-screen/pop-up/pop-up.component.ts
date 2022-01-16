@@ -24,6 +24,8 @@ export class PopUpComponent implements OnInit {
   @Input() ttc!: string;
   @Input() currency!: string;
   @Input() tva!: string;
+  @Input() rate!: number;
+  @Input() supportingDocuments!: string;
 
   @Input() description!: string;
 

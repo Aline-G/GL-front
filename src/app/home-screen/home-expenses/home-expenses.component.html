@@ -28,18 +28,20 @@
         <th scope="col">Montant</th>
         <th scope="col">Etat de la note</th>
         <th scope="col">Date</th>
+        <th scope="col">Description</th>
         <th scope="col">Justificatif</th>
       </tr>
       </thead>
       <tbody>
       <tr>
-      <tr *ngFor="let lineBill of lineBills ">
+      <tr *ngFor="let lineBill of filteredlineBills ">
         <td>{{lineBill.id}}</td>
         <td>{{lineBill.mission.name}}</td>
         <td>{{lineBill.idExpenseBill}}</td>
         <td>{{lineBill.amount}}</td>
         <td>{{lineBill.isValidated}}</td>
         <td>{{lineBill.date}}</td>
+        <td>{{lineBill.description}}</td>
       </tr>
       </tbody>
     </table>
