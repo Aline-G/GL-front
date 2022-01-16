@@ -24,40 +24,22 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Mission</th>
-        <th scope="col">Titre de la dépense</th>
         <th scope="col">Note associée</th>
         <th scope="col">Montant</th>
+        <th scope="col">Etat de la note</th>
         <th scope="col">Date</th>
-        <th scope="col">Description</th>
+        <th scope="col">Justificatif</th>
       </tr>
       </thead>
       <tbody>
       <tr>
-        <th scope="row">1</th>
-        <td>Rencontre client XXX</td>
-        <td>Déplacement</td>
-        <td>1457</td>
-        <td>153</td>
-        <td>11/01/22</td>
-        <td>Voiture essence 4 chevaux</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Rencontre client XXX</td>
-        <td>Repas</td>
-        <td>1457</td>
-        <td>28</td>
-        <td>12/01/22</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Rencontre client XXX</td>
-        <td>Nuit à l'hôtel</td>
-        <td>1457</td>
-        <td>105</td>
-        <td>12/01/22</td>
-        <td>Hôtel Saint-pierre</td>
+      <tr *ngFor="let lineBill of lineBills ">
+        <td>{{lineBill.id}}</td>
+        <td>{{lineBill.mission.name}}</td>
+        <td>{{lineBill.idExpenseBill}}</td>
+        <td>{{lineBill.amount}}</td>
+        <td>{{lineBill.isValidated}}</td>
+        <td>{{lineBill.date}}</td>
       </tr>
       </tbody>
     </table>
