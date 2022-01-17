@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {ApiService} from "../../services/api.service";
+import {ApiService} from "../services/api.service";
 
 @Component({
   selector: 'app-pop-up',

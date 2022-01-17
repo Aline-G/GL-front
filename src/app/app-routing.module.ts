@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Router, RouterModule, Routes} from '@angular/router';
-import {PopUpComponent} from "./home-screen/pop-up/pop-up.component";
+import {PopUpComponent} from "./home-pop-up/pop-up.component";
 import {HomeAdvanceComponent} from "./home-screen/home-advance/home-advance.component";
 
 const routes: Routes = [

@@ -14,17 +14,27 @@
 </head>
 
 <body>
-<app-pop-up></app-pop-up>
 
 <div class=" container-fluid">
+
+  <div class = create id ="note">
+    <app-create-note></app-create-note>
+  </div>
+
+  <div class = create id="line">
+    <app-create-line></app-create-line>
+  </div>
+
   <div class = row>
     <app-home-slip></app-home-slip>
   </div>
+
   <div class= row>
     <div class=" col-4">
       <app-home-bill></app-home-bill>
       <app-home-advance></app-home-advance>
     </div>
+
     <div class="col-8">
       <app-home-expenses></app-home-expenses>
       <app-home-total></app-home-total>

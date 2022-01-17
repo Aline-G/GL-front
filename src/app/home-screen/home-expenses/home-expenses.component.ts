@@ -21,7 +21,6 @@ export class HomeExpensesComponent implements OnInit {
       this.lineBills = this.lineBills?.filter(
         lineBill => lineBill?.idExpenseBill == this?.billId
       );*/
-
   }
 
   constructor(private apiService:ApiService, private sharedService : SharedService) {

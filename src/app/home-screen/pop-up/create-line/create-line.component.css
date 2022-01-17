@@ -1,0 +1,31 @@
+/* positionnement des éléments */
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.modal-body{
+  width :150%
+}
+
+.modal-dialog{
+  width :150%
+}
+
+
+.btn{
+  margin-top: 55px;
+  margin-right: 5px;
+  display: inline-block;
+  background-color: rgba(66, 135, 245,0.7);
+  border-radius: 10px;
+  border: rgba(77, 114, 247,0.7)  ;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  width: 180px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+}

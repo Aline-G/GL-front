@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ApiService} from "../../../services/api.service";
 
 @Component({
   selector: 'app-create-note',
@@ -7,7 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateNoteComponent implements OnInit {
 
-  constructor() { }
+
+  /* paramètres pour une nouvelle note de frais */
+  closeResult = '';
+  @Input() noteName!: string;
+  @Input() noteDescription!: string;
+  @Input() noteDate!: string;
+
+  constructor(private modalService: NgbModal, private apiService: ApiService){}
+
+  public createNewExpenseBill() : void {
+    this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate);
+  }
+
+  open(content: any) {
+    this.modalService.open(content,
+      {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {this.closeResult = 'Closed with: ${result}';
+    }, (reason) => {
+      this.closeResult =
+        'Dismissed ${this.getDismissReason(reason)}';
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return 'with: ${reason}';
+    }
+  }
 
   ngOnInit(): void {
   }
