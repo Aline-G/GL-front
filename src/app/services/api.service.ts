@@ -20,9 +20,9 @@ export class ApiService {
   }
 
 
-  public createNewExpenseBill(noteName: string, noteDescription: string, noteDate : string) : Observable<ExpenseBill> {
+  public createNewExpenseBill(noteName: string, noteDescription: string, noteDate : string) : Promise<ExpenseBill | undefined> {
     const params = new HttpParams().set('name', noteName).set('description', noteDescription).set('date', noteDate);
-    return this.http.get<ExpenseBill>('/api/expensebill/new', {params});
+    return this.http.get<ExpenseBill>('/api/expensebill/new', {params}).toPromise();
   }
 
   public getExpenseBillList() :  Observable<ExpenseBill[]>{

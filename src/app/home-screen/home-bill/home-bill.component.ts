@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {LineBill} from "../../model/lineBill";
 import {ApiService} from "../../services/api.service";
 import {ExpenseBill} from "../../model/expenseBill";
 import {SharedService} from "../../services/dynamical-functions/SharedService";

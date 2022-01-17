@@ -1,8 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {Observable} from "rxjs";
-import {ExpenseBill} from "../../model/expenseBill";
-import {HttpParams} from "@angular/common/http";
 import {ApiService} from "../../services/api.service";
 
 @Component({
