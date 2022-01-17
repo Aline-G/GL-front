@@ -1,5 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Observable} from "rxjs";
+import {ExpenseBill} from "../../model/expenseBill";
+import {HttpParams} from "@angular/common/http";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-pop-up',
@@ -12,6 +16,7 @@ export class PopUpComponent implements OnInit {
   closeResult = '';
   @Input() noteName!: string;
   @Input() noteDescription!: string;
+  @Input() noteDate!: string;
 
   /* paramètres pour une nouvelle ligne de frais */
   @Input() titre!: string;
@@ -25,12 +30,16 @@ export class PopUpComponent implements OnInit {
   @Input() currency!: string;
   @Input() tva!: string;
   @Input() rate!: number;
+  @Input() description!: string;
   @Input() supportingDocuments!: string;
 
-  @Input() description!: string;
 
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private apiService: ApiService){}
+
+  public createNewExpenseBill() : void {
+    this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate);
+  }
 
   open(content: any) {
     this.modalService.open(content,

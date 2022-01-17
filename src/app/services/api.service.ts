@@ -19,6 +19,13 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
+
+  public createNewExpenseBill(noteName: string, noteDescription: string, noteDate : string) : Observable<ExpenseBill> {
+    const params = new HttpParams().set('name', noteName).set('description', noteDescription).set('date', noteDate);
+    console.log(params);
+    return this.http.get<ExpenseBill>('/api/expensebill/new', {params});
+  }
+
   public getExpenseBillList() :  Observable<ExpenseBill[]>{
     return this.http.get<ExpenseBill[]>('/api/expensebill/list');
   }

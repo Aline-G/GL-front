@@ -31,16 +31,20 @@
     <label for="nom-de-la-note">Nom de la note de frais :</label>
     <input type="text" class="form-control" id="nom-de-la-note" [(ngModel)]="noteName">
 
-    <label for="description">Description :</label>
-    <input type="text" class="form-control" id="description" [(ngModel)]="noteDescription">
+    <label for="noteDescription">Description :</label>
+    <input type="text" class="form-control" id="noteDescription" [(ngModel)]="noteDescription">
+
+    <label for="noteDate">Date :</label>
+    <input type="text" class="form-control" id="noteDate" [(ngModel)]="noteDate">
 
     <p></p>
 
     <li>Nom de la note : {{ noteName }}</li>
     <li>Description : {{ noteDescription }}</li>
+    <li>Description : {{ noteDate }}</li>
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+      <button type="button" class="btn btn-outline-dark" (click)="createNewExpenseBill()" (click)="modal.close('Save click')" >Ok</button>
     </div>
   </div>
 </ng-template>
@@ -51,70 +55,75 @@
     <h4 class="modal-title" id="modal-title">Nouvelle ligne de frais</h4>
   </div>
   <div class="container-fluid">
+    <div class="row">
+      <div class =col-6>
+        <label for="titre">Titre :</label>
+        <input type="text" class="form-control" id="titre" [(ngModel)]="titre">
 
-    <label for="titre">Titre :</label>
-    <input type="text" class="form-control" id="titre" [(ngModel)]="titre">
+        <label for="date">Date :</label>
+        <input id="date" class="form-control" type="date" name="date" value="" readonly [(ngModel)]="date">
+        <script>
+          document.getElementById("date").valueAsDate = new Date();
+        </script>
 
-    <label for="date">Date :</label>
-    <input id="date" class="form-control" type="date" name="date" value="" readonly [(ngModel)]="date">
-    <script>
-      document.getElementById("date").valueAsDate = new Date();
-    </script>
+        <label for="lineMission">Mission :</label>
+        <select type="text" class="form-control" id="lineMission" [(ngModel)]="lineMission">
+          <option value="mission 1">mission 1</option>
+          <option value="mission 2">mission 2</option>
+          <option value="mission 3">mission 3</option>
+          <option value="mission 4">mission 4</option>
+        </select>
 
-    <label for="lineMission">Mission :</label>
-    <select type="text" class="form-control" id="lineMission" [(ngModel)]="lineMission">
-      <option value="mission 1">mission 1</option>
-      <option value="mission 2">mission 2</option>
-      <option value="mission 3">mission 3</option>
-      <option value="mission 4">mission 4</option>
-    </select>
+        <label for="category">Catégorie :</label>
+        <select type="text" class="form-control" id="category" [(ngModel)]="category">
+          <option value="hebergement">Hébergement</option>
+          <option value="espece">Espèce</option>
+        </select>
 
-    <label for="category">Catégorie :</label>
-    <select type="text" class="form-control" id="category" [(ngModel)]="category">
-      <option value="hebergement">Hébergement</option>
-      <option value="espece">Espèce</option>
-    </select>
+        <label for="paymentMethod">Moyen de paiement :</label>
+        <select type="text" class="form-control" id="paymentMethod" [(ngModel)]="paymentMethod">
+          <option value="carte">Carte</option>
+          <option value="espece">Espèce</option>
+        </select>
 
-    <label for="paymentMethod">Moyen de paiement :</label>
-    <select type="text" class="form-control" id="paymentMethod" [(ngModel)]="paymentMethod">
-      <option value="carte">Carte</option>
-      <option value="espece">Espèce</option>
-    </select>
+        <label for="country">Pays :</label>
+        <input type="text" class="form-control" id="country" [(ngModel)]="country">
 
-    <label for="country">Pays :</label>
-    <input type="text" class="form-control" id="country" [(ngModel)]="country">
+        <label for="associatedNote">Note associée :</label>
+        <select type="text" class="form-control" id="associatedNote" [(ngModel)]="associatedNote">
+          <option value="1">Note 1</option>
+          <option value="2">Note 2</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <label for="ttc">TTC :</label>
+        <input type="text" class="form-control" id="ttc" [(ngModel)]="ttc">
 
-    <label for="associatedNote">Note associée :</label>
-    <select type="text" class="form-control" id="associatedNote" [(ngModel)]="associatedNote">
-      <option value="1">Note 1</option>
-      <option value="2">Note 2</option>
-    </select>
+        <label for="currency">Devise :</label>
+        <input type="text" class="form-control" id="currency" [(ngModel)]="currency">
 
-    <label for="ttc">TTC :</label>
-    <input type="text" class="form-control" id="ttc" [(ngModel)]="ttc">
+        <label for="tva">TVA :</label>
+        <input type="text" class="form-control" id="TVA" [(ngModel)]="tva">
 
-    <label for="currency">Devise :</label>
-    <input type="text" class="form-control" id="currency" [(ngModel)]="currency">
+        <label for="rate">Taux :</label>
+        <select type="text" class="form-control" id="rate" [(ngModel)]="rate">
+          <option value="20">20 %</option>
+          <option value="10">10 %</option>
+          <option value="5.5">5.5 %</option>
+          <option value="2.1">2.1 %</option>
+        </select>
 
-    <label for="tva">TVA :</label>
-    <input type="text" class="form-control" id="TVA" [(ngModel)]="tva">
+        <label for="description">Description : :</label>
+        <input type="textarea" class="form-control" id="description" [(ngModel)]="tva">
 
-    <label for="rate">Taux :</label>
-    <select type="text" class="form-control" id="rate" [(ngModel)]="rate">
-      <option value="20">20 %</option>
-      <option value="10">10 %</option>
-      <option value="5.5">5.5 %</option>
-      <option value="2.1">2.1 %</option>
-    </select>
+        <label for="supportingDocuments">Justificatif :</label>
+        <input type="file" class="form-control" id="supportingDocuments" accept="image/png, image/jpeg, image/pdf" [(ngModel)]="supportingDocuments">
 
-    <label for="supportingDocuments">Justificatif :</label>
-    <input type="file" class="form-control" id="supportingDocuments" accept="image/png, image/jpeg, image/pdf" [(ngModel)]="supportingDocuments">
-
-    <p></p>
-
-    <li>Nom de la note : {{ noteName }}</li>
-    <li>Description : {{ noteDescription }}</li>
-
+        <p></p>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
