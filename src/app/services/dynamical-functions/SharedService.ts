@@ -4,5 +4,5 @@ import {EventEmitter, Injectable} from "@angular/core";
   providedIn: 'root'
 })
 export class SharedService {
-  clickOnBillEvent: EventEmitter<any> = new EventEmitter();
+  clickOnBillEvent: EventEmitter<number> = new EventEmitter();
 }
