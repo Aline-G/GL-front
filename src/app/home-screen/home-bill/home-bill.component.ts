@@ -29,4 +29,15 @@ export class HomeBillComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+
+  refreshPage(): void{
+    this.apiService.getExpenseBillList()
+      .subscribe({
+        next: (res) => {
+          this.expenseBills = res;
+          console.log(res);
+        },
+        error: (e) => console.error(e)
+      });
+  }
 }

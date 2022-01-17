@@ -29,9 +29,9 @@ export class ApiService {
     return this.http.get<ExpenseBill[]>('/api/expensebill/list');
   }
 
-  public getLineBillListByExpenseId(id :number) :  Observable<LineBill[]>{
+  public getLineBillListByExpenseId(id :number) :  Promise<LineBill[] | undefined>{
     const params = new HttpParams().set('id', id);
-    return this.http.get<LineBill[]>('/api/Linebill/listbyexpenseid', {params});
+    return this.http.get<LineBill[]>('/api/linebill/listbyexpenseid', {params}).toPromise();
   }
 
   public getLineBillList(){

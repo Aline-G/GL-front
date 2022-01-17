@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {LineBill} from "../../model/lineBill";
 import {ApiService} from "../../services/api.service";
 import {SharedService} from "../../services/dynamical-functions/SharedService";
-import {error} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-home-expenses',
@@ -18,7 +17,6 @@ export class HomeExpensesComponent implements OnInit {
 
   set filteredExpense(lineBills : LineBill[]){
     this.filteredlineBills = lineBills;
-
     /*
       this.lineBills = this.lineBills?.filter(
         lineBill => lineBill?.idExpenseBill == this?.billId
@@ -30,15 +28,11 @@ export class HomeExpensesComponent implements OnInit {
     sharedService.clickOnBillEvent.subscribe(
       (billId: number) => {
         this.billId = billId;
-    },
-    );
-
-    this.apiService.getLineBillListByExpenseId(this.billId).subscribe({
-      next: (res) => {
-        this.filteredlineBills = res;
-      },
-      error: (e) => console.error(e)
     });
+    console.log(this.billId);
+    this.apiService.getLineBillListByExpenseId(this.billId).then(res => {
+      this.filteredlineBills = res!;}
+      );
   }
 
   ngOnInit(): void {
