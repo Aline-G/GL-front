@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './home-pop-up/home.component';
 import {AppRoutingModule} from "./app-routing.module";
 import { DemoComponent } from './demo/demo.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
@@ -14,7 +14,7 @@ import { HomeTotalComponent } from './home-screen/home-total/home-total.componen
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PopUpComponent } from './home-screen/pop-up/pop-up.component';
+import { PopUpComponent } from './home-pop-up/pop-up.component';
 import { CreateNoteComponent } from './home-screen/pop-up/create-note/create-note.component';
 import { CreateLineComponent } from './home-screen/pop-up/create-line/create-line.component';
 
@@ -42,7 +42,7 @@ import { CreateLineComponent } from './home-screen/pop-up/create-line/create-lin
     FormsModule,
     NgbModule
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })

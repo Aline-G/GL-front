@@ -8,3 +8,8 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
+#eye_image{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
