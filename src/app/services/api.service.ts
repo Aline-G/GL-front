@@ -22,12 +22,16 @@ export class ApiService {
 
   public createNewExpenseBill(noteName: string, noteDescription: string, noteDate : string) : Observable<ExpenseBill> {
     const params = new HttpParams().set('name', noteName).set('description', noteDescription).set('date', noteDate);
-    console.log(params);
     return this.http.get<ExpenseBill>('/api/expensebill/new', {params});
   }
 
   public getExpenseBillList() :  Observable<ExpenseBill[]>{
     return this.http.get<ExpenseBill[]>('/api/expensebill/list');
+  }
+
+  public getLineBillListByExpenseId(id :number) :  Observable<LineBill[]>{
+    const params = new HttpParams().set('id', id);
+    return this.http.get<LineBill[]>('/api/Linebill/listbyexpenseid', {params});
   }
 
   public getLineBillList(){

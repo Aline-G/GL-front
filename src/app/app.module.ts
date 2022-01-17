@@ -15,6 +15,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopUpComponent } from './home-screen/pop-up/pop-up.component';
+import { CreateNoteComponent } from './home-screen/pop-up/create-note/create-note.component';
+import { CreateLineComponent } from './home-screen/pop-up/create-line/create-line.component';
 
 
 
@@ -29,7 +31,9 @@ import { PopUpComponent } from './home-screen/pop-up/pop-up.component';
     HomeAdvanceComponent,
     HomeExpensesComponent,
     HomeTotalComponent,
-    PopUpComponent
+    PopUpComponent,
+    CreateNoteComponent,
+    CreateLineComponent
   ],
   imports: [
     BrowserModule,

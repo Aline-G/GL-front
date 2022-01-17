@@ -15,11 +15,15 @@ export class HomeExpensesComponent implements OnInit {
 
   billId!: number;
 
-  get filteredExpense(): LineBill[]{
+
+  set filteredExpense(lineBills : LineBill[]){
+    this.filteredlineBills = lineBills;
+
+    /*
       this.lineBills = this.lineBills?.filter(
         lineBill => lineBill?.idExpenseBill == this?.billId
-      );
-    return this.lineBills;
+      );*/
+
   }
 
   constructor(private apiService:ApiService, private sharedService : SharedService) {
@@ -27,8 +31,14 @@ export class HomeExpensesComponent implements OnInit {
       (billId: number) => {
         this.billId = billId;
     },
-    this.filteredlineBills = this.filteredExpense
     );
+
+    this.apiService.getLineBillListByExpenseId(this.billId).subscribe({
+      next: (res) => {
+        this.filteredlineBills = res;
+      },
+      error: (e) => console.error(e)
+    });
   }
 
   ngOnInit(): void {
@@ -40,7 +50,7 @@ export class HomeExpensesComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
-
+    console.log(this.lineBills);
     this.filteredlineBills=this.lineBills;
   }
 
