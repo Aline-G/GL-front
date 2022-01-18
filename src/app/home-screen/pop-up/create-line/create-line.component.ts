@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../../services/api.service";
+import {LineBill} from "../../../model/lineBill";
+import {ExpenseBill} from "../../../model/expenseBill";
+import {Mission} from "../../../model/mission";
 
 @Component({
   selector: 'app-create-line',
@@ -12,19 +15,22 @@ export class CreateLineComponent implements OnInit {
 
   /* paramètres pour une nouvelle ligne de frais */
   @Input() titre!: string;
-  @Input() date!: Date;
-  @Input() lineMission!: string;
+  @Input() date!: string;
+  @Input() lineMission!: number;
   @Input() category!: string;
   @Input() paymentMethod!: string;
   @Input() country!: string;
-  @Input() associatedNote!: string;
-  @Input() ttc!: string;
+  @Input() associatedNote!: number;
+  @Input() ttc!: number;
   @Input() currency!: string;
-  @Input() tva!: string;
+  @Input() tva!: number;
   @Input() rate!: number;
   @Input() description!: string;
   @Input() supportingDocuments!: string;
   closeResult = '';
+
+  expenseBills!: ExpenseBill[];
+  missions! : Mission[];
 
 
   constructor(private modalService: NgbModal, private apiService: ApiService) { }
@@ -50,6 +56,30 @@ export class CreateLineComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.apiService.getExpenseBillList()
+      .subscribe({
+        next: (res) => {
+          this.expenseBills = res;
+        },
+        error: (e) => console.error(e)
+      });
+
+    this.apiService.getMissionList()
+      .subscribe({
+        next: (res) => {
+          this.missions = res;
+        },
+        error: (e) => console.error(e)
+      });
+
+
   }
+
+  public createNewLineBill() : void {
+    this.apiService.createNewLineBill(this.ttc,this.rate,this.tva,this.date,this.description,this.lineMission,this.associatedNote,this.country);
+  }
+
+
+
 
 }

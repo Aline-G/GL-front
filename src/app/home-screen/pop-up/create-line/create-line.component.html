@@ -17,7 +17,6 @@
 
 
   <button class="btn" (click)="open(mymodal_line)">Nouvelle ligne de frais</button>
-
     <ng-template #mymodal_line let-modal id="modal">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-title">Nouvelle ligne de frais</h4>
@@ -45,7 +44,7 @@
           <div class="row">
             <div class =col-6>
               <label for="date">Date :</label>
-              <input id="date" class="form-control" type="date" name="date" value="" readonly [(ngModel)]="date">
+              <input id="date" class="form-control" type="date" name="date"   [(ngModel)]="date">
               <script>
                 document.getElementById("date").valueAsDate = new Date();
               </script>
@@ -63,6 +62,7 @@
                 <option value="10">10 %</option>
                 <option value="5.5">5.5 %</option>
                 <option value="2.1">2.1 %</option>
+                <option value="2.4">2.4 %</option>
               </select>
             </div>
           </div>
@@ -102,8 +102,9 @@
             <div class =col-6>
               <label for="associatedNote">Note associée :</label>
               <select type="text" class="form-control" id="associatedNote" [(ngModel)]="associatedNote">
-                <option value="1">Note 1</option>
-                <option value="2">Note 2</option>
+                <option *ngFor="let expenseBill of expenseBills "[value]="expenseBill.id">
+                  {{expenseBill.name}}
+                </option>
               </select>
             </div>
             <div class =col-6>
@@ -116,15 +117,16 @@
             <div class =col-6>
               <label for="lineMission">Mission :</label>
               <select type="text" class="form-control" id="lineMission" [(ngModel)]="lineMission">
-                <option value="mission 1">mission 1</option>
-                <option value="mission 2">mission 2</option>
-                <option value="mission 3">mission 3</option>
-                <option value="mission 4">mission 4</option>
+                <option *ngFor="let mission of missions "[value]="mission.id">
+                  {{mission.name}}
+                </option>
+
+
               </select>
             </div>
             <div class =col-6>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+                <button type="button" class="btn btn-outline-dark" (click)="createNewLineBill()" (click)="modal.close('Save click')">Ok</button>
               </div>
             </div>
           </div>
