@@ -12,9 +12,6 @@ export class HomeExpensesComponent implements OnInit {
   lineBills!: LineBill[];
   filteredlineBills!: LineBill[];
 
-  billId!: number;
-
-
   set filteredExpense(lineBills : LineBill[]){
     this.filteredlineBills = lineBills;
     /*
@@ -26,12 +23,10 @@ export class HomeExpensesComponent implements OnInit {
   constructor(private apiService:ApiService, private sharedService : SharedService) {
     sharedService.clickOnBillEvent.subscribe(
       (billId: number) => {
-        this.billId = billId;
+        this.apiService.getLineBillListByExpenseId(billId).then(res => {
+          this.filteredlineBills = res!;}
+        );
     });
-    console.log(this.billId);
-    this.apiService.getLineBillListByExpenseId(this.billId).then(res => {
-      this.filteredlineBills = res!;}
-      );
   }
 
   ngOnInit(): void {
