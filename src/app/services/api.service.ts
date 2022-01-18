@@ -25,6 +25,14 @@ export class ApiService {
     return this.http.get<ExpenseBill>('/api/expensebill/new', {params}).toPromise();
   }
 
+  public createNewLineBill(amount: number, tvaPercent: number, tva : number, date: string, description: string, idMission: number, idExpenseBill: number, country: string) : Promise<LineBill | undefined> {
+    const params = new HttpParams().set('amount', amount).set('tvaPercent', tvaPercent).set('tva', tva).set('date', date)
+                    .set('description', description).set('idMission', idMission).set('idExpenseBill', idExpenseBill).set('country', country);
+    return this.http.get<LineBill>('/api/linebill/new', {params}).toPromise();
+  }
+
+
+
   public getExpenseBillList() :  Observable<ExpenseBill[]>{
     return this.http.get<ExpenseBill[]>('/api/expensebill/list');
   }
