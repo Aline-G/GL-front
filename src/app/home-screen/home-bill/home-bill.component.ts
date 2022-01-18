@@ -15,6 +15,10 @@ export class HomeBillComponent implements OnInit {
     this.sharedService.clickOnBillEvent.emit(id);
   }
 
+  openModal() : void {
+    this.sharedService.clickOnAddBill.emit(true);
+  }
+
   constructor(private apiService: ApiService, private sharedService : SharedService) {
 
   }

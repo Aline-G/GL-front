@@ -1,11 +1,14 @@
 import {NgModule} from '@angular/core';
 import {Router, RouterModule, Routes} from '@angular/router';
-import {PopUpComponent} from "./home-pop-up/pop-up.component";
-import {HomeAdvanceComponent} from "./home-screen/home-advance/home-advance.component";
+import {HomeScreenComponent} from "./home-screen/home-screen.component";
+import {CreateLineComponent} from "./home-screen/pop-up/create-line/create-line.component";
+import {CreateNoteComponent} from "./home-screen/pop-up/create-note/create-note.component";
 
 const routes: Routes = [
-  {path: 'pop-up', component: HomeAdvanceComponent},
-  {path: '**', redirectTo: 'PopUpComponent', pathMatch: 'full'},
+  {path: 'home', component: HomeScreenComponent},
+  {path: 'createLine', component: CreateLineComponent},
+  {path: 'createNote', component: CreateNoteComponent},
+  {path: '**', redirectTo: '/home', pathMatch: 'full'},
 ];
 
 @NgModule({
