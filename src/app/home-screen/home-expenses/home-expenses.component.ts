@@ -39,12 +39,10 @@ export class HomeExpensesComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.lineBills = res;
-          console.log(res);
+          this.filteredlineBills = res;
         },
         error: (e) => console.error(e)
       });
-    console.log(this.lineBills);
-    this.filteredlineBills=this.lineBills;
   }
 
 }
