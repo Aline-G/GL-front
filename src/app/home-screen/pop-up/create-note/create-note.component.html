@@ -17,11 +17,11 @@
 
 <!-- Début du modal d'ouverture des boutons Nouvelle note de frais et nouvelle ligne de frais -->
 
-<button class="btn" (click)="open(mymodal_note)">Nouvelle note de frais</button>
+<button class="btn" id="mymodal_note" (click)="open(mymodal_note)">Nouvelle note de frais</button>
 
 <!-- Nouvelle note de frais -->
 
-<ng-template #mymodal_note let-modal>
+<ng-template  #mymodal_note let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Nouvelle note de frais</h4>
   </div>

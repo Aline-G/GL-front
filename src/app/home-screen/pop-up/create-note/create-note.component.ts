@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../../services/api.service";
+import {SharedService} from "../../../services/dynamical-functions/SharedService";
 
 @Component({
   selector: 'app-create-note',
@@ -16,7 +17,12 @@ export class CreateNoteComponent implements OnInit {
   @Input() noteDescription!: string;
   @Input() noteDate!: string;
 
-  constructor(private modalService: NgbModal, private apiService: ApiService){}
+  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService){
+    sharedService.clickOnAddBill.subscribe(
+      (openModal: boolean) => {
+        //TODO
+      });
+  }
 
   public createNewExpenseBill() : void {
     this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate);
