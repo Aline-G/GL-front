@@ -4,18 +4,18 @@ import {ApiService} from "../../../services/api.service";
 import {SharedService} from "../../../services/dynamical-functions/SharedService";
 
 @Component({
-  selector: 'app-create-note',
-  templateUrl: './create-note.component.html',
-  styleUrls: ['./create-note.component.css']
+  selector: 'app-create-advance',
+  templateUrl: './create-advance.component.html',
+  styleUrls: ['./create-advance.component.css']
 })
-export class CreateNoteComponent implements OnInit {
+export class CreateAdvanceComponent implements OnInit {
 
 
   /* paramètres pour une nouvelle note de frais */
   closeResult = '';
-  @Input() noteName!: string;
-  @Input() noteDescription!: string;
-  @Input() noteDate!: string;
+  @Input() advanceName!: string;
+  @Input() advanceDescription!: string;
+  @Input() advanceAmount!: number;
 
   constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService){
     sharedService.clickOnAddBill.subscribe(
@@ -24,11 +24,11 @@ export class CreateNoteComponent implements OnInit {
       });
   }
 
-  public createNewExpenseBill() : void {
-    this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate);
+  public createNewAdvance() : void {
+    this.apiService.createNewAdvance(this.advanceAmount,this.advanceDescription, this.advanceName);
 
     //recherche automatique de la page
-    //window.location.reload();
+    window.location.reload();
   }
 
   open(content: any) {

@@ -76,7 +76,10 @@ export class CreateLineComponent implements OnInit {
   }
 
   public createNewLineBill() : void {
-    this.apiService.createNewLineBill(this.ttc,this.rate,this.tva,this.date,this.description,this.lineMission,this.associatedNote,this.country);
+    this.apiService.createNewLineBill(this.ttc,this.rate,this.tva,this.date,this.description,this.lineMission,this.associatedNote,this.country, this.category);
+
+    //recherche automatique de la page
+    window.location.reload();
   }
 
 

@@ -11,8 +11,9 @@ export class LineBill{
   country: string;
   idExpenseBill: number;
   description : string;
+  category : string;
 
-  constructor(id: number, amount: number, isValidated :boolean, tvaPercent: number, tva:number, date:Date, mission: Mission, country: string, idExpenseBill: number, description : string) {
+  constructor(id: number, amount: number, isValidated :boolean, tvaPercent: number, tva:number, date:Date, mission: Mission, country: string, idExpenseBill: number, description : string, category :string) {
     this.id = id;
     this.amount = amount;
     this.isValidated = isValidated;
@@ -23,6 +24,7 @@ export class LineBill{
     this.country = country;
     this.idExpenseBill = idExpenseBill;
     this.description = description;
+    this.category= category;
   }
 
 

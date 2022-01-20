@@ -9,7 +9,11 @@
 }
 
 #line{
-  margin-left:10%;
+  float: left;
+}
+
+#advance{
+  margin-left:20%;
 }
 
 .row{
