@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopUpComponent } from './home-pop-up/pop-up.component';
 import { CreateNoteComponent } from './home-screen/pop-up/create-note/create-note.component';
 import { CreateLineComponent } from './home-screen/pop-up/create-line/create-line.component';
+import { CreateAdvanceComponent } from './home-screen/pop-up/create-advance/create-advance.component';
 
 
 
@@ -33,7 +34,8 @@ import { CreateLineComponent } from './home-screen/pop-up/create-line/create-lin
     HomeTotalComponent,
     PopUpComponent,
     CreateNoteComponent,
-    CreateLineComponent
+    CreateLineComponent,
+    CreateAdvanceComponent
   ],
   imports: [
     BrowserModule,
