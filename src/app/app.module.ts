@@ -18,6 +18,7 @@ import { PopUpComponent } from './home-pop-up/pop-up.component';
 import { CreateNoteComponent } from './home-screen/pop-up/create-note/create-note.component';
 import { CreateLineComponent } from './home-screen/pop-up/create-line/create-line.component';
 import { CreateAdvanceComponent } from './home-screen/pop-up/create-advance/create-advance.component';
+import { HomeViewExpenseBillsComponent } from './home-view-expense-bills/home-view-expense-bills.component';
 
 
 
@@ -35,7 +36,8 @@ import { CreateAdvanceComponent } from './home-screen/pop-up/create-advance/crea
     PopUpComponent,
     CreateNoteComponent,
     CreateLineComponent,
-    CreateAdvanceComponent
+    CreateAdvanceComponent,
+    HomeViewExpenseBillsComponent
   ],
   imports: [
     BrowserModule,
