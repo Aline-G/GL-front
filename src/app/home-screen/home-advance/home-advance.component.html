@@ -23,31 +23,28 @@
       <thead class ="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Nom de la note</th>
+        <th scope="col">Mission</th>
+        <th scope="col">Nom de l'avance</th>
         <th scope="col">Montant</th>
         <th scope="col">Etat de la note</th>
         <th scope="col">Date</th>
+        <th scope="col">Détail de l'avance</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Note 1475</td>
-        <td>25</td>
-        <td>En cours de validation</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Note 1476</td>
-        <td>1200</td>
-        <td>Validée</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Note 1477</td>
-        <td>1536</td>
-        <td>En cours d'édition</td>
-      </tr>
+      <tr *ngFor="let advance of advances ">
+        <td>{{advance.id}}</td>
+        <td>{{advance.mission.name}}</td>
+        <td>{{advance.name}}</td>
+        <td>{{advance.amount}}</td>
+        <td>{{advance.state}}</td>
+        <td>{{advance.date}}</td>
+        <td><button id="eye_image" (click)=onAdvanceClicked(advance.id)>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+          </svg>
+        </button></td>
       </tbody>
     </table>
       <button class=add-advance class="btn btn-light">

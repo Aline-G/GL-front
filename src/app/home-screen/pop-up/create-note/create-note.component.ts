@@ -28,7 +28,7 @@ export class CreateNoteComponent implements OnInit {
     this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate);
 
     //recherche automatique de la page
-    //window.location.reload();
+    window.location.reload();
   }
 
   open(content: any) {
