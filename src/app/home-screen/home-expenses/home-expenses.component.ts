@@ -30,6 +30,7 @@ export class HomeExpensesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /*
     this.apiService.getLineBillList()
       .subscribe({
         next: (res) => {
@@ -38,6 +39,7 @@ export class HomeExpensesComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+      */
   }
 
 }
