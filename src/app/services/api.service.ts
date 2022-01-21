@@ -6,7 +6,7 @@ import {User} from '../model/user';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {ExpenseBill} from "../model/expenseBill";
 import {LineBill} from "../model/lineBill";
-import {Advance} from "../model/Advance";
+import {Advance} from "../model/advance";
 import {Mission} from "../model/mission";
 import {Observable} from "rxjs";
 
@@ -33,14 +33,17 @@ export class ApiService {
   }
 
 
-  public createNewAdvance(amount: number, description: string, name:string) : Promise<Advance | undefined> {
-    const params = new HttpParams().set('amount', amount).set('description', description).set('name', name);
+  public createNewAdvance(amount: number, description: string, name:string, idMission: number) : Promise<Advance | undefined> {
+    const params = new HttpParams().set('amount', amount).set('description', description).set('name', name).set('idMission',idMission);
     return this.http.get<Advance>('/api/advance/new', {params}).toPromise();
   }
 
-
   public getExpenseBillList() :  Observable<ExpenseBill[]>{
     return this.http.get<ExpenseBill[]>('/api/expensebill/list');
+  }
+
+  public getAdvanceBillList() :  Observable<Advance[]>{
+    return this.http.get<Advance[]>('/api/advance/list');
   }
 
   public getLineBillListByExpenseId(id :number) :  Promise<LineBill[] | undefined>{

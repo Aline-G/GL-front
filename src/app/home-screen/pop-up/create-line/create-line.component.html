@@ -122,10 +122,9 @@
                 <option *ngFor="let mission of missions "[value]="mission.id">
                   {{mission.name}}
                 </option>
-
-
               </select>
             </div>
+
             <div class =col-6>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-dark" (click)="createNewLineBill()" (click)="modal.close('Save click')">Ok</button>

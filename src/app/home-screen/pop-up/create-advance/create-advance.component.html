@@ -36,6 +36,13 @@
       <label for="advance-amount">Montant :</label>
       <input type="text" class="form-control" id="advance-amount" [(ngModel)]="advanceAmount">
 
+      <label for="advanceMission">Mission :</label>
+      <select type="text" class="form-control" id="advanceMission" [(ngModel)]="advanceMission">
+        <option *ngFor="let mission of missions "[value]="mission.id">
+          {{mission.name}}
+        </option>
+      </select>
+
 
       <p></p>
 
