@@ -13,11 +13,8 @@ import {SharedService} from "../../services/dynamical-functions/SharedService";
 export class HomeAdvanceComponent implements OnInit {
   advances!: Advance[];
 
-  onAdvanceClicked(id : number) : void {
-    this.sharedService.clickOnBillEvent.emit(id);
-  }
 
-  constructor(private apiService: ApiService,  private sharedService : SharedService){
+  constructor(private apiService: ApiService){
   }
 
   ngOnInit(): void {

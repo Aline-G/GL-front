@@ -16,9 +16,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<div class="container-fluid">
+<div class="container-fluid" id =bordure>
   <h3>Total en attente de validation</h3>
-  <p> Vous avez 6 notes en attente de validation pour un montant de 12 589</p>
+
+  <div class="container-fluid">
+      <h6> notes en attente de validation et en édition : <span class="total">{{listNonValidated}}</span> pour un montant de  <span class="total">{{total}}</span> euros</h6>
+  </div>
 </div>
 </html>
 

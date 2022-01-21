@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-home-total',
@@ -6,10 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-total.component.css']
 })
 export class HomeTotalComponent implements OnInit {
+  total !: number
+  listNonValidated!: number
 
-  constructor() { }
+  constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
+
+    this.apiService.getTotalExpenseBill()
+      .subscribe({
+        next: (res) => {
+          this.total = res;
+          console.log(res);
+        },
+        error: (e) => console.error(e)
+      });
+
+    this.apiService.getNumberBillsNonValidated()
+      .subscribe({
+        next: (res) => {
+          this.listNonValidated = res;
+          console.log(res);
+        },
+        error: (e) => console.error(e)
+      });
   }
 
 }
