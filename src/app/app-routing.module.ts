@@ -6,6 +6,7 @@ import {CreateNoteComponent} from "./home-screen/pop-up/create-note/create-note.
 import {HomeViewExpenseBillsComponent} from "./home-view-expense-bills/home-view-expense-bills.component";
 
 
+
 const routes: Routes = [
   {path: 'home', component: HomeScreenComponent},
   {path: 'createLine', component: CreateLineComponent},
