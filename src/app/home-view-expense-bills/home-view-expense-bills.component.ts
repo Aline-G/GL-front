@@ -26,6 +26,9 @@ export class HomeViewExpenseBillsComponent implements OnInit {
   }
 
   onBillClicked(id : number) : void {
-    //this.sharedService.clickOnBillEvent.emit(id);
+    this.sharedService.clickOnBillEvent.emit(id);
   }
+
+
+
 }
