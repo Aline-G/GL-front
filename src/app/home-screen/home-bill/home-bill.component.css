@@ -8,8 +8,7 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
-#eye_image{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.eye_image{
+  text-align: center;
+  vertical-align: middle;
 }
