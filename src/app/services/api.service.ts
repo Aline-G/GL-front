@@ -77,4 +77,9 @@ export class ApiService {
     return this.http.get<number>('/api/expensebill/numberNotesNonValidated');
   }
 
+  public getExpenseBillWithId(id: number):  Promise<ExpenseBill | undefined>{
+      const params = new HttpParams().set('id', id);
+      return this.http.get<ExpenseBill>('/api/expensebill/getwithid',{params}).toPromise();
+  }
+
 }

@@ -3,6 +3,10 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../services/api.service";
 import {LineBill} from "../../model/lineBill";
 import {SharedService} from "../../services/dynamical-functions/SharedService";
+import {MatDialog} from "@angular/material/dialog";
+import {Conditional} from "@angular/compiler";
+import {ExpenseBill} from "../../model/expenseBill";
+
 
 @Component({
   selector: 'app-pop-up-view',
@@ -13,10 +17,16 @@ export class PopUpViewComponent implements OnInit {
 
   closeResult = '';
   lineBills!: LineBill[];
+  billId! :number;
+  expenseBill! : ExpenseBill;
 
   constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService) {
-    sharedService.clickOnBillEvent.subscribe(
+
+    this.sharedService.clickOnBillEvent.subscribe(
       (billId: number) => {
+        this.apiService.getExpenseBillWithId(billId).then(res => {
+          this.expenseBill = res!;}
+        );
         this.apiService.getLineBillListByExpenseId(billId).then(res => {
           this.lineBills = res!;}
         );
@@ -26,13 +36,8 @@ export class PopUpViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  open(content: any) {
-    this.modalService.open(content,
-      {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {this.closeResult = 'Closed with: ${result}';
-    }, (reason) => {
-      this.closeResult =
-        'Dismissed ${this.getDismissReason(reason)}';
-    });
-  }
+
+
+
 
 }

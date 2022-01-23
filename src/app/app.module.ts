@@ -20,8 +20,8 @@ import { CreateLineComponent } from './home-screen/pop-up/create-line/create-lin
 import { CreateAdvanceComponent } from './home-screen/pop-up/create-advance/create-advance.component';
 import { HomeViewExpenseBillsComponent } from './home-view-expense-bills/home-view-expense-bills.component';
 import { PopUpViewComponent } from './home-view-expense-bills/pop-up-view/pop-up-view.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -47,7 +47,9 @@ import { PopUpViewComponent } from './home-view-expense-bills/pop-up-view/pop-up
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
 
   providers: [],
