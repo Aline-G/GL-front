@@ -4,6 +4,8 @@ import {ApiService} from "../services/api.service";
 import {SharedService} from "../services/dynamical-functions/SharedService";
 import {Router} from '@angular/router'
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {MatDialog} from "@angular/material/dialog";
+import {PopUpViewComponent} from "./pop-up-view/pop-up-view.component";
 
 
 
@@ -16,7 +18,7 @@ export class HomeViewExpenseBillsComponent implements OnInit {
 
   expenseBills!: ExpenseBill[];
 
-  constructor(private apiService: ApiService, private sharedService : SharedService, private router:Router,private modalService: NgbModal) { }
+  constructor(private apiService: ApiService, private sharedService : SharedService, private router:Router,private modalService: NgbModal,  private dialogRef : MatDialog) { }
 
   ngOnInit(): void {
     this.apiService.getExpenseBillList()
@@ -29,16 +31,10 @@ export class HomeViewExpenseBillsComponent implements OnInit {
       });
   }
 
-  onBillClicked(id : number) : void {
-
-    this.router.navigate(['PopUpView'])
-    //this.modalService.show(ModalContentComponent);
-
-    this.modalService.open("./pop",{ariaLabelledBy: 'modal-basic-title'})
-
+  openDialog(id : number){
+    this.dialogRef.open(PopUpViewComponent);
     this.sharedService.clickOnBillEvent.emit(id);
   }
-
 
 
 }
