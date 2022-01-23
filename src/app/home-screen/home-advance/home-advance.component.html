@@ -19,7 +19,7 @@
 <div class="container-fluid">
   <h3>Mes Avances</h3>
   <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-bordered table-hover">
       <thead class ="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -31,11 +31,27 @@
       </thead>
       <tbody>
       <tr *ngFor="let advance of advances ">
-        <td>{{advance.id}}</td>
-        <td>{{advance.mission.name}}</td>
-        <td>{{advance.name}}</td>
-        <td>{{advance.amount}}</td>
-        <td>{{advance.state}}</td>
+
+        <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.id}}</td>
+        <td *ngIf="advance.state === 'WAITING'" class="table-primary" >{{advance.id}}</td>
+        <td *ngIf="advance.state === 'VALIDATED'" class="table-success" >{{advance.id}}</td>
+
+        <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.mission.name}}</td>
+        <td *ngIf="advance.state === 'WAITING'" class="table-primary" >{{advance.mission.name}}</td>
+        <td *ngIf="advance.state === 'VALIDATED'" class="table-success" >{{advance.mission.name}}</td>
+
+        <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.name}}</td>
+        <td *ngIf="advance.state === 'WAITING'" class="table-primary" >{{advance.name}}</td>
+        <td *ngIf="advance.state === 'VALIDATED'" class="table-success" >{{advance.name}}</td>
+
+        <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.amount}}</td>
+        <td *ngIf="advance.state === 'WAITING'" class="table-primary" >{{advance.amount}}</td>
+        <td *ngIf="advance.state === 'VALIDATED'" class="table-success" >{{advance.amount}}</td>
+
+        <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.state}}</td>
+        <td *ngIf="advance.state === 'WAITING'" class="table-primary" >{{advance.state}}</td>
+        <td *ngIf="advance.state === 'VALIDATED'" class="table-success" >{{advance.state}}</td>
+
       </tbody>
     </table>
   </div>
