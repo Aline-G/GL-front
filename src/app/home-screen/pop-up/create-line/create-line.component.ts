@@ -27,6 +27,13 @@ export class CreateLineComponent implements OnInit {
   @Input() rate!: number;
   @Input() description!: string;
   @Input() supportingDocuments!: string;
+  @Input() km!: number;
+  @Input() rPlace!: string;
+  @Input() hPlace!: string;
+  @Input() vehicle!: string;
+  @Input() guestsName!: string;
+
+
   closeResult = '';
 
   expenseBills!: ExpenseBill[];
@@ -75,8 +82,10 @@ export class CreateLineComponent implements OnInit {
 
   }
 
+
   public createNewLineBill() : void {
-    this.apiService.createNewLineBill(this.ttc,this.rate,this.tva,this.date,this.description,this.lineMission,this.associatedNote,this.country, this.category);
+    this.apiService.createNewLineBill(this.ttc,this.rate,this.tva,this.date,this.description,this.lineMission,this.associatedNote,
+      this.country, this.category, this.km, this.rPlace, this.hPlace, this.vehicle, this.guestsName);
 
     //recherche automatique de la page
     window.location.reload();
