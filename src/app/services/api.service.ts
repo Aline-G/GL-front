@@ -28,9 +28,10 @@ export class ApiService {
   }
 
   //Send the necessary informations from the pop-up to back-end to create a new line Bill
-  public createNewLineBill(amount: number, tvaPercent: number, tva : number, date: string, description: string, idMission: number, idExpenseBill: number, country: string, category :string ) : Promise<LineBill | undefined> {
+  public createNewLineBill(amount: number, tvaPercent: number, tva : number, date: string, description: string, idMission: number, idExpenseBill: number, country: string, category :string, km : number, rPlace : string, hPlace :string, vehicle: string, guestsName : string ) : Promise<LineBill | undefined> {
     const params = new HttpParams().set('amount', amount).set('tvaPercent', tvaPercent).set('tva', tva).set('date', date)
-                    .set('description', description).set('idMission', idMission).set('idExpenseBill', idExpenseBill).set('country', country).set("category",category);
+                    .set('description', description).set('idMission', idMission).set('idExpenseBill', idExpenseBill).set('country', country)
+                    .set("category",category).set("",km).set("",rPlace).set("",hPlace).set("",vehicle).set("",guestsName)
     return this.http.get<LineBill>('/api/linebill/new', {params}).toPromise();
   }
 

@@ -78,7 +78,8 @@
               </select>
             </div>
             <div class =col-6>
-              <label for="description">Description :</label>
+              <label *ngIf="category !== 'DEPLACEMENT'"for="description">Description :</label>
+              <label *ngIf="category === 'DEPLACEMENT'" for="description">Trajet parcouru :</label>
               <input type="textarea" class="form-control" id="description" [(ngModel)]="description">
             </div>
           </div>
@@ -91,12 +92,32 @@
                 <option value="espece">Espèce</option>
               </select>
             </div>
+            <div *ngIf="category === 'DEPLACEMENT'" class =col-6>
+              <label for="kmDone">Kilomètres parcourus :</label>
+              <input type="text" class="form-control" id="kmDone" [(ngModel)]="km">
+            </div>
+            <div *ngIf="category === 'RESTAURATION'" class =col-6>
+              <label for="rPlace">Nom de l'établissement :</label>
+              <input type="text" class="form-control" id="rPlace" [(ngModel)]="rPlace">
+            </div>
+            <div *ngIf="category === 'HEBERGEMENT'" class =col-6>
+              <label for="hPlace">Nom de l'établissement :</label>
+              <input type="text" class="form-control" id="hPlace" [(ngModel)]="hPlace">
+            </div>
           </div>
 
           <div class="row">
             <div class =col-6>
               <label for="country">Pays :</label>
               <input type="text" class="form-control" id="country" [(ngModel)]="country">
+            </div>
+            <div *ngIf="category === 'DEPLACEMENT'" class =col-6>
+              <label for="vehicle">Véhicule (avec chevaux fiscaux) :</label>
+              <input type="text" class="form-control" id="vehicle" [(ngModel)]="vehicle">
+            </div>
+            <div *ngIf="category === 'RESTAURATION'" class =col-6>
+              <label for="guestsName">Nom des invités :</label>
+              <input type="text" class="form-control" id="guestsName" [(ngModel)]="guestsName">
             </div>
           </div>
 
