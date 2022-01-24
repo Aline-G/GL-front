@@ -90,9 +90,11 @@ export class CreateLineComponent implements OnInit {
     this.apiService.createNewLineBill(this.ttc,this.rate,this.tva,this.date,this.description,this.lineMission,this.associatedNote,
       this.country, this.category, this.km, this.rPlace, this.hPlace, this.vehicle, this.guestsName).then(() =>{
       this.level = 'success';
-      this.header = 'Succès création ligne';
-      this.errorMessage = 'Création de ligne réalisée avec succès';
+      this.header = 'Succès création de la  ligne';
+      this.errorMessage = 'Création de la ligne réalisée avec succès';
       this.emitter.emit(this.errorMessage);
+      //recherchargement automatique de la page
+      window.location.reload();
     }).catch(exception => {
       this.errorMessage = exception.error;
       this.emitter.emit(this.errorMessage);
@@ -100,8 +102,7 @@ export class CreateLineComponent implements OnInit {
     });
 
 
-    //recherchargement automatique de la page
-    //window.location.reload();
+
   }
 
 

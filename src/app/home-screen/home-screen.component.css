@@ -6,16 +6,19 @@
 
 #note{
   float:left;
+  margin-left: 40px;
 }
 
 #line{
   float: left;
 }
 
+
 .row{
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
+  padding-top: 20px;
 }
 
 .error {
@@ -29,6 +32,7 @@
 #error-content{
   color: red;
 }
+
 
 
 

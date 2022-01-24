@@ -19,7 +19,7 @@ export class CreateNoteComponent implements OnInit {
 
   @Output() emitter = new EventEmitter<string>();
   errorMessage = '';
-  header = 'Echec création de ligne';
+  header = 'Echec création de note';
   level = 'danger';
 
   constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService){
@@ -32,17 +32,18 @@ export class CreateNoteComponent implements OnInit {
   public createNewExpenseBill() : void {
     this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate).then(() =>{
       this.level = 'success';
-      this.header = 'Succès création ligne';
-      this.errorMessage = 'Création de ligne réalisée avec succès';
+      this.header = 'Succès création de la note';
+      this.errorMessage = 'Création de note réalisée avec succès';
       this.emitter.emit(this.errorMessage);
+      //recherche automatique de la page
+      window.location.reload();
     }).catch(exception => {
       this.errorMessage = exception.error;
       this.emitter.emit(this.errorMessage);
       console.log(exception.error);
     });
 
-    //recherche automatique de la page
-    //window.location.reload();
+
   }
 
   open(content: any) {
