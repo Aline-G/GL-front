@@ -23,6 +23,8 @@ import { PopUpViewComponent } from './home-view-expense-bills/pop-up-view/pop-up
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AlertErrorComponent } from './alert-error/alert-error.component';
+import { ValidationComponent } from './validation/validation.component';
+import { ValidationNavbarComponent } from './validation/validation-navbar/validation-navbar.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { AlertErrorComponent } from './alert-error/alert-error.component';
     CreateAdvanceComponent,
     HomeViewExpenseBillsComponent,
     PopUpViewComponent,
-    AlertErrorComponent
+    AlertErrorComponent,
+    ValidationComponent,
+    ValidationNavbarComponent
   ],
   imports: [
     BrowserModule,
