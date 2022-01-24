@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../../services/api.service";
 import {SharedService} from "../../../services/dynamical-functions/SharedService";
@@ -17,6 +17,11 @@ export class CreateNoteComponent implements OnInit {
   @Input() noteDescription!: string;
   @Input() noteDate!: string;
 
+  @Output() emitter = new EventEmitter<string>();
+  errorMessage = '';
+  header = 'Echec création de ligne';
+  level = 'danger';
+
   constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService){
     sharedService.clickOnAddBill.subscribe(
       (openModal: boolean) => {
@@ -25,10 +30,19 @@ export class CreateNoteComponent implements OnInit {
   }
 
   public createNewExpenseBill() : void {
-    this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate);
+    this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate).then(() =>{
+      this.level = 'success';
+      this.header = 'Succès création ligne';
+      this.errorMessage = 'Création de ligne réalisée avec succès';
+      this.emitter.emit(this.errorMessage);
+    }).catch(exception => {
+      this.errorMessage = exception.error;
+      this.emitter.emit(this.errorMessage);
+      console.log(exception.error);
+    });
 
     //recherche automatique de la page
-    window.location.reload();
+    //window.location.reload();
   }
 
   open(content: any) {

@@ -37,10 +37,10 @@
               <a class="nav-link"[class.active]="currentRoute == 'home'" aria-current="page" [routerLink]="['/home']">Tableau de bord</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Notes de frais</a>
+              <a class="nav-link" [class.active]="currentRoute == 'viewExpense'" aria-current="page" [routerLink]="['/viewExpense']">Notes de frais</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [class.active]="currentRoute == 'viewExpense'" aria-current="page" [routerLink]="['/viewExpense']">Lignes de frais</a>
+              <a class="nav-link">Lignes de frais</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Déconnexion</a>

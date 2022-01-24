@@ -17,6 +17,7 @@
 
 <!-- Début du modal d'ouverture des boutons Nouvelle note de frais et nouvelle ligne de frais -->
 
+
 <button class="btn" id="mymodal_note" (click)="open(mymodal_note)">Nouvelle note de frais</button>
 
 <!-- Nouvelle note de frais -->
@@ -34,18 +35,23 @@
       <input type="text" class="form-control" id="noteDescription" [(ngModel)]="noteDescription">
 
       <label for="noteDate">Date :</label>
-      <input type="text" class="form-control" id="noteDate" [(ngModel)]="noteDate">
+      <input type="date" class="form-control" id="noteDate" [(ngModel)]="noteDate">
 
       <p></p>
 
       <li>Nom de la note : {{ noteName }}</li>
       <li>Description : {{ noteDescription }}</li>
-      <li>Description : {{ noteDate }}</li>
+      <li>Date : {{ noteDate }}</li>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="createNewExpenseBill()" (click)="modal.close('Save click')" >Ok</button>
       </div>
     </div>
   </div>
+
 </ng-template>
+<div>
+  <app-alert-error [level]="level" [header]="header" [message]="errorMessage"></app-alert-error>
+</div>
+</body>
 
