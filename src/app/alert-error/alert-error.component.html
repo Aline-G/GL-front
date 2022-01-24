@@ -1,0 +1,8 @@
+<div [hidden]="message === ''" class="alert alert-{{level}} alert-dismissible fade show" role="alert">
+  <span class="alert-icon"><span class="visually-hidden">{{level | titlecase}}</span></span>
+  <div>
+    <h4 class="alert-heading">{{header}}</h4>
+    <p>{{message}}</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">Close</span></button>
+  </div>
+</div>

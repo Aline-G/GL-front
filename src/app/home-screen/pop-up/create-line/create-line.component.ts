@@ -1,7 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../../services/api.service";
-import {LineBill} from "../../../model/lineBill";
 import {ExpenseBill} from "../../../model/expenseBill";
 import {Mission} from "../../../model/mission";
 
@@ -38,6 +37,12 @@ export class CreateLineComponent implements OnInit {
 
   expenseBills!: ExpenseBill[];
   missions! : Mission[];
+
+/* paramètres pour la génération de l'erreur*/
+  @Output() emitter = new EventEmitter<string>();
+  errorMessage = '';
+  header = 'Echec création de ligne';
+  level = 'danger';
 
 
   constructor(private modalService: NgbModal, private apiService: ApiService) { }
@@ -78,17 +83,25 @@ export class CreateLineComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
-
-
   }
 
 
   public createNewLineBill() : void {
     this.apiService.createNewLineBill(this.ttc,this.rate,this.tva,this.date,this.description,this.lineMission,this.associatedNote,
-      this.country, this.category, this.km, this.rPlace, this.hPlace, this.vehicle, this.guestsName);
+      this.country, this.category, this.km, this.rPlace, this.hPlace, this.vehicle, this.guestsName).then(() =>{
+      this.level = 'success';
+      this.header = 'Succès création ligne';
+      this.errorMessage = 'Création de ligne réalisée avec succès';
+      this.emitter.emit(this.errorMessage);
+    }).catch(exception => {
+      this.errorMessage = exception.error;
+      this.emitter.emit(this.errorMessage);
+      console.log(exception.error);
+    });
 
-    //recherche automatique de la page
-    window.location.reload();
+
+    //recherchargement automatique de la page
+    //window.location.reload();
   }
 
 

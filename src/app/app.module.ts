@@ -22,6 +22,7 @@ import { HomeViewExpenseBillsComponent } from './home-view-expense-bills/home-vi
 import { PopUpViewComponent } from './home-view-expense-bills/pop-up-view/pop-up-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
+import { AlertErrorComponent } from './alert-error/alert-error.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     CreateLineComponent,
     CreateAdvanceComponent,
     HomeViewExpenseBillsComponent,
-    PopUpViewComponent
+    PopUpViewComponent,
+    AlertErrorComponent
   ],
   imports: [
     BrowserModule,

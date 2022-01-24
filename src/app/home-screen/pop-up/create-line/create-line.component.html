@@ -15,9 +15,11 @@
 
 <body>
 
-
+<div>
+  <app-alert-error [level]="level" [header]="header" [message]="errorMessage"></app-alert-error>
+</div>
   <button class="btn" (click)="open(mymodal_line)">Nouvelle ligne de frais</button>
-    <ng-template #mymodal_line let-modal id="modal">
+  <ng-template #mymodal_line let-modal id="modal">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-title">Nouvelle ligne de frais</h4>
       </div>
