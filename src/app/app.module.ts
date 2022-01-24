@@ -21,7 +21,7 @@ import { CreateAdvanceComponent } from './home-screen/pop-up/create-advance/crea
 import { HomeViewExpenseBillsComponent } from './home-view-expense-bills/home-view-expense-bills.component';
 import { PopUpViewComponent } from './home-view-expense-bills/pop-up-view/pop-up-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule} from "@angular/material/dialog";
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
