@@ -37,6 +37,12 @@ export class PopUpViewComponent implements OnInit {
   }
 
 
+  onClickEvent() : void{
+    this.apiService.askValidation(this.expenseBill.id);
+    window.location.reload();
+  }
+
+
 
 
 

@@ -36,14 +36,14 @@
           <thead class ="thead-dark">
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Titre</th>
-              <th scope="col">Categorie</th>
-              <th scope="col">Note associée</th>
-              <th scope="col">Avance</th>
-              <th scope="col">Montant</th>
-              <th scope="col">Date</th>
               <th scope="col">Mission</th>
-              <th scope="col">Actions</th>
+              <th scope="col">Note associée</th>
+              <th scope="col">Montant</th>
+              <th scope="col">Categorie</th>
+              <th scope="col">Etat de la ligne</th>
+              <th scope="col">Date</th>
+              <th scope="col">Description</th>
+              <th scope="col">Avance</th>
             </tr>
           </thead>
           <tbody>
@@ -52,13 +52,28 @@
               <td>{{lineBill.mission.name}}</td>
               <td>{{lineBill.idExpenseBill}}</td>
               <td>{{lineBill.amount}}</td>
+              <td>{{lineBill.category}}</td>
               <td *ngIf="lineBill.isValidated == true"> Validée </td>
               <td *ngIf="!lineBill.isValidated"> Non validée </td>
               <td>{{lineBill.date}}</td>
               <td>{{lineBill.description}}</td>
+              <td>Non</td>
             </tr>
           </tbody>
         </table>
+      </div>
+      <div class="row">
+        <div class =col-2>
+        </div>
+        <div class =col-4>
+          <h5> Demander la validation de la note : </h5>
+        </div>
+
+        <div class =col-1>
+          <button mat-raised-button style="background-color: green" (click)="onClickEvent()">
+            <mat-icon>done</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
 
