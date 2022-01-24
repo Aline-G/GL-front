@@ -5,7 +5,6 @@ import {CreateLineComponent} from "./home-screen/pop-up/create-line/create-line.
 import {CreateNoteComponent} from "./home-screen/pop-up/create-note/create-note.component";
 import {HomeViewExpenseBillsComponent} from "./home-view-expense-bills/home-view-expense-bills.component";
 import {PopUpViewComponent} from "./home-view-expense-bills/pop-up-view/pop-up-view.component";
-//import{PopUpViewComponent} from '../app/home-view-expense-bills/pop-up-view.component';
 
 
 
@@ -25,8 +24,8 @@ const routes: Routes = [
 export class AppRoutingModule {
   constructor(private router: Router){}
 
-  CreateNoteRoute(){
+ /* CreateNoteRoute(){
     this.router.navigate(['/pop-up']);
-  }
+  }*/
 }
 

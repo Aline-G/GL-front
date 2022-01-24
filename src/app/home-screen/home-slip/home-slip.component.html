@@ -34,13 +34,13 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Tableau de bord</a>
+              <a class="nav-link"[class.active]="currentRoute == 'home'" aria-current="page" [routerLink]="['/home']">Tableau de bord</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Notes de frais</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Lignes de frais</a>
+              <a class="nav-link" [class.active]="currentRoute == 'viewExpense'" aria-current="page" [routerLink]="['/viewExpense']">Lignes de frais</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Déconnexion</a>
