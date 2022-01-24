@@ -25,6 +25,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AlertErrorComponent } from './alert-error/alert-error.component';
 import { ValidationComponent } from './validation/validation.component';
 import { ValidationNavbarComponent } from './validation/validation-navbar/validation-navbar.component';
+import{MatButtonModule} from "@angular/material/button";
+import{MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -55,7 +57,9 @@ import { ValidationNavbarComponent } from './validation/validation-navbar/valida
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule
   ],
 
   providers: [],
