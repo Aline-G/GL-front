@@ -6,6 +6,8 @@ import {Router} from '@angular/router'
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {MatDialog} from "@angular/material/dialog";
 import {PopUpViewComponent} from "./pop-up-view/pop-up-view.component";
+import {Advance} from "../model/advance";
+import {Observable} from "rxjs";
 
 
 
@@ -17,6 +19,7 @@ import {PopUpViewComponent} from "./pop-up-view/pop-up-view.component";
 export class HomeViewExpenseBillsComponent implements OnInit {
 
   expenseBills!: ExpenseBill[];
+  advances! : Advance[];
 
   constructor(private apiService: ApiService, private sharedService : SharedService, private router:Router,private modalService: NgbModal,  private dialogRef : MatDialog) { }
 
@@ -25,7 +28,14 @@ export class HomeViewExpenseBillsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.expenseBills = res;
-          console.log(res);
+        },
+        error: (e) => console.error(e)
+      });
+
+    this.apiService.getAdvanceBillList()
+      .subscribe({
+        next: (res) => {
+          this.advances = res;
         },
         error: (e) => console.error(e)
       });
@@ -37,4 +47,7 @@ export class HomeViewExpenseBillsComponent implements OnInit {
   }
 
 
+  advanceClicked(idAdvance: number) {
+    console.log(idAdvance);
+  }
 }
