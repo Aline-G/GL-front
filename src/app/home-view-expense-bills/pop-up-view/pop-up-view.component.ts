@@ -3,8 +3,6 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../services/api.service";
 import {LineBill} from "../../model/lineBill";
 import {SharedService} from "../../services/dynamical-functions/SharedService";
-import {MatDialog} from "@angular/material/dialog";
-import {Conditional} from "@angular/compiler";
 import {ExpenseBill} from "../../model/expenseBill";
 
 

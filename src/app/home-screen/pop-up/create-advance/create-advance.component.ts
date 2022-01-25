@@ -3,6 +3,8 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../../services/api.service";
 import {SharedService} from "../../../services/dynamical-functions/SharedService";
 import {Mission} from "../../../model/mission";
+import {AlertErrorComponent} from "../../../alert-error/alert-error.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-advance',
@@ -19,20 +21,33 @@ export class CreateAdvanceComponent implements OnInit {
   @Input() advanceAmount!: number;
   @Input() advanceMission!: number;
 
+  /* paramètres pour la fenêtre d'alerte*/
+  errorMessage = '';
+  header = 'Echec création de note';
+  level = 'danger';
+
   missions! : Mission[];
 
-  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService){
-    sharedService.clickOnAddBill.subscribe(
-      (openModal: boolean) => {
-        //TODO
-      });
-  }
+  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog){ }
 
   public createNewAdvance() : void {
-    this.apiService.createNewAdvance(this.advanceAmount,this.advanceDescription, this.advanceName, this.advanceMission);
+    this.apiService.createNewAdvance(this.advanceAmount,this.advanceDescription, this.advanceName, this.advanceMission).then(() =>{
+      this.level = 'success';
+      this.header = 'Succès création de la  ligne';
+      this.errorMessage = 'Création de la ligne réalisée avec succès';
 
-    //recherche automatique de la page
-    window.location.reload();
+      this.dialogRef.open(AlertErrorComponent);
+      this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
+
+      //recherchargement automatique de la page
+      window.location.reload();
+    }).catch(exception => {
+      this.errorMessage = exception.error;
+
+      this.dialogRef.open(AlertErrorComponent);
+      this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
+
+    });
   }
 
   open(content: any) {

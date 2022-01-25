@@ -2,6 +2,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../../services/api.service";
 import {SharedService} from "../../../services/dynamical-functions/SharedService";
+import {PopUpViewComponent} from "../../../home-view-expense-bills/pop-up-view/pop-up-view.component";
+import {AlertErrorComponent} from "../../../alert-error/alert-error.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-note',
@@ -17,30 +20,26 @@ export class CreateNoteComponent implements OnInit {
   @Input() noteDescription!: string;
   @Input() noteDate!: string;
 
-  @Output() emitter = new EventEmitter<string>();
   errorMessage = '';
   header = 'Echec création de note';
   level = 'danger';
 
-  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService){
-    sharedService.clickOnAddBill.subscribe(
-      (openModal: boolean) => {
-        //TODO
-      });
-  }
+  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog){}
 
   public createNewExpenseBill() : void {
     this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate).then(() =>{
       this.level = 'success';
       this.header = 'Succès création de la note';
       this.errorMessage = 'Création de note réalisée avec succès';
-      this.emitter.emit(this.errorMessage);
-      //recherche automatique de la page
-      window.location.reload();
+
+      this.dialogRef.open(AlertErrorComponent);
+      this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
+
     }).catch(exception => {
       this.errorMessage = exception.error;
-      this.emitter.emit(this.errorMessage);
-      console.log(exception.error);
+
+      this.dialogRef.open(AlertErrorComponent);
+      this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
     });
 
 

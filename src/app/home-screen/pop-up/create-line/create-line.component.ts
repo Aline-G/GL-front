@@ -3,6 +3,9 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../../services/api.service";
 import {ExpenseBill} from "../../../model/expenseBill";
 import {Mission} from "../../../model/mission";
+import {AlertErrorComponent} from "../../../alert-error/alert-error.component";
+import {SharedService} from "../../../services/dynamical-functions/SharedService";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-line',
@@ -39,13 +42,12 @@ export class CreateLineComponent implements OnInit {
   missions! : Mission[];
 
 /* paramètres pour la génération de l'erreur*/
-  @Output() emitter = new EventEmitter<string>();
   errorMessage = '';
   header = 'Echec création de ligne';
   level = 'danger';
 
 
-  constructor(private modalService: NgbModal, private apiService: ApiService) { }
+  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog) { }
 
 
   open(content: any) {
@@ -92,13 +94,18 @@ export class CreateLineComponent implements OnInit {
       this.level = 'success';
       this.header = 'Succès création de la  ligne';
       this.errorMessage = 'Création de la ligne réalisée avec succès';
-      this.emitter.emit(this.errorMessage);
+
+      this.dialogRef.open(AlertErrorComponent);
+      this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
+
       //recherchargement automatique de la page
       window.location.reload();
     }).catch(exception => {
       this.errorMessage = exception.error;
-      this.emitter.emit(this.errorMessage);
-      console.log(exception.error);
+
+      this.dialogRef.open(AlertErrorComponent);
+      this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
+
     });
 
 
