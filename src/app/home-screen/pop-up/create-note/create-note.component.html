@@ -18,40 +18,37 @@
 <!-- Début du modal d'ouverture des boutons Nouvelle note de frais et nouvelle ligne de frais -->
 
 
-<button class="btn" id="mymodal_note" (click)="open(mymodal_note)">Nouvelle note de frais</button>
+  <button class="btn" id="mymodal_note" (click)="open(mymodal_note)">Nouvelle note de frais</button>
 
 <!-- Nouvelle note de frais -->
 
-<ng-template  #mymodal_note let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Nouvelle note de frais</h4>
-  </div>
-  <div class="modal_body">
-    <div class="container-fluid">
-      <label for="nom-de-la-note">Nom de la note de frais :</label>
-      <input type="text" class="form-control" id="nom-de-la-note" [(ngModel)]="noteName">
+  <ng-template  #mymodal_note let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Nouvelle note de frais</h4>
+    </div>
+    <div class="modal_body">
+      <div class="container-fluid">
+        <label for="nom-de-la-note">Nom de la note de frais :</label>
+        <input type="text" class="form-control" id="nom-de-la-note" [(ngModel)]="noteName">
 
-      <label for="noteDescription">Description :</label>
-      <input type="text" class="form-control" id="noteDescription" [(ngModel)]="noteDescription">
+        <label for="noteDescription">Description :</label>
+        <input type="text" class="form-control" id="noteDescription" [(ngModel)]="noteDescription">
 
-      <label for="noteDate">Date :</label>
-      <input type="date" class="form-control" id="noteDate" [(ngModel)]="noteDate">
+        <label for="noteDate">Date :</label>
+        <input type="date" class="form-control" id="noteDate" [(ngModel)]="noteDate">
 
-      <p></p>
+        <p></p>
 
-      <li>Nom de la note : {{ noteName }}</li>
-      <li>Description : {{ noteDescription }}</li>
-      <li>Date : {{ noteDate }}</li>
+        <li>Nom de la note : {{ noteName }}</li>
+        <li>Description : {{ noteDescription }}</li>
+        <li>Date : {{ noteDate }}</li>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="createNewExpenseBill()" (click)="modal.close('Save click')" >Ok</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="createNewExpenseBill()" (click)="modal.close('Save click')" >Ok</button>
+        </div>
       </div>
     </div>
-  </div>
 
-</ng-template>
-<!--<div>
-  <app-alert-error [level]="level" [header]="header" [message]="errorMessage"></app-alert-error>
-</div>-->
+  </ng-template>
 </body>
 

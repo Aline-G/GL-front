@@ -1,8 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../../services/api.service";
 import {SharedService} from "../../../services/dynamical-functions/SharedService";
-import {PopUpViewComponent} from "../../../home-view-expense-bills/pop-up-view/pop-up-view.component";
 import {AlertErrorComponent} from "../../../alert-error/alert-error.component";
 import {MatDialog} from "@angular/material/dialog";
 
@@ -47,8 +46,8 @@ export class CreateNoteComponent implements OnInit {
 
   open(content: any) {
     this.modalService.open(content,
-      {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {this.closeResult = 'Closed with: ${result}';
-    }, (reason) => {
+      {ariaLabelledBy: 'modal-basic-title'}).result.then(() => {this.closeResult = 'Closed with: ${result}';
+    }, () => {
       this.closeResult =
         'Dismissed ${this.getDismissReason(reason)}';
     });

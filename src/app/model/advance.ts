@@ -1,4 +1,3 @@
-import {LineBill} from "./lineBill";
 import {Mission} from "./mission";
 
 enum BillStates {

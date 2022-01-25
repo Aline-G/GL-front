@@ -9,15 +9,10 @@ import {SharedService} from "../../services/dynamical-functions/SharedService";
   styleUrls: ['./home-expenses.component.css']
 })
 export class HomeExpensesComponent implements OnInit {
-  lineBills!: LineBill[];
   filteredlineBills!: LineBill[];
 
   set filteredExpense(lineBills : LineBill[]){
     this.filteredlineBills = lineBills;
-    /*
-      this.lineBills = this.lineBills?.filter(
-        lineBill => lineBill?.idExpenseBill == this?.billId
-      );*/
   }
 
   constructor(private apiService:ApiService, private sharedService : SharedService) {

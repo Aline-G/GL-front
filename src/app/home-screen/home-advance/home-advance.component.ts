@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../services/api.service";
 
 import {Advance} from "../../model/advance";
-import {SharedService} from "../../services/dynamical-functions/SharedService";
 
 @Component({
   selector: 'app-home-advance',

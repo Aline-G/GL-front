@@ -1,8 +1,4 @@
-// @ts-ignore
-// @ts-ignore
-
 import {Injectable} from '@angular/core';
-import {User} from '../model/user';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {ExpenseBill} from "../model/expenseBill";
 import {LineBill} from "../model/lineBill";

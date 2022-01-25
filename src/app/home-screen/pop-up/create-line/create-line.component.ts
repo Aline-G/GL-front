@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../../services/api.service";
 import {ExpenseBill} from "../../../model/expenseBill";
@@ -52,8 +52,8 @@ export class CreateLineComponent implements OnInit {
 
   open(content: any) {
     this.modalService.open(content,
-      {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {this.closeResult = 'Closed with: ${result}';
-    }, (reason) => {
+      {ariaLabelledBy: 'modal-basic-title'}).result.then(() => {this.closeResult = 'Closed with: ${result}';
+    }, () => {
       this.closeResult =
         'Dismissed ${this.getDismissReason(reason)}';
     });
@@ -108,11 +108,6 @@ export class CreateLineComponent implements OnInit {
 
     });
 
-
-
   }
-
-
-
 
 }

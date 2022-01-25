@@ -39,8 +39,6 @@ export class CreateAdvanceComponent implements OnInit {
       this.dialogRef.open(AlertErrorComponent);
       this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
 
-      //recherchargement automatique de la page
-      window.location.reload();
     }).catch(exception => {
       this.errorMessage = exception.error;
 
@@ -52,8 +50,8 @@ export class CreateAdvanceComponent implements OnInit {
 
   open(content: any) {
     this.modalService.open(content,
-      {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {this.closeResult = 'Closed with: ${result}';
-    }, (reason) => {
+      {ariaLabelledBy: 'modal-basic-title'}).result.then(() => {this.closeResult = 'Closed with: ${result}';
+    }, () => {
       this.closeResult =
         'Dismissed ${this.getDismissReason(reason)}';
     });
