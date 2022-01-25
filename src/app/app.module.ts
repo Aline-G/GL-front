@@ -27,6 +27,7 @@ import { ValidationComponent } from './validation/validation.component';
 import { ValidationNavbarComponent } from './validation/validation-navbar/validation-navbar.component';
 import{MatButtonModule} from "@angular/material/button";
 import{MatIconModule} from "@angular/material/icon";
+import { PopUpNoteComponent } from './validation/pop-up-note/pop-up-note.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import{MatIconModule} from "@angular/material/icon";
     PopUpViewComponent,
     AlertErrorComponent,
     ValidationComponent,
-    ValidationNavbarComponent
+    ValidationNavbarComponent,
+    PopUpNoteComponent
   ],
   imports: [
     BrowserModule,
