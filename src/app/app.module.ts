@@ -27,6 +27,7 @@ import { ValidationComponent } from './validation/validation.component';
 import { ValidationNavbarComponent } from './validation/validation-navbar/validation-navbar.component';
 import{MatButtonModule} from "@angular/material/button";
 import{MatIconModule} from "@angular/material/icon";
+import { ConfirmationDeleteComponent } from './home-screen/pop-up/confirmation-delete/confirmation-delete.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import{MatIconModule} from "@angular/material/icon";
     PopUpViewComponent,
     AlertErrorComponent,
     ValidationComponent,
-    ValidationNavbarComponent
+    ValidationNavbarComponent,
+    ConfirmationDeleteComponent
   ],
   imports: [
     BrowserModule,

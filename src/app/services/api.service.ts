@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpStatusCode} from '@angular/common/http';
 import {ExpenseBill} from "../model/expenseBill";
 import {LineBill} from "../model/lineBill";
 import {Advance} from "../model/advance";
@@ -16,6 +16,17 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
+  public askValidation(id:number): Promise<ExpenseBill | undefined>{
+    const params = new HttpParams().set('expenseBillId', id);
+    return this.http.get<ExpenseBill>('/api/expensebill/sendValidation', {params}).toPromise();
+  }
+
+
+  //Send the necessary informations from the pop-up to back-end to create a new advance
+  public createNewAdvance(amount: number, description: string, name:string, idMission: number) : Promise<Advance | undefined> {
+    const params = new HttpParams().set('amount', amount).set('description', description).set('name', name).set('idMission',idMission);
+    return this.http.get<Advance>('/api/advance/new', {params}).toPromise();
+  }
 
   //Send the necessary informations from the pop-up to back-end to create a new Expense Bill
   public createNewExpenseBill(noteName: string, noteDescription: string, noteDate : string) : Promise<ExpenseBill | undefined> {
@@ -31,10 +42,25 @@ export class ApiService {
     return this.http.get<LineBill>('/api/linebill/new', {params}).toPromise();
   }
 
-  //Send the necessary informations from the pop-up to back-end to create a new advance
-  public createNewAdvance(amount: number, description: string, name:string, idMission: number) : Promise<Advance | undefined> {
-    const params = new HttpParams().set('amount', amount).set('description', description).set('name', name).set('idMission',idMission);
-    return this.http.get<Advance>('/api/advance/new', {params}).toPromise();
+  public deleteExpenseBill(id : number) :  Promise<HttpStatusCode | undefined>{
+    const params = new HttpParams().set('id', id);
+    return this.http.get<HttpStatusCode>('/api/expensebill/delete', {params}).toPromise();
+  }
+
+  public deleteLineBill(id : number) :  Promise<HttpStatusCode | undefined>{
+    const params = new HttpParams().set('id', id);
+    return this.http.get<HttpStatusCode>('/api/linebill/delete', {params}).toPromise();
+  }
+
+  public deleteAdvance(id : number) :  Promise<HttpStatusCode | undefined>{
+    const params = new HttpParams().set('id', id);
+    return this.http.get<HttpStatusCode>('/api/advance/delete', {params}).toPromise();
+  }
+
+
+  //Get the current advance list from the back
+  public getAdvanceBillList() :  Observable<Advance[]>{
+    return this.http.get<Advance[]>('/api/advance/list');
   }
 
   //Get the current list of expense bill from the back
@@ -42,9 +68,10 @@ export class ApiService {
     return this.http.get<ExpenseBill[]>('/api/expensebill/list');
   }
 
-  //Get the current advance list from the back
-  public getAdvanceBillList() :  Observable<Advance[]>{
-    return this.http.get<Advance[]>('/api/advance/list');
+  // get the expenseBill which has this specific id
+  public getExpenseBillWithId(id: number):  Promise<ExpenseBill | undefined>{
+    const params = new HttpParams().set('id', id);
+    return this.http.get<ExpenseBill>('/api/expensebill/getwithid',{params}).toPromise();
   }
 
   //Get the current line list from the back by id
@@ -63,25 +90,14 @@ export class ApiService {
     return this.http.get<Mission[]>('/api/mission/list');
   }
 
-  //Get the current total amount of expense bills which are 'DRAFT' or 'WAITING'
-  public getTotalExpenseBill(){
-    return this.http.get<number>('/api/expensebill/total');
-  }
-
   //Get the current number of expense bills which are 'DRAFT' or 'WAITING'
   public getNumberBillsNonValidated(){
     return this.http.get<number>('/api/expensebill/numberNotesNonValidated');
   }
 
-  // get the expenseBill which has this specific id
-  public getExpenseBillWithId(id: number):  Promise<ExpenseBill | undefined>{
-      const params = new HttpParams().set('id', id);
-      return this.http.get<ExpenseBill>('/api/expensebill/getwithid',{params}).toPromise();
-  }
-
-  public askValidation(id:number): Promise<ExpenseBill | undefined>{
-    const params = new HttpParams().set('expenseBillId', id);
-    return this.http.get<ExpenseBill>('/api/expensebill/sendValidation', {params}).toPromise();
+  //Get the current total amount of expense bills which are 'DRAFT' or 'WAITING'
+  public getTotalExpenseBill(){
+    return this.http.get<number>('/api/expensebill/total');
   }
 
 }
