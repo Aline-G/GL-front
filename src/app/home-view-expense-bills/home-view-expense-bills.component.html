@@ -33,17 +33,49 @@
         </thead>
         <tbody>
         <tr *ngFor="let expenseBill of expenseBills ">
-          <td>{{expenseBill.id}}</td>
-          <td>{{expenseBill.name}}</td>
-          <td>{{expenseBill.amount}}</td>
-          <td>{{expenseBill.state}}</td>
-          <td>{{expenseBill.date}}</td>
-          <td id="eye_image"><button  (click)=openDialog(expenseBill.id)>
+          <td *ngIf="expenseBill.state === 'DRAFT'" class="table-warning">{{expenseBill.id}}</td>
+          <td *ngIf="expenseBill.state === 'WAITING'" class="table-primary">{{expenseBill.id}}</td>
+          <td *ngIf="expenseBill.state === 'VALIDATED'" class="table-success">{{expenseBill.id}}</td>
+
+          <td *ngIf="expenseBill.state === 'DRAFT'" class="table-warning">{{expenseBill.name}}</td>
+          <td *ngIf="expenseBill.state === 'WAITING'" class="table-primary">{{expenseBill.name}}</td>
+          <td *ngIf="expenseBill.state === 'VALIDATED'" class="table-success">{{expenseBill.name}}</td>
+
+          <td *ngIf="expenseBill.state === 'DRAFT'" class="table-warning">{{expenseBill.amount}}</td>
+          <td *ngIf="expenseBill.state === 'WAITING'" class="table-primary">{{expenseBill.amount}}</td>
+          <td *ngIf="expenseBill.state === 'VALIDATED'" class="table-success">{{expenseBill.amount}}</td>
+
+          <td *ngIf="expenseBill.state === 'DRAFT'" class="table-warning">{{expenseBill.state}}</td>
+          <td *ngIf="expenseBill.state === 'WAITING'" class="table-primary">{{expenseBill.state}}</td>
+          <td *ngIf="expenseBill.state === 'VALIDATED'" class="table-success">{{expenseBill.state}}</td>
+
+          <td *ngIf="expenseBill.state === 'DRAFT'" class="table-warning">{{expenseBill.date}}</td>
+          <td *ngIf="expenseBill.state === 'WAITING'" class="table-primary">{{expenseBill.date}}</td>
+          <td *ngIf="expenseBill.state === 'VALIDATED'" class="table-success">{{expenseBill.date}}</td>
+
+
+          <td *ngIf="expenseBill.state === 'DRAFT'" class="table-warning" id="eye_image1"><button  (click)=openDialog(expenseBill.id)>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
               <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
               <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
             </svg>
           </button></td>
+          <td *ngIf="expenseBill.state === 'WAITING'" class="table-primary"  id="eye_image2"><button  (click)=openDialog(expenseBill.id)>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+            </svg>
+          </button></td>
+          <td *ngIf="expenseBill.state === 'VALIDATED'" class="table-success"  id="eye_image3"><button  (click)=openDialog(expenseBill.id)>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+            </svg>
+          </button></td>
+
+
+
+
         </tr>
         </tbody>
       </table>
@@ -68,7 +100,7 @@
           <td>{{advance.name}}</td>
           <td>{{advance.amount}}</td>
           <td>{{advance.state}}</td>
-          <td ><button mat-raised-button style="background-color: green" (click)="advanceClicked(advance.id)">
+          <td id="v_vert" ><button (click)="advanceClicked(advance.id)">
             <mat-icon>done</mat-icon>
           </button></td>
         </tr>
