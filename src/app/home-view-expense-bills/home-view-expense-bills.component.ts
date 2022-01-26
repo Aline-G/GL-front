@@ -48,6 +48,7 @@ export class HomeViewExpenseBillsComponent implements OnInit {
 
 
   advanceClicked(idAdvance: number) {
-    console.log(idAdvance);
+    this.apiService.askAdvanceValidation(idAdvance);
+    window.location.reload();
   }
 }
