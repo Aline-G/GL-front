@@ -95,14 +95,43 @@
         </thead>
         <tbody>
         <tr *ngFor="let advance of advances ">
-          <td>{{advance.id}}</td>
-          <td>{{advance.mission.name}}</td>
-          <td>{{advance.name}}</td>
-          <td>{{advance.amount}}</td>
-          <td>{{advance.state}}</td>
-          <td id="v_vert" ><button (click)="advanceClicked(advance.id)">
-            <mat-icon>done</mat-icon>
-          </button></td>
+
+          <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.id}}</td>
+          <td *ngIf="advance.state === 'WAITING'" class="table-primary">{{advance.id}}</td>
+          <td *ngIf="advance.state === 'VALIDATED'" class="table-success">{{advance.id}}</td>
+
+          <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.mission.name}}</td>
+          <td *ngIf="advance.state === 'WAITING'" class="table-primary">{{advance.mission.name}}</td>
+          <td *ngIf="advance.state === 'VALIDATED'" class="table-success">{{advance.mission.name}}</td>
+
+          <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.name}}</td>
+          <td *ngIf="advance.state === 'WAITING'" class="table-primary">{{advance.name}}</td>
+          <td *ngIf="advance.state === 'VALIDATED'" class="table-success">{{advance.name}}</td>
+
+          <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.amount}}</td>
+          <td *ngIf="advance.state === 'WAITING'" class="table-primary">{{advance.amount}}</td>
+          <td *ngIf="advance.state === 'VALIDATED'" class="table-success">{{advance.amount}}</td>
+
+          <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.state}}</td>
+          <td *ngIf="advance.state === 'WAITING'" class="table-primary">{{advance.state}}</td>
+          <td *ngIf="advance.state === 'VALIDATED'" class="table-success">{{advance.state}}</td>
+
+
+          <td *ngIf="advance.state === 'DRAFT'" class="table-warning" id="v_vert1">
+            <button (click)="advanceClicked(advance.id)">
+              <mat-icon>done</mat-icon>
+            </button>
+          </td>
+          <td *ngIf="advance.state === 'WAITING'" class="table-primary"id="v_vert2">
+            <button (click)="advanceClicked(advance.id)">
+              <mat-icon>done</mat-icon>
+            </button>
+          </td>
+          <td *ngIf="advance.state === 'VALIDATED'" class="table-success"id="v_vert3">
+            <button (click)="advanceClicked(advance.id)">
+              <mat-icon>done</mat-icon>
+            </button>
+          </td>
         </tr>
         </tbody>
       </table>
