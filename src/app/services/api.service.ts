@@ -16,6 +16,7 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
+  // ask the validation of a ExpenseBill
   public askValidation(id:number): Promise<ExpenseBill | undefined>{
     const params = new HttpParams().set('expenseBillId', id);
     return this.http.get<ExpenseBill>('/api/expensebill/sendValidation', {params}).toPromise();
@@ -99,5 +100,13 @@ export class ApiService {
   public getTotalExpenseBill(){
     return this.http.get<number>('/api/expensebill/total');
   }
+
+  public askAdvanceValidation(id:number): Promise<Advance | undefined>{
+    const params = new HttpParams().set('id', id);
+    return this.http.get<Advance>('/api/advance/askforvalidation', {params}).toPromise();
+  }
+
+
+
 
 }
