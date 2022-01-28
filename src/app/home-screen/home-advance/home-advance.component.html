@@ -26,6 +26,7 @@
         <th scope="col">Mission</th>
         <th scope="col">Nom de l'avance</th>
         <th scope="col">Montant</th>
+        <th scope="col">Date de création</th>
         <th scope="col">Etat de la note</th>
         <th scope="col">Supression</th>
       </tr>
@@ -48,6 +49,10 @@
         <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.amount}}</td>
         <td *ngIf="advance.state === 'WAITING'" class="table-primary" >{{advance.amount}}</td>
         <td *ngIf="advance.state === 'VALIDATED'" class="table-success" >{{advance.amount}}</td>
+
+        <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.date}}</td>
+        <td *ngIf="advance.state === 'WAITING'" class="table-primary" >{{advance.date}}</td>
+        <td *ngIf="advance.state === 'VALIDATED'" class="table-success" >{{advance.date}}</td>
 
         <td *ngIf="advance.state === 'DRAFT'" class="table-warning">{{advance.state}}</td>
         <td *ngIf="advance.state === 'WAITING'" class="table-primary" >{{advance.state}}</td>
