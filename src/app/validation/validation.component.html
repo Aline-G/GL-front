@@ -3,15 +3,17 @@
     <app-validation-navbar></app-validation-navbar>
   </div>
   <div class= row>
+    <h1>Validation</h1>
+  </div>
+  <div class= row>
     <div class="container-fluid">
-      <h3>Validation</h3>
+      <h3>Avances</h3>
       <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover">
           <thead class ="thead-dark">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Type</th>
-            <th scope="col">Nom</th>
+            <th scope="col">Nom de l'avance</th>
             <th scope="col">Collaborateur</th>
             <th scope="col">Montant total</th>
             <th scope="col">Action</th>
@@ -20,23 +22,56 @@
           </thead>
           <tbody>
           <tr *ngFor="let advance of advances ">
-            <td>id</td>
-            <td>Type</td>
-            <td>{{advance.name}}</td>
-            <td>Collaborateur</td>
-            <td>{{advance.amount}}</td>
-            <td><button onclick="onBillClicked(document.getElementById('id').value())">
+            <td *ngIf="advance.state === 'WAITING'" class="table-primary">{{advance.id}}</td>
+            <td *ngIf="advance.state === 'WAITING'" class="table-primary">{{advance.name}}</td>
+            <td *ngIf="advance.state === 'WAITING'" class="table-primary"></td>
+            <td *ngIf="advance.state === 'WAITING'" class="table-primary">{{advance.amount}}</td>
+            <td *ngIf="advance.state === 'WAITING'" class="table-primary"><button onclick="openDialog(document.getElementById('id').value())">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                 <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                 <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
               </svg>
             </button></td>
-            <td>{{advance.state}}</td>
+            <td *ngIf="advance.state === 'WAITING'" class="table-primary">{{advance.state}}</td>
           </tr>
           </tbody>
         </table>
       </div>
+    </div>
+    <div class="container-fluid">
+      <h3>Notes</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class ="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom de la note</th>
+            <th scope="col">Collaborateur</th>
+            <th scope="col">Montant total</th>
+            <th scope="col">Action</th>
+            <th scope="col">Etat</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let expenseBill of expenseBills ">
+            <td *ngIf="expenseBill.state === 'WAITING'" class="table-primary" >{{expenseBill.id}}</td>
+            <td *ngIf="expenseBill.state === 'WAITING'" class="table-primary" >{{expenseBill.name}}</td>
+            <td *ngIf="expenseBill.state === 'WAITING'" class="table-primary" ></td>
+            <td *ngIf="expenseBill.state === 'WAITING'" class="table-primary" >{{expenseBill.amount}}</td>
+            <td *ngIf="expenseBill.state === 'WAITING'" class="eye_image table-primary"><button  (click)=openDialog(expenseBill.id)>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+              </svg>
+            </button></td>
+            <td *ngIf="expenseBill.state === 'WAITING'" class="table-primary" >{{expenseBill.state}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+
 </div>
 
 
