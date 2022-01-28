@@ -24,7 +24,6 @@ export class CreateLineComponent implements OnInit {
   @Input() country!: string;
   @Input() associatedNote!: number;
   @Input() ttc!: number;
-  @Input() currency!: string;
   @Input() tva!: number;
   @Input() rate!: number;
   @Input() description!: string;
@@ -33,7 +32,10 @@ export class CreateLineComponent implements OnInit {
   @Input() rPlace!: string;
   @Input() hPlace!: string;
   @Input() vehicle!: string;
+  @Input() fiscal_horse_power!: number;
   @Input() guestsName!: string;
+  @Input() registrationNumber! :string
+  @Input() conveyance! :string
 
 
   closeResult = '';
@@ -90,7 +92,7 @@ export class CreateLineComponent implements OnInit {
 
   public createNewLineBill() : void {
     this.apiService.createNewLineBill(this.ttc,this.rate,this.tva,this.date,this.description,this.lineMission,this.associatedNote,
-      this.country, this.category, this.km, this.rPlace, this.hPlace, this.vehicle, this.guestsName).then(() =>{
+      this.country, this.category, this.km, this.rPlace, this.hPlace, this.vehicle, this.guestsName, this.fiscal_horse_power, this.registrationNumber, this.conveyance).then(() =>{
       this.level = 'success';
       this.header = 'Succès création de la  ligne';
       this.errorMessage = 'Création de la ligne réalisée avec succès';
