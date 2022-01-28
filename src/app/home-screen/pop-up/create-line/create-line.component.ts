@@ -57,6 +57,7 @@ export class CreateLineComponent implements OnInit {
   constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog) {
     sharedService.clickOnPlusEvent.subscribe(
       (billId: number) => {
+        console.log(billId);
         this.billId=billId;
       });
   }
@@ -108,7 +109,6 @@ export class CreateLineComponent implements OnInit {
 
 
   public createNewLineBill() : void {
-
     this.apiService.createNewLineBill(this.ttc,this.tva,this.date,this.description,this.lineMission,this.billId,
       this.country, this.category, this.km, this.rPlace, this.hPlace, this.vehicle, this.guestsName, this.fiscal_horse_power, this.registrationNumber, this.conveyance, this.paymentMethod).then(() =>{
       this.level = 'success';
@@ -120,13 +120,13 @@ export class CreateLineComponent implements OnInit {
 
       //recherchargement automatique de la page
       window.location.reload();
-    }).catch(exception => {
+    })/*.catch(exception => {
       this.errorMessage = exception.error;
 
       this.dialogRef.open(AlertErrorComponent);
       this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
 
-    });
+    });*/
 
   }
 

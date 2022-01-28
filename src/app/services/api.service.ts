@@ -38,12 +38,48 @@ export class ApiService {
   //Send the necessary informations from the pop-up to back-end to create a new line Bill
   public createNewLineBill(amount: number, tva : number, date: string, description: string, idMission: number, idExpenseBill: number, country: string, category :string,
                            km : number, rPlace : string, hPlace :string, vehicle: string, guestsName : string, fiscal_horses_power:number, registrationNumber:string, conveyance :string, paymentMethod :string) : Promise<LineBill | undefined> {
+
+
+    if(km == undefined){
+      km=0;
+    }
+    if(rPlace == undefined){
+      rPlace = "";
+    }
+    if(hPlace == undefined){
+      hPlace = "";
+    }
+    if(vehicle == undefined){
+      vehicle = "";
+    }
+    if(guestsName == undefined){
+      guestsName = "";
+    }
+    if(fiscal_horses_power == undefined){
+      fiscal_horses_power = 0;
+    }
+    if(registrationNumber == undefined){
+      registrationNumber = "";
+    }
+    if(conveyance == undefined){
+      conveyance = "";
+    }
+    if(paymentMethod == undefined){
+      paymentMethod = "";
+    }
+
     const params = new HttpParams().set('amount', amount).set('tva', tva).set('date', date)
-                    .set('description', description).set('idMission', idMission).set('idExpenseBill', idExpenseBill).set('country', country)
-                    .set("category",category).set("km",km).set("restoPlace",rPlace).set("hebergementPlace",hPlace).set("vehicle",vehicle)
-                    .set("guestsName",guestsName).set("fiscalHorsepower",fiscal_horses_power).set("registrationNumber",registrationNumber)
-                    .set("conveyance",conveyance).set('paymentMethod',paymentMethod)
+      .set('description', description).set('idMission', idMission).set('idExpenseBill', idExpenseBill).set('country', country)
+      .set("category",category).set("km",km).set("restoPlace",rPlace).set("hebergementPlace",hPlace).set("vehicle",vehicle)
+      .set("guestsName",guestsName).set("fiscalHorsepower",fiscal_horses_power).set("registrationNumber",registrationNumber)
+      .set("conveyance",conveyance).set('paymentMethod',paymentMethod)
+
+
     return this.http.get<LineBill>('/api/linebill/new', {params}).toPromise();
+
+
+
+
   }
 
   public deleteExpenseBill(id : number) :  Promise<HttpStatusCode | undefined>{

@@ -51,16 +51,6 @@
               <input type="text" class="form-control" id="TVA" [(ngModel)]="tva">
             </div>
 
-            <div  *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-3>
-              <label for="rate">Taux :</label>
-              <select type="text" class="form-control" id="rate" [(ngModel)]="rate">
-                <option value="20">20 %</option>
-                <option value="10">10 %</option>
-                <option value="5.5">5.5 %</option>
-                <option value="2.1">2.1 %</option>
-                <option value="2.4">2.4 %</option>
-              </select>
-            </div>
 
             <div  *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
               <label for="fiscalHorsePower">Chevaux fiscaux :</label>
@@ -145,14 +135,7 @@
           </div>
 
           <div class="row">
-            <div class =col-6>
-              <label for="associatedNote">Note associée :</label>
-              <select type="text" class="form-control" id="associatedNote" [(ngModel)]="associatedNote">
-                <option *ngFor="let expenseBill of expenseBills "[value]="expenseBill.id">
-                  {{expenseBill.name}}
-                </option>
-              </select>
-            </div>
+
             <div  *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-6>
               <label for="supportingDocuments">Justificatif :</label>
               <input type="file" class="form-control" id="supportingDocuments" accept="image/png, image/jpeg, image/pdf" [(ngModel)]="supportingDocuments">
