@@ -15,10 +15,10 @@ export class Advance {
   amount: number;
   state : BillStates;
   mission : Mission;
-  date : string;
+  date : Date;
   //listLineBill: LineBill[];
 
-  constructor(id: number, date:string, name: string, description: string, amount: number, state : BillStates, mission : Mission) {
+  constructor(id: number, date:Date, name: string, description: string, amount: number, state : BillStates, mission : Mission) {
    this.id=id;
    this.name=name;
    this.description=description;

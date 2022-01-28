@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../services/api.service";
 import {ExpenseBill} from "../../model/expenseBill";
 import {SharedService} from "../../services/dynamical-functions/SharedService";
+import {MatDialog} from "@angular/material/dialog";
+import {ConfirmationDeleteComponent} from "../pop-up/confirmation-delete/confirmation-delete.component";
 
 @Component({
   selector: 'app-home-bill',
@@ -15,11 +17,30 @@ export class HomeBillComponent implements OnInit {
     this.sharedService.clickOnBillEvent.emit(id);
   }
 
+  trashClicked(id : number) : void {
+    /*this function allows to delete a bill in confirmation delete component,
+   the first argument is the id of the bill to delete and the second one is 0 which is a code to say that it's a bill*/
+    this.sharedService.billDelete.emit([id,0]);
+    this.dialogRef.open(ConfirmationDeleteComponent);
+
+  /* this.sharedService.noDelete()
+      .subscribe({
+        next: (b : boolean ) => {
+          if(b==true){
+            this.apiService.deleteExpenseBill(id);
+          }
+        },
+        error: (e : any) => console.error(e)
+      }); */
+  }
+
+
+
   openModal() : void {
     this.sharedService.clickOnAddBill.emit(true);
   }
 
-  constructor(private apiService: ApiService, private sharedService : SharedService) {
+  constructor(private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog ) {
 
   }
 

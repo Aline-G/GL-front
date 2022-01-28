@@ -11,11 +11,11 @@ export class ExpenseBill {
   name: string;
   description: string;
   amount: number;
-  date: Date;
+  date: string;
   state : BillStates;
   listLineBill: LineBill[];
 
-  constructor(id: number, name: string, description: string, amount: number, date: Date, state: BillStates, listLineBill : LineBill[]) {
+  constructor(id: number, name: string, description: string, amount: number, date: string, state: BillStates, listLineBill : LineBill[]) {
    this.id=id;
    this.name=name;
    this.description=description;
