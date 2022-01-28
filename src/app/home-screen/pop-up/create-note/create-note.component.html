@@ -7,10 +7,6 @@
 
   <!-- Ajout de la police-->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -34,14 +30,16 @@
         <label for="noteDescription">Description :</label>
         <input type="text" class="form-control" id="noteDescription" [(ngModel)]="noteDescription">
 
-        <label for="noteDate">Date :</label>
-        <input type="date" class="form-control" id="noteDate" [(ngModel)]="noteDate">
 
-        <p></p>
+        <label for="start">Date:</label>
+        <input type="month" id="start" name="start"
+               min="2022-01" value="2022-01">
 
         <li>Nom de la note : {{ noteName }}</li>
         <li>Description : {{ noteDescription }}</li>
         <li>Date : {{ noteDate }}</li>
+
+
 
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-dark" (click)="createNewExpenseBill()" (click)="modal.close('Save click')" >Ok</button>
