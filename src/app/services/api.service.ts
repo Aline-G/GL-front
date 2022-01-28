@@ -37,11 +37,12 @@ export class ApiService {
 
   //Send the necessary informations from the pop-up to back-end to create a new line Bill
   public createNewLineBill(amount: number, tvaPercent: number, tva : number, date: string, description: string, idMission: number, idExpenseBill: number, country: string, category :string,
-                           km : number, rPlace : string, hPlace :string, vehicle: string, guestsName : string, fiscal_horses_power:number, registrationNumber:string, conveyance :string ) : Promise<LineBill | undefined> {
+                           km : number, rPlace : string, hPlace :string, vehicle: string, guestsName : string, fiscal_horses_power:number, registrationNumber:string, conveyance :string, paymentMethod :string) : Promise<LineBill | undefined> {
     const params = new HttpParams().set('amount', amount).set('tvaPercent', tvaPercent).set('tva', tva).set('date', date)
                     .set('description', description).set('idMission', idMission).set('idExpenseBill', idExpenseBill).set('country', country)
                     .set("category",category).set("km",km).set("restoPlace",rPlace).set("hebergementPlace",hPlace).set("vehicle",vehicle)
-                    .set("guestsName",guestsName).set("fiscalHorsepower",fiscal_horses_power).set("registrationNumber",registrationNumber).set("conveyance",conveyance)
+                    .set("guestsName",guestsName).set("fiscalHorsepower",fiscal_horses_power).set("registrationNumber",registrationNumber)
+                    .set("conveyance",conveyance).set('paymentMethod',paymentMethod)
     return this.http.get<LineBill>('/api/linebill/new', {params}).toPromise();
   }
 
@@ -64,6 +65,12 @@ export class ApiService {
   //Get the current advance list from the back
   public getAdvanceBillList() :  Observable<Advance[]>{
     return this.http.get<Advance[]>('/api/advance/list');
+  }
+
+  //Get the amount for 'FRAIS_KILOMETRIQUES'
+  public getAmountMealExpense(km :number, fiscalHorsePower : number) :  Promise<number | undefined>{
+    const params = new HttpParams().set('nbKm', km).set('nbFiscalHorsepower',fiscalHorsePower);
+    return this.http.get<number>('/api/linebill/calculamount',{params}).toPromise();
   }
 
   //Get the current list of expense bill from the back

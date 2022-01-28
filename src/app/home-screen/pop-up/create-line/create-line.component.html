@@ -29,9 +29,13 @@
               <input type="text" class="form-control" id="titre" [(ngModel)]="titre">
             </div>
 
-              <div class =col-6>
+              <div *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-6>
                 <label for="ttc">TTC :</label>
                 <input type="text" class="form-control" id="ttc" [(ngModel)]="ttc">
+              </div>
+              <div *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
+                <label for="vehicle">Véhicule :</label>
+                <input type="text" class="form-control" id="vehicle" [(ngModel)]="vehicle">
               </div>
           </div>
 
@@ -44,12 +48,12 @@
               </script>
             </div>
 
-            <div class =col-3>
+            <div  *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-3>
               <label for="tva">TVA :</label>
               <input type="text" class="form-control" id="TVA" [(ngModel)]="tva">
             </div>
 
-            <div class =col-3>
+            <div  *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-3>
               <label for="rate">Taux :</label>
               <select type="text" class="form-control" id="rate" [(ngModel)]="rate">
                 <option value="20">20 %</option>
@@ -57,6 +61,17 @@
                 <option value="5.5">5.5 %</option>
                 <option value="2.1">2.1 %</option>
                 <option value="2.4">2.4 %</option>
+              </select>
+            </div>
+
+            <div  *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
+              <label for="fiscalHorsePower">Chevaux fiscaux :</label>
+              <select type="text" class="form-control" id="fiscalHorsePower" [(ngModel)]="fiscal_horse_power">
+                <option value="3">3 CV et moins</option>
+                <option value="4">4 CV</option>
+                <option value="5">5 CV</option>
+                <option value="6">6 CV</option>
+                <option value="7">7 CV et plus</option>
               </select>
             </div>
           </div>
@@ -80,16 +95,21 @@
           </div>
 
           <div class="row">
-            <div class =col-6>
+            <div *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-6>
               <label for="paymentMethod">Moyen de paiement :</label>
               <select type="text" class="form-control" id="paymentMethod" [(ngModel)]="paymentMethod">
                 <option value="carte">Carte</option>
                 <option value="espece">Espèce</option>
+                <option value="chèque">Chèque</option>
               </select>
             </div>
             <div *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
               <label for="kmDone">Kilomètres parcourus :</label>
               <input type="text" class="form-control" id="kmDone" [(ngModel)]="km">
+            </div>
+            <div  *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
+              <label for="registrationNumber">Plaque d'immatriculation :</label>
+              <input type= "text" class="form-control" id="registrationNumber" [(ngModel)]="registrationNumber" >
             </div>
             <div *ngIf="category === 'RESTAURATION'" class =col-6>
               <label for="rPlace">Nom de l'établissement :</label>
@@ -116,9 +136,9 @@
               <label for="country">Pays :</label>
               <input type="text" class="form-control" id="country" [(ngModel)]="country">
             </div>
-            <div *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
-              <label for="vehicle">Véhicule :</label>
-              <input type="text" class="form-control" id="vehicle" [(ngModel)]="vehicle">
+            <div *ngIf="category === 'FRAIS_KILOMETRIQUES'"class =col-6>
+              <label>Montant :</label>
+              <output [(ngModel)]="amount"></output>
             </div>
             <div *ngIf="category === 'RESTAURATION'" class =col-6>
               <label for="guestsName">Nom des invités :</label>
@@ -139,16 +159,6 @@
               <label for="supportingDocuments">Justificatif :</label>
               <input type="file" class="form-control" id="supportingDocuments" accept="image/png, image/jpeg, image/pdf" [(ngModel)]="supportingDocuments">
             </div>
-            <div  *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
-              <label for="fiscalHorsePower">Chevaux fiscaux :</label>
-              <select type="text" class="form-control" id="fiscalHorsePower" [(ngModel)]="fiscal_horse_power">
-                <option value="3">3 CV et moins</option>
-                <option value="4">4 CV</option>
-                <option value="5">5 CV</option>
-                <option value="6">6 CV</option>
-                <option value="7">7 CV et plus</option>
-              </select>
-            </div>
 
           </div>
 
@@ -160,11 +170,6 @@
                   {{mission.name}}
                 </option>
               </select>
-            </div>
-
-            <div  *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
-              <label for="registrationNumber">Plaque d'immatriculation :</label>
-              <input type= "text" class="form-control" id="registrationNumber" [(ngModel)]="registrationNumber" >
             </div>
 
               <div class="modal-footer">
