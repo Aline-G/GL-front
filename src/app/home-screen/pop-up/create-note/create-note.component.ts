@@ -26,6 +26,7 @@ export class CreateNoteComponent implements OnInit {
   constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog){}
 
   public createNewExpenseBill() : void {
+      console.log(this.noteDate);
       this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate).then(() =>{
       this.level = 'success';
       this.header = 'Succès création de la note';
