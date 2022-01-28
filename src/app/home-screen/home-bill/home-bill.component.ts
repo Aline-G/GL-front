@@ -4,6 +4,7 @@ import {ExpenseBill} from "../../model/expenseBill";
 import {SharedService} from "../../services/dynamical-functions/SharedService";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDeleteComponent} from "../pop-up/confirmation-delete/confirmation-delete.component";
+import {CreateLineComponent} from "../pop-up/create-line/create-line.component";
 
 @Component({
   selector: 'app-home-bill',
@@ -15,6 +16,11 @@ export class HomeBillComponent implements OnInit {
 
   onBillClicked(id : number) : void {
     this.sharedService.clickOnBillEvent.emit(id);
+  }
+
+  plusClicked(id : number) : void {
+    this.sharedService.clickOnPlusEvent.emit(id);
+    this.dialogRef.open(CreateLineComponent);
   }
 
   trashClicked(id : number) : void {

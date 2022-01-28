@@ -7,6 +7,7 @@ import {AlertErrorComponent} from "../../../alert-error/alert-error.component";
 import {SharedService} from "../../../services/dynamical-functions/SharedService";
 import {MatDialog} from "@angular/material/dialog";
 import {catchError} from "rxjs";
+import {ConfirmationDeleteComponent} from "../confirmation-delete/confirmation-delete.component";
 
 @Component({
   selector: 'app-create-line',
@@ -42,6 +43,7 @@ export class CreateLineComponent implements OnInit {
 
 
   closeResult = '';
+  billId!: number;
 
   expenseBills!: ExpenseBill[];
   missions! : Mission[];
@@ -52,9 +54,12 @@ export class CreateLineComponent implements OnInit {
   level = 'danger';
 
 
-  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog) { }
-
-
+  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog) {
+    sharedService.clickOnPlusEvent.subscribe(
+      (billId: number) => {
+        this.billId=billId;
+      });
+  }
 
   public getAmountMealExpense(): void{
     if(this.km != null && this.fiscal_horse_power != null) {
@@ -97,11 +102,14 @@ export class CreateLineComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+
+
   }
 
 
   public createNewLineBill() : void {
-    this.apiService.createNewLineBill(this.ttc,this.rate,this.tva,this.date,this.description,this.lineMission,this.associatedNote,
+
+    this.apiService.createNewLineBill(this.ttc,this.tva,this.date,this.description,this.lineMission,this.billId,
       this.country, this.category, this.km, this.rPlace, this.hPlace, this.vehicle, this.guestsName, this.fiscal_horse_power, this.registrationNumber, this.conveyance, this.paymentMethod).then(() =>{
       this.level = 'success';
       this.header = 'Succès création de la  ligne';
