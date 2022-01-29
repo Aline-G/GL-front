@@ -29,6 +29,7 @@ import{MatButtonModule} from "@angular/material/button";
 import{MatIconModule} from "@angular/material/icon";
 import { PopUpNoteComponent } from './validation/pop-up-note/pop-up-note.component';
 import { ConfirmationDeleteComponent } from './home-screen/pop-up/confirmation-delete/confirmation-delete.component';
+import { MissionManagementComponent } from './validation/mission-management/mission-management.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ConfirmationDeleteComponent } from './home-screen/pop-up/confirmation-d
     ValidationComponent,
     ValidationNavbarComponent,
     PopUpNoteComponent,
-    ConfirmationDeleteComponent
+    ConfirmationDeleteComponent,
+    MissionManagementComponent
   ],
   imports: [
     BrowserModule,
