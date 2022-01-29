@@ -18,8 +18,8 @@ export class HomeAdvanceComponent implements OnInit {
   trashClicked(id : number) : void {
     /*this function allows to delete a bill in confirmation delete component,
    the first argument is the id of the bill to delete and the second one is 0 which is a code to say that it's a bill*/
-    this.sharedService.advanceDelete.emit([id, 2]);
     this.dialogRef.open(ConfirmationDeleteComponent);
+    this.sharedService.advanceDelete.emit([id, 2]);
   }
 
   constructor(private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog){
