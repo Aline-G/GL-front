@@ -154,7 +154,15 @@ export class ApiService {
     return this.http.get<Advance>('/api/advance/askforvalidation', {params}).toPromise();
   }
 
+  public advanceValidation(id:number): Promise<Advance | undefined>{
+    const params = new HttpParams().set('id', id);
+    return this.http.get<Advance>('/api/advance/validation',{params}).toPromise();
+  }
 
+  public expenseBillValidation(id : number):Promise<ExpenseBill | undefined>{
+    const params = new HttpParams().set('id', id);
+    return this.http.get<ExpenseBill>('/api/expensebill/validation',{params}).toPromise();
+  }
 
 
 }

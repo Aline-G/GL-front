@@ -6,6 +6,7 @@ import {CreateNoteComponent} from "./home-screen/pop-up/create-note/create-note.
 import {HomeViewExpenseBillsComponent} from "./home-view-expense-bills/home-view-expense-bills.component";
 import {PopUpViewComponent} from "./home-view-expense-bills/pop-up-view/pop-up-view.component";
 import {DemoComponent} from "./demo/demo.component";
+import {ValidationComponent} from "./validation/validation.component";
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'createNote', component: CreateNoteComponent},
   {path: 'viewExpense', component: HomeViewExpenseBillsComponent},
   {path: 'PopUpView', component:PopUpViewComponent},
+  {path: 'validation', component: ValidationComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'},
 ];
 
