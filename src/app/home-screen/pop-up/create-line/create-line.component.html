@@ -15,8 +15,6 @@
 
 <body>
 
-  <button class="btn" (click)="open(mymodal_line)">Nouvelle ligne de frais</button>
-  <ng-template #mymodal_line let-modal id="modal">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-title">Nouvelle ligne de frais</h4>
       </div>
@@ -53,25 +51,15 @@
               <input type="text" class="form-control" id="TVA" [(ngModel)]="tva">
             </div>
 
-            <div  *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-3>
-              <label for="rate">Taux :</label>
-              <select type="text" class="form-control" id="rate" [(ngModel)]="rate">
-                <option value="20">20 %</option>
-                <option value="10">10 %</option>
-                <option value="5.5">5.5 %</option>
-                <option value="2.1">2.1 %</option>
-                <option value="2.4">2.4 %</option>
-              </select>
-            </div>
 
             <div  *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
               <label for="fiscalHorsePower">Chevaux fiscaux :</label>
               <select type="text" class="form-control" id="fiscalHorsePower" [(ngModel)]="fiscal_horse_power">
-                <option value="3">3 CV et moins</option>
-                <option value="4">4 CV</option>
-                <option value="5">5 CV</option>
-                <option value="6">6 CV</option>
-                <option value="7">7 CV et plus</option>
+                <option value=3>3 CV et moins</option>
+                <option value=4>4 CV</option>
+                <option value=5>5 CV</option>
+                <option value=6>6 CV</option>
+                <option value=7>7 CV et plus</option>
               </select>
             </div>
           </div>
@@ -136,10 +124,10 @@
               <label for="country">Pays :</label>
               <input type="text" class="form-control" id="country" [(ngModel)]="country">
             </div>
-            <div *ngIf="category === 'FRAIS_KILOMETRIQUES'"class =col-6>
+            <!--<div *ngIf="category === 'FRAIS_KILOMETRIQUES'"class =col-6>
               <label>Montant :</label>
               <output [(ngModel)]="amount"></output>
-            </div>
+            </div>-->
             <div *ngIf="category === 'RESTAURATION'" class =col-6>
               <label for="guestsName">Nom des invités :</label>
               <input type="text" class="form-control" id="guestsName" [(ngModel)]="guestsName">
@@ -147,19 +135,6 @@
           </div>
 
           <div class="row">
-            <div class =col-6>
-              <label for="associatedNote">Note associée :</label>
-              <select type="text" class="form-control" id="associatedNote" [(ngModel)]="associatedNote">
-                <option *ngFor="let expenseBill of expenseBills "[value]="expenseBill.id">
-                  {{expenseBill.name}}
-                </option>
-              </select>
-            </div>
-            <div  *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-6>
-              <label for="supportingDocuments">Justificatif :</label>
-              <input type="file" class="form-control" id="supportingDocuments" accept="image/png, image/jpeg, image/pdf" [(ngModel)]="supportingDocuments">
-            </div>
-
           </div>
 
           <div class="row">
@@ -171,15 +146,19 @@
                 </option>
               </select>
             </div>
+            <div  *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-6>
+              <label for="supportingDocuments">Justificatif :</label>
+              <input type="file" class="form-control" id="supportingDocuments" accept="image/png, image/jpeg, image/pdf" [(ngModel)]="supportingDocuments">
+            </div>
+
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="createNewLineBill()" (click)="modal.close('Save click')">Ok</button>
+       <button type="button" class="btn btn-outline-dark" (click)="createNewLineBill()">Ok</button>
               </div>
             </div>
           </div>
         </div>
 
-    </ng-template>
 
 </body>
 

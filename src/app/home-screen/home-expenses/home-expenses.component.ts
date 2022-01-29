@@ -20,8 +20,9 @@ export class HomeExpensesComponent implements OnInit {
   trashClicked(id : number) : void {
     /*this function allows to delete a bill in confirmation delete component,
    the first argument is the id of the bill to delete and the second one is 0 which is a code to say that it's a bill*/
-    this.sharedService.lineBillDelete.emit([id, 1]);
     this.dialogRef.open(ConfirmationDeleteComponent);
+    this.sharedService.lineBillDelete.emit([id, 1]);
+
   }
 
   constructor(private apiService:ApiService, private sharedService : SharedService, private dialogRef : MatDialog) {
@@ -34,16 +35,16 @@ export class HomeExpensesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*
-    this.apiService.getLineBillList()
+
+    /*this.apiService.getLineBillList()
       .subscribe({
         next: (res) => {
-          this.lineBills = res;
+          console.log(res);
           this.filteredlineBills = res;
         },
         error: (e) => console.error(e)
       });
-      */
+*/
   }
 
 }

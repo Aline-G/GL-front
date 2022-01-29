@@ -7,6 +7,7 @@ import {AlertErrorComponent} from "../../../alert-error/alert-error.component";
 import {SharedService} from "../../../services/dynamical-functions/SharedService";
 import {MatDialog} from "@angular/material/dialog";
 import {catchError} from "rxjs";
+import {ConfirmationDeleteComponent} from "../confirmation-delete/confirmation-delete.component";
 
 @Component({
   selector: 'app-create-line',
@@ -38,10 +39,11 @@ export class CreateLineComponent implements OnInit {
   @Input() registrationNumber! :string
   @Input() conveyance! :string
 
-  @Output() amount! :Promise<number | undefined>
+  @Output() amount! :number
 
 
   closeResult = '';
+  billId!: number;
 
   expenseBills!: ExpenseBill[];
   missions! : Mission[];
@@ -52,15 +54,19 @@ export class CreateLineComponent implements OnInit {
   level = 'danger';
 
 
-  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog) { }
+  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog) {
+    sharedService.clickOnPlusEvent.subscribe(
+      (billId: number) => {
+        console.log(billId);
+        this.billId=billId;
+      });
+  }
 
-
-
-  public getAmountMealExpense(): void{
+  /*public getAmountMealExpense(): void{
     if(this.km != null && this.fiscal_horse_power != null) {
       this.amount = this.apiService.getAmountMealExpense(this.km, this.fiscal_horse_power);
     }
-  }
+  }*/
 
   open(content: any) {
     this.modalService.open(content,
@@ -97,11 +103,35 @@ export class CreateLineComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+
+
   }
 
 
   public createNewLineBill() : void {
-    this.apiService.createNewLineBill(this.ttc,this.rate,this.tva,this.date,this.description,this.lineMission,this.associatedNote,
+
+    if(this.category == 'FRAIS_KILOMETRIQUES'){
+      if(this.fiscal_horse_power == 3){
+        this.ttc = this.km * 0.456;
+      }else if(this.fiscal_horse_power == 4){
+        this.ttc = this.km * 0.523;
+      }
+      else if(this.fiscal_horse_power == 5){
+        this.ttc = this.km * 0.548;
+      }
+      else if(this.fiscal_horse_power == 6){
+        this.ttc = this.km * 0.574;
+      }
+      else if(this.fiscal_horse_power == 7){
+        this.ttc = this.km * 0.601;
+      }
+      else{
+        throw new Error("probleme dans create New line bill frais kilometriques lors du calcul du montant ");
+      }
+      console.log(this.ttc);
+    }
+
+    this.apiService.createNewLineBill(this.ttc,this.tva,this.date,this.description,this.lineMission,this.billId,
       this.country, this.category, this.km, this.rPlace, this.hPlace, this.vehicle, this.guestsName, this.fiscal_horse_power, this.registrationNumber, this.conveyance, this.paymentMethod).then(() =>{
       this.level = 'success';
       this.header = 'Succès création de la  ligne';
