@@ -39,7 +39,7 @@ export class CreateLineComponent implements OnInit {
   @Input() registrationNumber! :string
   @Input() conveyance! :string
 
-  @Output() amount! :Promise<number | undefined>
+  @Output() amount! :number
 
 
   closeResult = '';
@@ -62,11 +62,11 @@ export class CreateLineComponent implements OnInit {
       });
   }
 
-  public getAmountMealExpense(): void{
+  /*public getAmountMealExpense(): void{
     if(this.km != null && this.fiscal_horse_power != null) {
       this.amount = this.apiService.getAmountMealExpense(this.km, this.fiscal_horse_power);
     }
-  }
+  }*/
 
   open(content: any) {
     this.modalService.open(content,
@@ -109,6 +109,28 @@ export class CreateLineComponent implements OnInit {
 
 
   public createNewLineBill() : void {
+
+    if(this.category == 'FRAIS_KILOMETRIQUES'){
+      if(this.fiscal_horse_power == 3){
+        this.ttc = this.km * 0.456;
+      }else if(this.fiscal_horse_power == 4){
+        this.ttc = this.km * 0.523;
+      }
+      else if(this.fiscal_horse_power == 5){
+        this.ttc = this.km * 0.548;
+      }
+      else if(this.fiscal_horse_power == 6){
+        this.ttc = this.km * 0.574;
+      }
+      else if(this.fiscal_horse_power == 7){
+        this.ttc = this.km * 0.601;
+      }
+      else{
+        throw new Error("probleme dans create New line bill frais kilometriques lors du calcul du montant ");
+      }
+      console.log(this.ttc);
+    }
+
     this.apiService.createNewLineBill(this.ttc,this.tva,this.date,this.description,this.lineMission,this.billId,
       this.country, this.category, this.km, this.rPlace, this.hPlace, this.vehicle, this.guestsName, this.fiscal_horse_power, this.registrationNumber, this.conveyance, this.paymentMethod).then(() =>{
       this.level = 'success';
@@ -120,13 +142,13 @@ export class CreateLineComponent implements OnInit {
 
       //recherchargement automatique de la page
       window.location.reload();
-    })/*.catch(exception => {
+    }).catch(exception => {
       this.errorMessage = exception.error;
 
       this.dialogRef.open(AlertErrorComponent);
       this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
 
-    });*/
+    });
 
   }
 

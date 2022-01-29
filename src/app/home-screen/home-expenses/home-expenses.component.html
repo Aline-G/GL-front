@@ -41,7 +41,7 @@
         <td>{{lineBill.idExpenseBill}}</td>
         <td>{{lineBill.amount}}</td>
         <td>{{lineBill.category}}</td>
-        <td *ngIf="lineBill.isValidated == true"> Validée </td>
+        <td *ngIf="lineBill.isValidated === true"> Validée </td>
         <td *ngIf="!lineBill.isValidated"> Non validée </td>
         <td>{{lineBill.date}}</td>
         <td>{{lineBill.description}}</td>

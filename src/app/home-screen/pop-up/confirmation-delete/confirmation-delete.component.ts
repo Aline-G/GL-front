@@ -26,8 +26,6 @@ export class ConfirmationDeleteComponent implements OnInit {
       this.apiService.deleteAdvance(this.id);
     }
 
-
-
   }
 
   constructor( private sharedService : SharedService , private apiService : ApiService) {

@@ -40,6 +40,9 @@ export class ApiService {
                            km : number, rPlace : string, hPlace :string, vehicle: string, guestsName : string, fiscal_horses_power:number, registrationNumber:string, conveyance :string, paymentMethod :string) : Promise<LineBill | undefined> {
 
 
+    if(tva==undefined){
+      tva = 0;
+    }
     if(km == undefined){
       km=0;
     }

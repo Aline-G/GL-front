@@ -55,11 +55,11 @@
             <div  *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
               <label for="fiscalHorsePower">Chevaux fiscaux :</label>
               <select type="text" class="form-control" id="fiscalHorsePower" [(ngModel)]="fiscal_horse_power">
-                <option value="3">3 CV et moins</option>
-                <option value="4">4 CV</option>
-                <option value="5">5 CV</option>
-                <option value="6">6 CV</option>
-                <option value="7">7 CV et plus</option>
+                <option value=3>3 CV et moins</option>
+                <option value=4>4 CV</option>
+                <option value=5>5 CV</option>
+                <option value=6>6 CV</option>
+                <option value=7>7 CV et plus</option>
               </select>
             </div>
           </div>
@@ -124,10 +124,10 @@
               <label for="country">Pays :</label>
               <input type="text" class="form-control" id="country" [(ngModel)]="country">
             </div>
-            <div *ngIf="category === 'FRAIS_KILOMETRIQUES'"class =col-6>
+            <!--<div *ngIf="category === 'FRAIS_KILOMETRIQUES'"class =col-6>
               <label>Montant :</label>
               <output [(ngModel)]="amount"></output>
-            </div>
+            </div>-->
             <div *ngIf="category === 'RESTAURATION'" class =col-6>
               <label for="guestsName">Nom des invités :</label>
               <input type="text" class="form-control" id="guestsName" [(ngModel)]="guestsName">
@@ -135,12 +135,6 @@
           </div>
 
           <div class="row">
-
-            <div  *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-6>
-              <label for="supportingDocuments">Justificatif :</label>
-              <input type="file" class="form-control" id="supportingDocuments" accept="image/png, image/jpeg, image/pdf" [(ngModel)]="supportingDocuments">
-            </div>
-
           </div>
 
           <div class="row">
@@ -152,6 +146,11 @@
                 </option>
               </select>
             </div>
+            <div  *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-6>
+              <label for="supportingDocuments">Justificatif :</label>
+              <input type="file" class="form-control" id="supportingDocuments" accept="image/png, image/jpeg, image/pdf" [(ngModel)]="supportingDocuments">
+            </div>
+
 
               <div class="modal-footer">
        <button type="button" class="btn btn-outline-dark" (click)="createNewLineBill()">Ok</button>
