@@ -21,11 +21,14 @@ export class ValidationComponent implements OnInit {
   constructor(private apiService: ApiService, private sharedService : SharedService, private router:Router,private modalService: NgbModal,  private dialogRef : MatDialog) {
   }
 
-  openDialog(id : number){
+  openNotePopUp(id : number){
     this.dialogRef.open(PopUpNoteComponent);
     this.sharedService.clickOnBillEvent.emit(id);
   }
-
+  advanceCheck(idAdvance: number) {
+    // this.apiService.askAdvanceValidation(idAdvance);
+    // window.location.reload();
+  }
   ngOnInit(): void {
     this.apiService.getAdvanceBillList()
       .subscribe({
