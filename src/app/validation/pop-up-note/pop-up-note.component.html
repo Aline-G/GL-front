@@ -17,61 +17,72 @@
 
 <div class="modal-header">
   <div>
-    <h4 class="modal-title"> Nom : {{expenseBill.name}}</h4>
-    <h4 class="modal-title"> Total : {{expenseBill.amount}}</h4>
+    <h5 class="modal-title"> Nom : {{expenseBill.name}}</h5>
+    <h5 class="modal-title"> Total : {{expenseBill.amount}}</h5>
   </div>
   <div>
-    <h4 class="modal-title"> Description de la note : {{expenseBill.description}}</h4>
-    <h4 class="modal-title"> Etat de la note : {{expenseBill.state}}</h4>
+    <h5 class="modal-title"> Description de la note : {{expenseBill.description}}</h5>
+    <h5 class="modal-title"> Etat de la note : {{expenseBill.state}}</h5>
   </div>
 
 </div>
 <div class="modal_body">
-
   <div class="container-fluid">
-    <h3>Lignes de frais : </h3>
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover">
-        <thead class ="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Mission</th>
-          <th scope="col">Note associée</th>
-          <th scope="col">Montant</th>
-          <th scope="col">Categorie</th>
-          <th scope="col">Etat de la ligne</th>
-          <th scope="col">Date</th>
-          <th scope="col">Description</th>
-          <th scope="col">Avance</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let lineBill of lineBills ">
-          <td>{{lineBill.id}}</td>
-          <td>{{lineBill.mission.name}}</td>
-          <td>{{lineBill.idExpenseBill}}</td>
-          <td>{{lineBill.amount}}</td>
-          <td>{{lineBill.category}}</td>
-          <td *ngIf="lineBill.isValidated == true"> Validée </td>
-          <td *ngIf="!lineBill.isValidated"> Non validée </td>
-          <td>{{lineBill.date}}</td>
-          <td>{{lineBill.description}}</td>
-          <td>Non</td>
-        </tr>
-        </tbody>
-      </table>
+    <div class="row">
+      <h4></h4>
+      <h4>Lignes de frais : </h4>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          <thead class ="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Mission</th>
+            <th scope="col">Note associée</th>
+            <th scope="col">Montant</th>
+            <th scope="col">Categorie</th>
+            <th scope="col">Etat de la ligne</th>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Avance</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let lineBill of lineBills ">
+            <td>{{lineBill.id}}</td>
+            <td>{{lineBill.mission.name}}</td>
+            <td>{{lineBill.idExpenseBill}}</td>
+            <td>{{lineBill.amount}}</td>
+            <td>{{lineBill.category}}</td>
+            <td *ngIf="lineBill.isValidated == true"> Validée </td>
+            <td *ngIf="!lineBill.isValidated"> Non validée </td>
+            <td>{{lineBill.date}}</td>
+            <td>{{lineBill.description}}</td>
+            <td>Non</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="row">
-      <div class =col-2>
+      <div class="form-group">
+        <label for="com">Commentaire :</label>
+        <input class="form-control" rows="10" id="com">
       </div>
-      <div class =col-4>
-        <h5> Validation de la note : </h5>
+    </div>
+    <div class="row">
+      <div class ="col">
       </div>
-
-      <div class =col-1>
+      <div class ="col">
         <button mat-raised-button style="background-color: green" (click)="onClickEvent()">
-          <mat-icon>done</mat-icon>
+          <h5> Validation de la note</h5>
         </button>
+      </div>
+      <div class ="col">
+        <button mat-raised-button style="background-color: crimson" (click)="onClickEvent()">
+          <h5> Refus de la note</h5>
+        </button>
+      </div>
+      <div class ="col">
       </div>
     </div>
   </div>

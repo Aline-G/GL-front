@@ -1,0 +1,11 @@
+/* positionnement des éléments */
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.row{
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
