@@ -23,6 +23,13 @@ export class ApiService {
   }
 
 
+  // change the state
+  public changeState(id:number, newState: string): Promise<HttpStatusCode | undefined>{
+    const params = new HttpParams().set('idMission', id).set('state', newState);
+    return this.http.get<HttpStatusCode>('/api/mission/changestate', {params}).toPromise();
+  }
+
+
   //Send the necessary informations from the pop-up to back-end to create a new advance
   public createNewAdvance(amount: number, description: string, name:string, idMission: number) : Promise<Advance | undefined> {
     const params = new HttpParams().set('amount', amount).set('description', description).set('name', name).set('idMission',idMission);
@@ -80,9 +87,11 @@ export class ApiService {
 
     return this.http.get<LineBill>('/api/linebill/new', {params}).toPromise();
 
+  }
 
-
-
+  public createNewMission(missionName: string, dateBeginning: string, dateEnding : string, description : string) : Promise<Mission | undefined> {
+    const params = new HttpParams().set('name', missionName).set('dateBeginning', dateBeginning).set('dateEnding', dateEnding).set('description',description);
+    return this.http.get<Mission>('/api/mission/new', {params}).toPromise();
   }
 
   public deleteExpenseBill(id : number) :  Promise<HttpStatusCode | undefined>{

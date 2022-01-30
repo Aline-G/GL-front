@@ -30,6 +30,8 @@ import{MatIconModule} from "@angular/material/icon";
 import { PopUpNoteComponent } from './validation/pop-up-note/pop-up-note.component';
 import { ConfirmationDeleteComponent } from './home-screen/pop-up/confirmation-delete/confirmation-delete.component';
 import { MissionManagementComponent } from './validation/mission-management/mission-management.component';
+import { PopUpChangeStateComponent } from './validation/mission-management/pop-up/pop-up-change-state/pop-up-change-state.component';
+import { PopUpCreateMissionComponent } from './validation/mission-management/pop-up/pop-up-create-mission/pop-up-create-mission.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { MissionManagementComponent } from './validation/mission-management/miss
     ValidationNavbarComponent,
     PopUpNoteComponent,
     ConfirmationDeleteComponent,
-    MissionManagementComponent
+    MissionManagementComponent,
+    PopUpChangeStateComponent,
+    PopUpCreateMissionComponent
   ],
   imports: [
     BrowserModule,
