@@ -54,4 +54,8 @@ export class MissionManagementComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
- }
+
+  diplayMission() {
+    console.log(this.missionsList);
+  }
+}
