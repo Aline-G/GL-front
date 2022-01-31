@@ -4,6 +4,7 @@ import {ApiService} from "../../services/api.service";
 import {LineBill} from "../../model/lineBill";
 import {SharedService} from "../../services/dynamical-functions/SharedService";
 import {ExpenseBill} from "../../model/expenseBill";
+import {Advance} from "../../model/advance";
 
 
 @Component({
@@ -17,13 +18,15 @@ export class PopUpViewComponent implements OnInit {
   lineBills!: LineBill[];
   billId! :number;
   expenseBill! : ExpenseBill;
+  advances!: Advance[];
 
   constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService) {
 
     this.sharedService.clickOnBillEvent.subscribe(
       (billId: number) => {
         this.apiService.getExpenseBillWithId(billId).then(res => {
-          this.expenseBill = res!;}
+          this.expenseBill = res!
+          this.advances = res!.listAdvance;}
         );
         this.apiService.getLineBillListByExpenseId(billId).then(res => {
           this.lineBills = res!;}

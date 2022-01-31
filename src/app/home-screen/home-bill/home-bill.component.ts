@@ -61,4 +61,6 @@ export class HomeBillComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+
+
 }

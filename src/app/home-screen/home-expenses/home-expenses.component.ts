@@ -4,6 +4,7 @@ import {ApiService} from "../../services/api.service";
 import {SharedService} from "../../services/dynamical-functions/SharedService";
 import {ConfirmationDeleteComponent} from "../pop-up/confirmation-delete/confirmation-delete.component";
 import {MatDialog} from "@angular/material/dialog";
+import {Advance} from "../../model/advance";
 
 @Component({
   selector: 'app-home-expenses',
@@ -12,6 +13,7 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class HomeExpensesComponent implements OnInit {
   filteredlineBills!: LineBill[];
+  advances!: Advance[];
 
   set filteredExpense(lineBills : LineBill[]){
     this.filteredlineBills = lineBills;
@@ -32,6 +34,12 @@ export class HomeExpensesComponent implements OnInit {
           this.filteredlineBills = res!;}
         );
     });
+    sharedService.clickOnBillEvent.subscribe(
+      (billId: number) => {
+        this.apiService.getExpenseBillWithId(billId).then(res => {
+          this.advances = res!.listAdvance;}
+        );
+      });
   }
 
   ngOnInit(): void {

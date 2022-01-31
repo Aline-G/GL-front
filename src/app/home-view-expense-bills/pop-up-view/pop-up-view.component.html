@@ -48,16 +48,28 @@
           </thead>
           <tbody>
             <tr *ngFor="let lineBill of lineBills ">
-              <td>{{lineBill.id}}</td>
-              <td>{{lineBill.mission.name}}</td>
-              <td>{{lineBill.idExpenseBill}}</td>
-              <td>{{lineBill.amount}}</td>
-              <td>{{lineBill.category}}</td>
-              <td *ngIf="lineBill.isValidated == true"> Validée </td>
-              <td *ngIf="!lineBill.isValidated"> Non validée </td>
-              <td>{{lineBill.date}}</td>
-              <td>{{lineBill.description}}</td>
-              <td>Non</td>
+              <td class="trash table-primary">{{lineBill.id}}</td>
+              <td class="trash table-primary">{{lineBill.mission.name}}</td>
+              <td class="trash table-primary">{{lineBill.idExpenseBill}}</td>
+              <td class="trash table-primary">{{lineBill.amount}}</td>
+              <td class="trash table-primary">{{lineBill.category}}</td>
+              <td class="trash table-primary" *ngIf="lineBill.isValidated == true"> Validée </td>
+              <td class="trash table-primary" *ngIf="!lineBill.isValidated"> Non validée </td>
+              <td class="trash table-primary">{{lineBill.date}}</td>
+              <td class="trash table-primary">{{lineBill.description}}</td>
+              <td class="trash table-primary">Non</td>
+            </tr>
+
+            <tr *ngFor="let advance of advances ">
+              <td class="trash table-success">{{advance.id}}</td>
+              <td class="trash table-success">{{advance.mission.name}}</td>
+              <td class="trash table-success"></td>
+              <td class="trash table-success">{{advance.amount}}</td>
+              <td class="trash table-success">AVANCE</td>
+              <td class="trash table-success"> Validée </td>
+              <td class="trash table-success">{{advance.date}}</td>
+              <td class="trash table-success">{{advance.description}}</td>
+              <td class="trash table-success">Oui</td>
             </tr>
           </tbody>
         </table>
