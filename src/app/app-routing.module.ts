@@ -7,18 +7,23 @@ import {HomeViewExpenseBillsComponent} from "./home-view-expense-bills/home-view
 import {PopUpViewComponent} from "./home-view-expense-bills/pop-up-view/pop-up-view.component";
 import {DemoComponent} from "./demo/demo.component";
 import {ValidationComponent} from "./validation/validation.component";
-
+import{LogInComponent} from "./log-in/log-in.component";
+import{MissionManagementComponent} from "./validation/mission-management/mission-management.component";
 
 
 const routes: Routes = [
-  {path: 'home', component: HomeScreenComponent},
+  {path: 'log-in', component: LogInComponent},
+  {path: 'manager/mission', component: MissionManagementComponent},
+  {path: 'colaborator/home', component: HomeScreenComponent},
+  {path: 'manager/home', component: HomeScreenComponent},
   {path: 'createLine', component: CreateLineComponent},
   {path: 'demo', component: DemoComponent},
   {path: 'createNote', component: CreateNoteComponent},
-  {path: 'viewExpense', component: HomeViewExpenseBillsComponent},
+  {path: 'colaborator/viewExpense', component: HomeViewExpenseBillsComponent},
+  {path: 'manager/viewExpense', component: HomeViewExpenseBillsComponent},
   {path: 'PopUpView', component:PopUpViewComponent},
-  {path: 'validation', component: ValidationComponent},
-  {path: '**', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'manager/validation', component: ValidationComponent},
+  {path: '**', redirectTo: '/log-in', pathMatch: 'full'},
 ];
 
 @NgModule({

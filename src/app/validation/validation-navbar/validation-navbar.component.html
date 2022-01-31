@@ -20,16 +20,19 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#" [class.active]="currentRoute == 'home'" aria-current="page" [routerLink]="['/home']">Tableau de bord</a>
+            <a class="nav-link" href="#" [class.active]="currentRoute == 'home'" aria-current="page" [routerLink]="['/manager/home']">Tableau de bord</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" [class.active]="currentRoute == 'viewExpense'" aria-current="page" [routerLink]="['/viewExpense']">Notes de frais</a>
+            <a class="nav-link" href="#" [class.active]="currentRoute == 'viewExpense'" aria-current="page" [routerLink]="['/manager/viewExpense']">Notes de frais</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Lignes de frais</a>
           </li>
           <li class="nav-item active">
-          <a class="nav-link" href="#"[class.active]="currentRoute == 'validation'" aria-current="page" [routerLink]="['/validation']">Validation</a>
+          <a class="nav-link" href="#"[class.active]="currentRoute == 'validation'" aria-current="page" [routerLink]="['/manager/validation']">Validation</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#"[class.active]="currentRoute == 'missions'" aria-current="page" [routerLink]="['/manager/mission']">Missions</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Mon équipe</a>
