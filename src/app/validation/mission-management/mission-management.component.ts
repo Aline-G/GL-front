@@ -25,6 +25,7 @@ export class MissionManagementComponent implements OnInit {
   * 0 : the current state is IN_PROGRESS
   * 1 : the current state is FINISHED
   * 2 : the current state is SUSPENDED
+  * 3 : the current state is INCOMING
   * */
   public changeState(id: number, currentState : string) {
     this.dialogRef.open(PopUpChangeStateComponent);
@@ -37,6 +38,9 @@ export class MissionManagementComponent implements OnInit {
     }
     if(currentState =='SUSPENDED'){
       this.sharedService.clickOnChangeState.emit([id,2]);
+    }
+    if(currentState =='INCOMING'){
+      this.sharedService.clickOnChangeState.emit([id,3]);
     }
 
   }
@@ -53,9 +57,5 @@ export class MissionManagementComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
-  }
-
-  diplayMission() {
-    console.log(this.missionsList);
   }
 }

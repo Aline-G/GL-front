@@ -89,8 +89,8 @@ export class ApiService {
 
   }
 
-  public createNewMission(missionName: string, dateBeginning: string, dateEnding : string, description : string) : Promise<Mission | undefined> {
-    const params = new HttpParams().set('name', missionName).set('dateBeginning', dateBeginning).set('dateEnding', dateEnding).set('description',description);
+  public createNewMission(missionName: string, dateBegining: string, dateEnding : string, description : string) : Promise<Mission | undefined> {
+    const params = new HttpParams().set('name', missionName).set('dateBegining', dateBegining).set('dateEnding', dateEnding).set('description',description);
     return this.http.get<Mission>('/api/mission/new', {params}).toPromise();
   }
 
