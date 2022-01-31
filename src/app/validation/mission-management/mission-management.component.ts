@@ -26,7 +26,7 @@ export class MissionManagementComponent implements OnInit {
   * 1 : the current state is FINISHED
   * 2 : the current state is SUSPENDED
   * */
-  changeState(id: number, currentState : string) {
+  public changeState(id: number, currentState : string) {
     this.dialogRef.open(PopUpChangeStateComponent);
 
     if(currentState =='IN_PROGRESS'){
@@ -41,7 +41,7 @@ export class MissionManagementComponent implements OnInit {
 
   }
 
-  createMission() {
+  public createMission() {
     this.dialogRef.open(PopUpCreateMissionComponent);
   }
 
