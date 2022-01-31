@@ -4,6 +4,7 @@ import {ExpenseBill} from "../model/expenseBill";
 import {LineBill} from "../model/lineBill";
 import {Advance} from "../model/advance";
 import {Mission} from "../model/mission";
+import{User} from "../model/user";
 import {Observable} from "rxjs";
 
 
@@ -172,6 +173,16 @@ export class ApiService {
     const params = new HttpParams().set('id', id);
     return this.http.get<ExpenseBill>('/api/expensebill/validation',{params}).toPromise();
   }
+
+  public getUserList(){
+    return this.http.get<User[]>('/api/user/list');
+  }
+
+  public isManager(id : number) {
+    const params = new HttpParams().set('id', id);
+    return this.http.get<boolean>('/api/user/ismanager',{params});
+  }
+
 
 
 }
