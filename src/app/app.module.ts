@@ -32,6 +32,7 @@ import { ConfirmationDeleteComponent } from './home-screen/pop-up/confirmation-d
 import { MissionManagementComponent } from './validation/mission-management/mission-management.component';
 import { PopUpChangeStateComponent } from './validation/mission-management/pop-up/pop-up-change-state/pop-up-change-state.component';
 import { PopUpCreateMissionComponent } from './validation/mission-management/pop-up/pop-up-create-mission/pop-up-create-mission.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { PopUpCreateMissionComponent } from './validation/mission-management/pop
     ConfirmationDeleteComponent,
     MissionManagementComponent,
     PopUpChangeStateComponent,
-    PopUpCreateMissionComponent
+    PopUpCreateMissionComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
