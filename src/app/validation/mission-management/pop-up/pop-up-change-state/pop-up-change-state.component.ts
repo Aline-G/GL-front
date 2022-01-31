@@ -21,14 +21,17 @@ export class PopUpChangeStateComponent implements OnInit {
       this.newState = "IN_PROGRESS";
     }
     if(getNewState==1){
-      this.newState = "IN_PROGRESS";
+      this.newState = "FINISHED";
     }
     if(getNewState==2){
-      this.newState = "IN_PROGRESS";
+      this.newState = "SUSPENDED";
+    }
+    if(getNewState==3){
+      this.newState = "INCOMING";
     }
 
     this.apiService.changeState(this.id,this.newState);
-
+    window.location.reload();
   }
 
   constructor( private sharedService : SharedService , private apiService : ApiService) {

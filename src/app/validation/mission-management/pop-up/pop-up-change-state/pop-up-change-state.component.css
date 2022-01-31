@@ -14,21 +14,29 @@ button:hover {
 }
 
 /* Float cancel and delete buttons and add an equal width */
-.finishedbtn, .suspendedbtn, .inprogressbtn {
+.finishedbtn, .suspendedbtn, .inprogressbtn, .incomingbtn {
   float: left;
-  width: 50%;
+  width: 33%;
 }
 
 /* Add a color to the cancel button */
-.finishedbtn {
-  background-color: #36FF33;
+.inprogressbtn {
+  background-color: #04AA6D;
+  color: black;
 }
 
 /* Add a color to the delete button */
 .suspendedbtn {
   background-color: #A2A5AD;
+  color: black;
 }
 
 .finishedbtn {
   background-color: #3377FF;
+  color: black;
+}
+
+.incomingbtn {
+  background-color: #E7E72C;
+  color: black;
 }
