@@ -19,17 +19,21 @@
 
   <div class ="col-12" id = "global">
     <div  class =col-6 id="log_in_info">
-      <label id="text_mail">Rentrez votre adresse mail :</label>
+      <label class="text_mail">Connexion : </label>
+      <label class="text_mail">Rentrez votre adresse mail :</label>
       <input type="text" class="form-control" id="vehicle" [(ngModel)]="mail">
       <button (click)="logIn()" id = "logInButton"> LOG IN </button>
+
+      <div id = "temp">
+        <button (click)="goTo('/manager/home')">GoToManager</button>
+        <button (click)="goTo('/colaborator/home')">GoTOCollaborator</button>
+      </div>
+
     </div>
   </div>
 
 
 
-  <div id = "temp">
-    <button (click)="goTo('/manager/home')">GoToManager</button>
-    <button (click)="goTo('/colaborator/home')">Colabo</button>
-  </div>
+
 
 </body>
