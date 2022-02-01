@@ -28,11 +28,11 @@
       <table class="table  table-bordered table-hover " style = "margin-left:auto;margin-right:auto;" >
         <thead class ="thead-dark">
         <tr>
-          <th scope="col">#</th>
+          <th scope="col" [appSort]="missionsList" data-order="desc" data-name="id">#</th>
           <th scope="col">Nom de la mission</th>
-          <th scope="col">Date de début</th>
-          <th scope="col">Date de fin</th>
-          <th scope="col">Etat</th>
+          <th scope="col" [appSort]="missionsList" data-order="desc" data-name="dateBegining">Date de début</th>
+          <th scope="col" [appSort]="missionsList" data-order="desc" data-name="dateEnding">Date de fin</th>
+          <th scope="col" [appSort]="missionsList" data-order="desc" data-name="state">Etat</th>
           <th scope="col">Référent</th>
           <th scope="col">Collaborateurs associés</th>
           <th scope="col">Modifier état</th>

@@ -33,6 +33,7 @@ import { MissionManagementComponent } from './validation/mission-management/miss
 import { PopUpChangeStateComponent } from './validation/mission-management/pop-up/pop-up-change-state/pop-up-change-state.component';
 import { PopUpCreateMissionComponent } from './validation/mission-management/pop-up/pop-up-create-mission/pop-up-create-mission.component';
 import { LogInComponent } from './log-in/log-in.component';
+import {SortDirective} from "./sort.directive";
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { LogInComponent } from './log-in/log-in.component';
     MissionManagementComponent,
     PopUpChangeStateComponent,
     PopUpCreateMissionComponent,
+    SortDirective,
     LogInComponent
   ],
   imports: [
