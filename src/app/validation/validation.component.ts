@@ -25,10 +25,15 @@ export class ValidationComponent implements OnInit {
     this.dialogRef.open(PopUpNoteComponent);
     this.sharedService.clickOnBillEvent.emit(id);
   }
-  advanceCheck(idAdvance: number) {
-    // this.apiService.askAdvanceValidation(idAdvance);
-    // window.location.reload();
+  advanceValid(idAdvance: number) {
+    this.apiService.advanceValidation(idAdvance);
+    window.location.reload();
   }
+  advanceRefuse(idAdvance: number) {
+    //this.apiService.advanceValidation(idAdvance);
+    //window.location.reload();
+  }
+
   ngOnInit(): void {
     this.apiService.getAdvanceBillList()
       .subscribe({
@@ -68,3 +73,8 @@ export class ValidationComponent implements OnInit {
   }
 
 }
+
+
+//TODO :
+// - Validation ou refus d'une note de frais avec les methodes du back
+// - Traiter les 2 états validated ou draft
