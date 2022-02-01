@@ -33,9 +33,12 @@ export class PopUpNoteComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClickEvent() : void{
-    this.apiService.askValidation(this.expenseBill.id);
+  ValidExpenseBill() : void{
+    this.apiService.expenseBillValidation(this.expenseBill.id);
     window.location.reload();
   }
-
+  RefuseExpenseBill() : void{
+    //this.apiService.expenseBillValidation(this.expenseBill.id);
+    //window.location.reload();
+  }
 }
