@@ -119,12 +119,12 @@
             </button>
           </td>
           <td *ngIf="advance.state === 'WAITING'" class="table-primary"id="v_vert2">
-            <button (click)="advanceClicked(advance.id)">
+            <button (click)="advanceClicked(advance.id)" disabled>
               <mat-icon>done</mat-icon>
             </button>
           </td>
           <td *ngIf="advance.state === 'VALIDATED'" class="table-success"id="v_vert3">
-            <button (click)="advanceClicked(advance.id)">
+            <button (click)="advanceClicked(advance.id)" disabled>
               <mat-icon>done</mat-icon>
             </button>
           </td>
