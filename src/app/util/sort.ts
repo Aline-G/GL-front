@@ -38,6 +38,7 @@ export class Sort {
   }
 
   private sortDataState(a: any, b: any): number {
+    console.log(a);
     if (a === 'FINISHED' && b === 'SUSPENDED') {
       return -1 * this.sortOrder;
     }
@@ -73,8 +74,26 @@ export class Sort {
     }
     else if(b === 'IN_PROGRESS' && a === 'INCOMING'){
       return this.sortOrder;
+    } else if (a === 'VALIDATED' && b === 'WAITING') {
+      return -1 * this.sortOrder;
+    }
+    else if (a === 'VALIDATED' && b === 'DRAFT') {
+      return -1 * this.sortOrder;
+    }
+    else if (a === 'WAITING' && b === 'DRAFT') {
+      return -1 * this.sortOrder;
+    }
+    else if(b === 'VALIDATED' && a === 'WAITING'){
+      return this.sortOrder;
+    }
+    else if(b === 'VALIDATED' && a === 'DRAFT'){
+      return this.sortOrder;
+    }
+    else if(b === 'WAITING' && a === 'DRAFT'){
+      return this.sortOrder;
     } else {
       return 0;
     }
   }
+
 }

@@ -7,7 +7,6 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {MatDialog} from "@angular/material/dialog";
 import {PopUpViewComponent} from "./pop-up-view/pop-up-view.component";
 import {Advance} from "../model/advance";
-import {Observable} from "rxjs";
 
 
 
