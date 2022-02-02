@@ -5,7 +5,6 @@ import {CreateLineComponent} from "./home-screen/pop-up/create-line/create-line.
 import {CreateNoteComponent} from "./home-screen/pop-up/create-note/create-note.component";
 import {HomeViewExpenseBillsComponent} from "./home-view-expense-bills/home-view-expense-bills.component";
 import {PopUpViewComponent} from "./home-view-expense-bills/pop-up-view/pop-up-view.component";
-import {DemoComponent} from "./demo/demo.component";
 import {ValidationComponent} from "./validation/validation.component";
 import{LogInComponent} from "./log-in/log-in.component";
 import{MissionManagementComponent} from "./validation/mission-management/mission-management.component";
@@ -17,7 +16,6 @@ const routes: Routes = [
   {path: 'colaborator/home', component: HomeScreenComponent},
   {path: 'manager/home', component: HomeScreenComponent},
   {path: 'createLine', component: CreateLineComponent},
-  {path: 'demo', component: DemoComponent},
   {path: 'createNote', component: CreateNoteComponent},
   {path: 'colaborator/viewExpense', component: HomeViewExpenseBillsComponent},
   {path: 'manager/viewExpense', component: HomeViewExpenseBillsComponent},
