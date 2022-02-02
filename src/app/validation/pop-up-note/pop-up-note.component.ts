@@ -38,7 +38,7 @@ export class PopUpNoteComponent implements OnInit {
     window.location.reload();
   }
   RefuseExpenseBill() : void{
-    //this.apiService.expenseBillValidation(this.expenseBill.id);
-    //window.location.reload();
+    this.apiService.expenseBillRefusal(this.expenseBill.id);
+    window.location.reload();
   }
 }
