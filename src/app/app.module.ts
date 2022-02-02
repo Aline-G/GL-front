@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home-pop-up/home.component';
 import {AppRoutingModule} from "./app-routing.module";
-import { DemoComponent } from './demo/demo.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { HomeSlipComponent } from './home-screen/home-slip/home-slip.component';
 import { HomeBillComponent } from './home-screen/home-bill/home-bill.component';
@@ -39,7 +38,6 @@ import {SortDirective} from "./sort.directive";
   declarations: [
     AppComponent,
     HomeComponent,
-    DemoComponent,
     HomeScreenComponent,
     HomeSlipComponent,
     HomeBillComponent,
