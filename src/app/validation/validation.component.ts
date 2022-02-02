@@ -30,8 +30,8 @@ export class ValidationComponent implements OnInit {
     window.location.reload();
   }
   advanceRefuse(idAdvance: number) {
-    //this.apiService.advanceValidation(idAdvance);
-    //window.location.reload();
+    this.apiService.advanceRefusal(idAdvance);
+    window.location.reload();
   }
 
   ngOnInit(): void {
