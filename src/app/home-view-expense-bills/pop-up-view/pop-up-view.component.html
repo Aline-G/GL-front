@@ -18,11 +18,9 @@
 
   <div class="modal-header">
     <div>
-      <h4 class="modal-title"> Nom : {{expenseBill.name}}</h4>
       <h4 class="modal-title"> Total : {{expenseBill.amount}}</h4>
     </div>
     <div>
-      <h4 class="modal-title"> Description de la note : {{expenseBill.description}}</h4>
       <h4 class="modal-title"> Etat de la note : {{expenseBill.state}}</h4>
     </div>
 
@@ -74,18 +72,8 @@
           </tbody>
         </table>
       </div>
-      <div class="row">
-        <div class =col-2>
-        </div>
-        <div class =col-4>
-          <h5> Demander la validation de la note : </h5>
-        </div>
-
-        <div class =col-1>
-          <button mat-raised-button  (click)="onClickEvent()">
-            <mat-icon>done</mat-icon>
-          </button>
-        </div>
+      <div class="row" id="btn">
+          <button class="mat-raised-button" id="valid" (click)="onClickEvent()">Envoie pour validation</button>
       </div>
     </div>
 
