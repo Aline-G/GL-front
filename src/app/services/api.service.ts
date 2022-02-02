@@ -165,22 +165,22 @@ export class ApiService {
   }
 
   public advanceValidation(id:number): Promise<Advance | undefined>{
-    const params = new HttpParams().set('id', id);
+    const params = new HttpParams().set('advanceId', id);
     return this.http.get<Advance>('/api/advance/validation',{params}).toPromise();
   }
 
   public advanceRefusal(id:number): Promise<Advance | undefined>{
-    const params = new HttpParams().set('id', id);
+    const params = new HttpParams().set('advanceId', id);
     return this.http.get<Advance>('/api/advance/refusal',{params}).toPromise();
   }
 
   public expenseBillValidation(id : number):Promise<ExpenseBill | undefined>{
-    const params = new HttpParams().set('id', id);
+    const params = new HttpParams().set('expenseBillId', id);
     return this.http.get<ExpenseBill>('/api/expensebill/validation',{params}).toPromise();
   }
 
   public expenseBillRefusal(id : number):Promise<ExpenseBill | undefined>{
-    const params = new HttpParams().set('id', id);
+    const params = new HttpParams().set('expenseBillId', id);
     return this.http.get<ExpenseBill>('/api/expensebill/refusal',{params}).toPromise();
   }
 

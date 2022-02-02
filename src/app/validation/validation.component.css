@@ -21,6 +21,10 @@
   cursor: pointer;
 }
 
+.eye_image{
+  text-align: center;
+  vertical-align: middle;
+}
 
 .check_image{
   text-align: center;

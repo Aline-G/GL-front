@@ -73,8 +73,3 @@ export class ValidationComponent implements OnInit {
   }
 
 }
-
-
-//TODO :
-// - Validation ou refus d'une note de frais avec les methodes du back
-// - Traiter les 2 états validated ou draft
