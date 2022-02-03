@@ -127,6 +127,13 @@ export class ApiService {
     return this.http.get<ExpenseBill[]>('/api/expensebill/listbyuserid',{params});
   }
 
+  public getAdvanceListByUserId(userId : number) :  Observable<Advance[]>{
+    const params = new HttpParams().set('userId', userId);
+    return this.http.get<Advance[]>('/api/advance/listbyuserid',{params});
+  }
+
+
+
   //Get the current list of expense bill from the back
   public getExpenseBillList() :  Observable<ExpenseBill[]>{
     return this.http.get<ExpenseBill[]>('/api/expensebill/list');

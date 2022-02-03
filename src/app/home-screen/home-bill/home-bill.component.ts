@@ -52,7 +52,6 @@ export class HomeBillComponent implements OnInit {
       error: (e) => console.error(e)
     });
 
-    console.log(this.userId);
 
 
       setTimeout(() =>

@@ -14,6 +14,7 @@ import {MatDialog} from "@angular/material/dialog";
 
 export class HomeAdvanceComponent implements OnInit {
   advances!: Advance[];
+  userId!: number;
 
   trashClicked(id : number) : void {
     /*this function allows to delete a bill in confirmation delete component,
@@ -26,14 +27,28 @@ export class HomeAdvanceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.getAdvanceBillList()
-      .subscribe({
-        next: (res) => {
-          this.advances = res;
-          console.log(res);
-        },
-        error: (e) => console.error(e)
-      });
+
+    this.apiService.getActualUser().subscribe({
+      next: (res) => {
+        this.userId = res;
+      },
+      error: (e) => console.error(e)
+    });
+
+    setTimeout(() =>
+      this.apiService.getAdvanceListByUserId(this.userId)
+        .subscribe({
+          next: (res) => {
+            this.advances = res;
+            console.log(res);
+            console.log(this.userId);
+          },
+          error: (e) => console.error(e)
+        })
+      , 700);
+
+
+
   }
 
 }
