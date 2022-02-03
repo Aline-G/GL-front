@@ -5,6 +5,7 @@ import {SharedService} from "../../services/dynamical-functions/SharedService";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDeleteComponent} from "../pop-up/confirmation-delete/confirmation-delete.component";
 import {CreateLineComponent} from "../pop-up/create-line/create-line.component";
+import {NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-home-bill',
@@ -13,6 +14,8 @@ import {CreateLineComponent} from "../pop-up/create-line/create-line.component";
 })
 export class HomeBillComponent implements OnInit {
   expenseBills!: ExpenseBill[];
+  userId!:number;
+
 
   onBillClicked(id : number) : void {
     this.sharedService.clickOnBillEvent.emit(id);
@@ -28,17 +31,6 @@ export class HomeBillComponent implements OnInit {
    the first argument is the id of the bill to delete and the second one is 0 which is a code to say that it's a bill*/
     this.dialogRef.open(ConfirmationDeleteComponent);
     this.sharedService.billDelete.emit([id,0]);
-
-
-  /* this.sharedService.noDelete()
-      .subscribe({
-        next: (b : boolean ) => {
-          if(b==true){
-            this.apiService.deleteExpenseBill(id);
-          }
-        },
-        error: (e : any) => console.error(e)
-      }); */
   }
 
 
@@ -47,19 +39,38 @@ export class HomeBillComponent implements OnInit {
     this.sharedService.clickOnAddBill.emit(true);
   }
 
-  constructor(private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog ) {
+  constructor(private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog, private router:Router) {
 
   }
 
   ngOnInit(): void {
-    this.apiService.getExpenseBillList()
-      .subscribe({
-        next: (res) => {
-          this.expenseBills = res;
-          console.log(res);
-        },
-        error: (e) => console.error(e)
-      });
+
+    this.apiService.getActualUser().subscribe({
+      next: (res) => {
+        this.userId = res;
+      },
+      error: (e) => console.error(e)
+    });
+
+    console.log(this.userId);
+
+
+      setTimeout(() =>
+        this.apiService.getExpenseBillListByUserId(this.userId)
+          .subscribe({
+            next: (res) => {
+              this.expenseBills = res;
+            },
+            error: (e) => console.error(e)
+          })
+        , 400);
+
+
+
+
+
+
+
   }
 
 

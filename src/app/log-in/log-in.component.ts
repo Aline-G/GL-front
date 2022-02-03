@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {ApiService} from "../services/api.service";
 import {User} from "../model/user";
+import {SharedService} from "../services/dynamical-functions/SharedService";
 
 @Component({
   selector: 'app-log-in',
@@ -17,7 +18,7 @@ export class LogInComponent implements OnInit {
   collaborator!:string;
 
 
-  constructor(private router : Router,private apiService : ApiService) {
+  constructor(private router : Router,private apiService : ApiService, private sharedService: SharedService) {
     this.apiService.getUserList()
       .subscribe({
         next: (res) => {
@@ -51,18 +52,31 @@ export class LogInComponent implements OnInit {
         next: (res) => {
           if(res) {
             this.router.navigate([`${this.manager}`]);
+            this.sharedService.userId = this.userId;
+            console.log(this.userId);
+            this.apiService.setActualUser(this.userId);
           }
           else {
             this.router.navigate([`${this.collaborator}`]);
+            this.sharedService.userId = this.userId;
+            this.apiService.setActualUser(this.userId);
           }
         },
         error: (e) => console.error(e)
       });
+
 }
 
-  goTo(pageName: string) {
+  goToColabortor(pageName: string) {
     this.router.navigate([`${pageName}`]);
+    this.sharedService.userId = 1;
+    this.apiService.setActualUser(1);
   }
 
+  goToManager(pageName: string) {
+    this.router.navigate([`${pageName}`]);
+    this.sharedService.userId = 4;
+    this.apiService.setActualUser(4);
+  }
 
 }

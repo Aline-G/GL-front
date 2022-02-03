@@ -18,7 +18,6 @@ export class HomeTotalComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.total = res;
-          console.log(res);
         },
         error: (e) => console.error(e)
       });
@@ -27,7 +26,6 @@ export class HomeTotalComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.listNonValidated = res;
-          console.log(res);
         },
         error: (e) => console.error(e)
       });

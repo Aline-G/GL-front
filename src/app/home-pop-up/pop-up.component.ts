@@ -35,7 +35,7 @@ export class PopUpComponent implements OnInit {
   constructor(private modalService: NgbModal, private apiService: ApiService){}
 
   public createNewExpenseBill() : void {
-    this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate);
+    //this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate);
   }
 
   open(content: any) {
