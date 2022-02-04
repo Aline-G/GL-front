@@ -19,25 +19,52 @@ export class HomeViewExpenseBillsComponent implements OnInit {
 
   expenseBills!: ExpenseBill[];
   advances! : Advance[];
+  userId!:number;
 
   constructor(private apiService: ApiService, private sharedService : SharedService, private router:Router,private modalService: NgbModal,  private dialogRef : MatDialog) { }
 
   ngOnInit(): void {
-    this.apiService.getExpenseBillList()
-      .subscribe({
-        next: (res) => {
-          this.expenseBills = res;
-        },
-        error: (e) => console.error(e)
-      });
 
-    this.apiService.getAdvanceBillList()
+    this.apiService.getActualUser().subscribe({
+      next: (res) => {
+        this.userId = res;
+      },
+      error: (e) => console.error(e)
+    });
+
+    setTimeout(() =>
+        this.apiService.getExpenseBillListByUserId(this.userId)
+          .subscribe({
+            next: (res) => {
+              this.expenseBills = res;
+            },
+            error: (e) => console.error(e)
+          })
+      , 400);
+
+
+    setTimeout(() =>
+        this.apiService.getAdvanceListByUserId(this.userId)
+          .subscribe({
+            next: (res) => {
+              this.advances = res;
+              console.log(res);
+              console.log(this.userId);
+            },
+            error: (e) => console.error(e)
+          })
+      , 700);
+
+
+
+
+    /*this.apiService.getAdvanceBillList()
       .subscribe({
         next: (res) => {
           this.advances = res;
         },
         error: (e) => console.error(e)
-      });
+      });*/
   }
 
   openDialog(id : number){
