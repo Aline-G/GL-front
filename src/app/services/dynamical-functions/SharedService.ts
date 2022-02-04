@@ -1,9 +1,16 @@
 import {EventEmitter, Injectable} from "@angular/core";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
+
+  userId!:number;
+  dialog!:MatDialog;
+
+
+
   clickOnBillEvent: EventEmitter<number> = new EventEmitter();
   clickOnAddBill: EventEmitter<boolean> = new EventEmitter();
   clickOnAlert: EventEmitter<string[]> = new EventEmitter();
@@ -15,6 +22,8 @@ export class SharedService {
   billDelete: EventEmitter<number[]> = new EventEmitter();
   lineBillDelete: EventEmitter<number[]> = new EventEmitter();
   advanceDelete: EventEmitter<number[]> = new EventEmitter();
+
+  logUser: EventEmitter<number> = new EventEmitter();
 
 
 }

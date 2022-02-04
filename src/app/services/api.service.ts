@@ -38,8 +38,8 @@ export class ApiService {
   }
 
   //Send the necessary informations from the pop-up to back-end to create a new Expense Bill
-  public createNewExpenseBill(noteName: string, noteDescription: string, noteDate : string) : Promise<ExpenseBill | undefined> {
-    const params = new HttpParams().set('name', noteName).set('description', noteDescription).set('date', noteDate);
+  public createNewExpenseBill(noteName: string, noteDescription: string, noteDate : string, userId: number) : Promise<ExpenseBill | undefined> {
+    const params = new HttpParams().set('name', noteName).set('description', noteDescription).set('date', noteDate).set('userId',userId);
     return this.http.get<ExpenseBill>('/api/expensebill/new', {params}).toPromise();
   }
 
@@ -122,6 +122,18 @@ export class ApiService {
     return this.http.get<number>('/api/linebill/calculamount',{params}).toPromise();
   }
 
+  public getExpenseBillListByUserId(userId : number) :  Observable<ExpenseBill[]>{
+    const params = new HttpParams().set('userId', userId);
+    return this.http.get<ExpenseBill[]>('/api/expensebill/listbyuserid',{params});
+  }
+
+  public getAdvanceListByUserId(userId : number) :  Observable<Advance[]>{
+    const params = new HttpParams().set('userId', userId);
+    return this.http.get<Advance[]>('/api/advance/listbyuserid',{params});
+  }
+
+
+
   //Get the current list of expense bill from the back
   public getExpenseBillList() :  Observable<ExpenseBill[]>{
     return this.http.get<ExpenseBill[]>('/api/expensebill/list');
@@ -193,6 +205,14 @@ export class ApiService {
     return this.http.get<boolean>('/api/user/ismanager',{params});
   }
 
+  public setActualUser(id:number) :Promise<HttpStatusCode | undefined>{
+    const params = new HttpParams().set('id', id);
+    return this.http.get<HttpStatusCode>('/api/actualuser/new',{params}).toPromise();
+  }
+
+  public getActualUser() {
+    return this.http.get<number>('/api/actualuser/get');
+  }
 
 
 }

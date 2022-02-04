@@ -16,8 +16,9 @@ export class ExpenseBill {
   state : BillStates;
   listLineBill: LineBill[];
   listAdvance: Advance[];
+  userId:number;
 
-  constructor(id: number, name: string, description: string, amount: number, date: string, state: BillStates, listLineBill : LineBill[],listAdvance: Advance[]) {
+  constructor(id: number, name: string, description: string, amount: number, date: string, state: BillStates, listLineBill : LineBill[],listAdvance: Advance[],userId:number) {
    this.id=id;
    this.name=name;
    this.description=description;
@@ -26,5 +27,6 @@ export class ExpenseBill {
    this.state= state;
    this.listLineBill = listLineBill;
    this.listAdvance = listAdvance;
+   this.userId = userId;
   }
 }
