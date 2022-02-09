@@ -37,7 +37,7 @@ export class CreateNoteComponent implements OnInit {
 
   public createNewExpenseBill() : void {
       console.log(this.noteDate);
-      if(this.noteDate == undefined){
+      if(this.noteDate == undefined || this.noteDate ==''){
         this.errorMessage = 'Aucune date renseignée';
         this.dialogRef.open(AlertErrorComponent);
         this.sharedService.clickOnAlert.emit([this.level, this.header, this.errorMessage]);
