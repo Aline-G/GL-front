@@ -162,13 +162,17 @@ export class ApiService {
   }
 
   //Get the current number of expense bills which are 'DRAFT' or 'WAITING'
-  public getNumberBillsNonValidated(){
-    return this.http.get<number>('/api/expensebill/numberNotesNonValidated');
+  public getNumberBillsNonValidated(userId: number): Promise<number>{
+    const params = new HttpParams().set('userId', userId);
+    // @ts-ignore
+    return this.http.get<number>('/api/expensebill/numberNotesNonValidated', {params}).toPromise();
   }
 
   //Get the current total amount of expense bills which are 'DRAFT' or 'WAITING'
-  public getTotalExpenseBill(){
-    return this.http.get<number>('/api/expensebill/total');
+  public getTotalExpenseBill(userId: number): Promise<number>{
+    const params = new HttpParams().set('userId', userId);
+    // @ts-ignore
+    return this.http.get<number>('/api/expensebill/total', {params}).toPromise();
   }
 
   public askAdvanceValidation(id:number): Promise<Advance | undefined>{
