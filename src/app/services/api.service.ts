@@ -38,8 +38,8 @@ export class ApiService {
   }
 
   //Send the necessary informations from the pop-up to back-end to create a new Expense Bill
-  public createNewExpenseBill(noteName: string, noteDescription: string, noteDate : string, userId: number) : Promise<ExpenseBill | undefined> {
-    const params = new HttpParams().set('name', noteName).set('description', noteDescription).set('date', noteDate).set('userId',userId);
+  public createNewExpenseBill(noteDescription: string, noteDate : string, userId: number) : Promise<ExpenseBill | undefined> {
+    const params = new HttpParams().set('description', noteDescription).set('date', noteDate).set('userId',userId);
     return this.http.get<ExpenseBill>('/api/expensebill/new', {params}).toPromise();
   }
 

@@ -16,7 +16,6 @@ export class CreateNoteComponent implements OnInit {
 
   /* paramètres pour une nouvelle note de frais */
   closeResult = '';
-  @Input() noteName!: string;
   @Input() noteDescription!: string;
   @Input() noteDate!: string;
 
@@ -38,7 +37,8 @@ export class CreateNoteComponent implements OnInit {
 
   public createNewExpenseBill() : void {
       console.log(this.noteDate);
-      this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate,this.userId).then(() =>{
+      //TODO tester que le noteDate n'est pas undefined
+      this.apiService.createNewExpenseBill(this.noteDescription,this.noteDate,this.userId).then(() =>{
       this.level = 'success';
       this.header = 'Succès création de la note';
       this.errorMessage = 'Création de note réalisée avec succès';
