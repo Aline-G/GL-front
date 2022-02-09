@@ -45,10 +45,13 @@
 
 
       <p></p>
-
-      <li>Nom de la note : {{ advanceName }}</li>
-      <li>Description : {{ advanceDescription }}</li>
-      <li>Description : {{ advanceAmount }}</li>
+      <div class="recap">
+        <strong>Récapitulatif :</strong>
+        <li>Nom de la note : {{ advanceName }}</li>
+        <li>Description : {{ advanceDescription }}</li>
+        <li>Montant : {{ advanceAmount }}</li>
+        <li>Mission associée : {{ advanceMission }}</li>
+      </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="createNewAdvance()" (click)="modal.close('Save click')" >Ok</button>
