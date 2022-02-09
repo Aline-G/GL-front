@@ -37,24 +37,32 @@ export class CreateNoteComponent implements OnInit {
 
   public createNewExpenseBill() : void {
       console.log(this.noteDate);
-      //TODO tester que le noteDate n'est pas undefined
-      this.apiService.createNewExpenseBill(this.noteDescription,this.noteDate,this.userId).then(() =>{
-      this.level = 'success';
-      this.header = 'Succès création de la note';
-      this.errorMessage = 'Création de note réalisée avec succès';
+      if(this.noteDate == undefined){
+        this.errorMessage = 'Aucune date renseignée';
+        this.dialogRef.open(AlertErrorComponent);
+        this.sharedService.clickOnAlert.emit([this.level, this.header, this.errorMessage]);
 
-      this.dialogRef.open(AlertErrorComponent);
-      this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
-      //this.reloadCurrentRoute();
+     }else {
+
+        this.apiService.createNewExpenseBill(this.noteDescription, this.noteDate, this.userId).then(() => {
+          this.level = 'success';
+          this.header = 'Succès création de la note';
+          this.errorMessage = 'Création de note réalisée avec succès';
+
+          this.dialogRef.open(AlertErrorComponent);
+          this.sharedService.clickOnAlert.emit([this.level, this.header, this.errorMessage]);
+          //this.reloadCurrentRoute();
 
 
-    }).catch(exception => {
-      this.errorMessage = exception.error;
+        }).catch(exception => {
+          this.errorMessage = exception.error;
 
-      this.dialogRef.open(AlertErrorComponent);
-      this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
-      //this.reloadCurrentRoute();
-    });
+          this.dialogRef.open(AlertErrorComponent);
+          this.sharedService.clickOnAlert.emit([this.level, this.header, this.errorMessage]);
+          //this.reloadCurrentRoute();
+        });
+      }
+
 
 
   }
