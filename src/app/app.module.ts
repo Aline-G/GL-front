@@ -33,34 +33,37 @@ import { PopUpChangeStateComponent } from './validation/mission-management/pop-u
 import { PopUpCreateMissionComponent } from './validation/mission-management/pop-up/pop-up-create-mission/pop-up-create-mission.component';
 import { LogInComponent } from './log-in/log-in.component';
 import {SortDirective} from "./sort.directive";
+import { OnlyNumberDirective } from './only-number.directive';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    HomeScreenComponent,
-    HomeSlipComponent,
-    HomeBillComponent,
-    HomeAdvanceComponent,
-    HomeExpensesComponent,
-    HomeTotalComponent,
-    PopUpComponent,
-    CreateNoteComponent,
-    CreateLineComponent,
-    CreateAdvanceComponent,
-    HomeViewExpenseBillsComponent,
-    PopUpViewComponent,
-    AlertErrorComponent,
-    ValidationComponent,
-    ValidationNavbarComponent,
-    PopUpNoteComponent,
-    ConfirmationDeleteComponent,
-    MissionManagementComponent,
-    PopUpChangeStateComponent,
-    PopUpCreateMissionComponent,
-    SortDirective,
-    LogInComponent
-  ],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        HomeScreenComponent,
+        HomeSlipComponent,
+        HomeBillComponent,
+        HomeAdvanceComponent,
+        HomeExpensesComponent,
+        HomeTotalComponent,
+        PopUpComponent,
+        CreateNoteComponent,
+        CreateLineComponent,
+        CreateAdvanceComponent,
+        HomeViewExpenseBillsComponent,
+        PopUpViewComponent,
+        AlertErrorComponent,
+        ValidationComponent,
+        ValidationNavbarComponent,
+        PopUpNoteComponent,
+        ConfirmationDeleteComponent,
+        MissionManagementComponent,
+        PopUpChangeStateComponent,
+        PopUpCreateMissionComponent,
+        SortDirective,
+        LogInComponent,
+        OnlyNumberDirective,
+        OnlyNumberDirective
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

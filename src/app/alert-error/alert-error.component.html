@@ -15,7 +15,7 @@
 
 <body>
 
-    <div [hidden]="message === ''" class="alert alert-{{level}} alert-dismissible fade show" role="alert">
+    <div #alert [hidden]="message === ''" class="alert alert-{{level}} alert-dismissible fade show" role="alert">
       <span class="alert-icon"><span class="visually-hidden">{{level | titlecase}}</span></span>
       <div>
         <h4 class="alert-heading">{{header}}</h4>

@@ -38,8 +38,8 @@ export class ApiService {
   }
 
   //Send the necessary informations from the pop-up to back-end to create a new Expense Bill
-  public createNewExpenseBill(noteName: string, noteDescription: string, noteDate : string, userId: number) : Promise<ExpenseBill | undefined> {
-    const params = new HttpParams().set('name', noteName).set('description', noteDescription).set('date', noteDate).set('userId',userId);
+  public createNewExpenseBill(noteDescription: string, noteDate : string, userId: number) : Promise<ExpenseBill | undefined> {
+    const params = new HttpParams().set('description', noteDescription).set('date', noteDate).set('userId',userId);
     return this.http.get<ExpenseBill>('/api/expensebill/new', {params}).toPromise();
   }
 
@@ -162,13 +162,17 @@ export class ApiService {
   }
 
   //Get the current number of expense bills which are 'DRAFT' or 'WAITING'
-  public getNumberBillsNonValidated(){
-    return this.http.get<number>('/api/expensebill/numberNotesNonValidated');
+  public getNumberBillsNonValidated(userId: number): Promise<number>{
+    const params = new HttpParams().set('userId', userId);
+    // @ts-ignore
+    return this.http.get<number>('/api/expensebill/numberNotesNonValidated', {params}).toPromise();
   }
 
   //Get the current total amount of expense bills which are 'DRAFT' or 'WAITING'
-  public getTotalExpenseBill(){
-    return this.http.get<number>('/api/expensebill/total');
+  public getTotalExpenseBill(userId: number): Promise<number>{
+    const params = new HttpParams().set('userId', userId);
+    // @ts-ignore
+    return this.http.get<number>('/api/expensebill/total', {params}).toPromise();
   }
 
   public askAdvanceValidation(id:number): Promise<Advance | undefined>{

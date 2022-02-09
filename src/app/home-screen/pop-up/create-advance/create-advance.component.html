@@ -34,7 +34,7 @@
       <input type="text" class="form-control" id="noteDescription" [(ngModel)]="advanceDescription">
 
       <label for="advance-amount">Montant :</label>
-      <input type="text" class="form-control" id="advance-amount" [(ngModel)]="advanceAmount">
+      <input type="text" class="form-control" id="advance-amount" [(ngModel)]="advanceAmount" numbersOnly>
 
       <label for="advanceMission">Mission :</label>
       <select type="text" class="form-control" id="advanceMission" [(ngModel)]="advanceMission">
@@ -45,10 +45,13 @@
 
 
       <p></p>
-
-      <li>Nom de la note : {{ advanceName }}</li>
-      <li>Description : {{ advanceDescription }}</li>
-      <li>Description : {{ advanceAmount }}</li>
+      <div class="recap">
+        <strong>Récapitulatif :</strong>
+        <li>Nom de la note : {{ advanceName }}</li>
+        <li>Description : {{ advanceDescription }}</li>
+        <li>Montant : {{ advanceAmount }}</li>
+        <li>Mission associée : {{ advanceMission }}</li>
+      </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="createNewAdvance()" (click)="modal.close('Save click')" >Ok</button>

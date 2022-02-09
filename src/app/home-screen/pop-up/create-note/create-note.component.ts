@@ -16,7 +16,6 @@ export class CreateNoteComponent implements OnInit {
 
   /* paramètres pour une nouvelle note de frais */
   closeResult = '';
-  @Input() noteName!: string;
   @Input() noteDescription!: string;
   @Input() noteDate!: string;
 
@@ -38,23 +37,32 @@ export class CreateNoteComponent implements OnInit {
 
   public createNewExpenseBill() : void {
       console.log(this.noteDate);
-      this.apiService.createNewExpenseBill(this.noteName,this.noteDescription,this.noteDate,this.userId).then(() =>{
-      this.level = 'success';
-      this.header = 'Succès création de la note';
-      this.errorMessage = 'Création de note réalisée avec succès';
+      if(this.noteDate == undefined || this.noteDate ==''){
+        this.errorMessage = 'Aucune date renseignée';
+        this.dialogRef.open(AlertErrorComponent);
+        this.sharedService.clickOnAlert.emit([this.level, this.header, this.errorMessage]);
 
-      this.dialogRef.open(AlertErrorComponent);
-      this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
-      //this.reloadCurrentRoute();
+     }else {
+
+        this.apiService.createNewExpenseBill(this.noteDescription, this.noteDate, this.userId).then(() => {
+          this.level = 'success';
+          this.header = 'Succès création de la note';
+          this.errorMessage = 'Création de note réalisée avec succès';
+
+          this.dialogRef.open(AlertErrorComponent);
+          this.sharedService.clickOnAlert.emit([this.level, this.header, this.errorMessage]);
+          //this.reloadCurrentRoute();
 
 
-    }).catch(exception => {
-      this.errorMessage = exception.error;
+        }).catch(exception => {
+          this.errorMessage = exception.error;
 
-      this.dialogRef.open(AlertErrorComponent);
-      this.sharedService.clickOnAlert.emit([this.level,this.header,this.errorMessage]);
-      //this.reloadCurrentRoute();
-    });
+          this.dialogRef.open(AlertErrorComponent);
+          this.sharedService.clickOnAlert.emit([this.level, this.header, this.errorMessage]);
+          //this.reloadCurrentRoute();
+        });
+      }
+
 
 
   }

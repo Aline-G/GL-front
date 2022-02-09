@@ -29,7 +29,7 @@
 
               <div *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-6>
                 <label for="ttc">TTC :</label>
-                <input type="text" class="form-control" id="ttc" [(ngModel)]="ttc">
+                <input type="text" class="form-control" id="ttc" [(ngModel)]="ttc" numbersOnly>
               </div>
               <div *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
                 <label for="vehicle">Véhicule :</label>
@@ -48,7 +48,7 @@
 
             <div  *ngIf="category !== 'FRAIS_KILOMETRIQUES'" class =col-3>
               <label for="tva">TVA :</label>
-              <input type="text" class="form-control" id="TVA" [(ngModel)]="tva">
+              <input type="text" class="form-control" id="TVA" [(ngModel)]="tva" numbersOnly>
             </div>
 
 
@@ -93,7 +93,7 @@
             </div>
             <div *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
               <label for="kmDone">Kilomètres parcourus :</label>
-              <input type="text" class="form-control" id="kmDone" [(ngModel)]="km">
+              <input type="text" class="form-control" id="kmDone" [(ngModel)]="km" numbersOnly>
             </div>
             <div  *ngIf="category === 'FRAIS_KILOMETRIQUES'" class =col-6>
               <label for="registrationNumber">Plaque d'immatriculation :</label>

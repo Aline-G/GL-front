@@ -9,26 +9,29 @@ import {ApiService} from "../../services/api.service";
 export class HomeTotalComponent implements OnInit {
   total !: number
   listNonValidated!: number
+  actualUser!: number
 
   constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
 
-    this.apiService.getTotalExpenseBill()
-      .subscribe({
+    this.apiService.getActualUser().subscribe(
+      {
         next: (res) => {
-          this.total = res;
+          this.actualUser = res;
+          console.log(res);
         },
         error: (e) => console.error(e)
       });
 
-    this.apiService.getNumberBillsNonValidated()
-      .subscribe({
-        next: (res) => {
-          this.listNonValidated = res;
-        },
-        error: (e) => console.error(e)
-      });
+    setTimeout(() =>
+    this.apiService.getTotalExpenseBill(this.actualUser).then(res => this.total = res).catch((e) => console.error(e))
+      , 400);
+    setTimeout(() =>
+    this.apiService.getNumberBillsNonValidated(this.actualUser).then(res => this.listNonValidated = res).catch((e) => console.error(e))
+      , 400);
+
+
   }
 
 }

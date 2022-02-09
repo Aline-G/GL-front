@@ -25,17 +25,21 @@
     <div class="modal_body">
       <div class="container-fluid">
 
-        <label for="noteDescription">Description :</label>
-        <input type="text" class="form-control" id="noteDescription" [(ngModel)]="noteDescription">
-
         <div class="date">
           <label for="start" id="month"> Date : </label>
           <input type="month" id="start" name="start"
                  min="2022-01" value="2022-01"  [(ngModel)]="noteDate">
         </div>
 
-        <li>Description : {{ noteDescription }}</li>
-        <li>Date : {{ noteDate }}</li>
+        <label for="noteDescription">Description :</label>
+        <input type="text" class="form-control" id="noteDescription" [(ngModel)]="noteDescription">
+
+
+        <div class="recap">
+          <strong>Récapitulatif :</strong>
+          <li>Date : {{ noteDate }}</li>
+          <li>Description : {{ noteDescription }}</li>
+        </div>
 
 
 
