@@ -27,6 +27,7 @@ export class CreateLineComponent implements OnInit {
   @Input() associatedNote!: number;
   @Input() ttc!: number;
   @Input() tva!: number;
+  @Input() ht!: number;
   @Input() rate!: number;
   @Input() description!: string;
   @Input() supportingDocuments!: string;
