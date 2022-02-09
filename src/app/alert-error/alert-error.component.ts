@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {SharedService} from "../services/dynamical-functions/SharedService";
 
 @Component({
@@ -19,6 +19,12 @@ export class AlertErrorComponent implements OnInit {
       });
   }
 
+  @ViewChild('alert', { static: true }) alert!: ElementRef ;
+
+  closeAlert() {
+    this.alert.nativeElement.classList.remove('show');
+  }
+
   ngOnInit(): void {
   }
 
@@ -26,5 +32,7 @@ export class AlertErrorComponent implements OnInit {
     //recherche automatique de la page
     window.location.reload();
   }
+
+
 
 }
