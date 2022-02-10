@@ -100,8 +100,8 @@ export class ApiService {
     return this.http.get<HttpStatusCode>('/api/expensebill/delete', {params}).toPromise();
   }
 
-  public deleteLineBill(id : number) :  Promise<HttpStatusCode | undefined>{
-    const params = new HttpParams().set('id', id);
+  public deleteLineBill(id : number, expenseBillId: number) :  Promise<HttpStatusCode | undefined>{
+    const params = new HttpParams().set('id', id).set('expenseBillId',expenseBillId);
     return this.http.get<HttpStatusCode>('/api/linebill/delete', {params}).toPromise();
   }
 

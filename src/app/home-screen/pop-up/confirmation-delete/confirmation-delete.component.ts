@@ -12,20 +12,21 @@ export class ConfirmationDeleteComponent implements OnInit {
 
   id!: number
   type!: number
+  billId!: number
 
   public deleteElement() : void{
 
-
     if(this.type==0){
       this.apiService.deleteExpenseBill(this.id);
+
     }
     if(this.type==1){
-      this.apiService.deleteLineBill(this.id);
+      this.apiService.deleteLineBill(this.id, this.billId);
     }
     if(this.type==2){
       this.apiService.deleteAdvance(this.id);
     }
-
+    location.reload();
   }
 
   constructor( private sharedService : SharedService , private apiService : ApiService) {
@@ -33,8 +34,9 @@ export class ConfirmationDeleteComponent implements OnInit {
       .subscribe({
         next: (listn: number[]) => {
 
-          this.id = listn[0]
-          this.type = listn[1]
+          this.id = listn[0];
+          this.type = listn[1];
+
           }
         }
       );
@@ -44,6 +46,8 @@ export class ConfirmationDeleteComponent implements OnInit {
           next: (listn: number[]) => {
             this.id = listn[0]
             this.type = listn[1]
+            this.billId = listn[2];
+
           }
         }
       );
@@ -59,6 +63,13 @@ export class ConfirmationDeleteComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  close(): void {
+    //recherche automatique de la page
+    //window.location.reload();
+
+    location.reload();
   }
 
 }

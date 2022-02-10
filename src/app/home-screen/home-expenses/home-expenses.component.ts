@@ -14,6 +14,7 @@ import {Advance} from "../../model/advance";
 export class HomeExpensesComponent implements OnInit {
   filteredlineBills!: LineBill[];
   advances!: Advance[];
+  billId!: number;
 
   set filteredExpense(lineBills : LineBill[]){
     this.filteredlineBills = lineBills;
@@ -22,12 +23,18 @@ export class HomeExpensesComponent implements OnInit {
   trashClicked(id : number) : void {
     /*this function allows to delete a bill in confirmation delete component,
    the first argument is the id of the bill to delete and the second one is 0 which is a code to say that it's a bill*/
+
     this.dialogRef.open(ConfirmationDeleteComponent);
-    this.sharedService.lineBillDelete.emit([id, 1]);
+    this.sharedService.lineBillDelete.emit([id, 1, this.billId]);
 
   }
 
   constructor(private apiService:ApiService, private sharedService : SharedService, private dialogRef : MatDialog) {
+    this.sharedService.clickOnBillEvent.subscribe(
+      (billId: number) => {
+        this.billId = billId;
+      });
+
     sharedService.clickOnBillEvent.subscribe(
       (billId: number) => {
         this.apiService.getLineBillListByExpenseId(billId).then(res => {
