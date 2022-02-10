@@ -45,7 +45,7 @@ export class HomeAdvanceComponent implements OnInit {
           },
           error: (e) => console.error(e)
         })
-      , 700);
+      , 1000);
 
 
 
