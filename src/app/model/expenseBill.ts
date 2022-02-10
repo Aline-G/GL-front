@@ -5,6 +5,7 @@ enum BillStates {
   DRAFT = "DRAFT",
   WAITING = "WAITING",
   VALIDATED = "VALIDATED",
+  REFUSED = "REFUSED"
 }
 
 export class ExpenseBill {
