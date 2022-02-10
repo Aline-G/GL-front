@@ -32,8 +32,8 @@ export class ApiService {
 
 
   //Send the necessary informations from the pop-up to back-end to create a new advance
-  public createNewAdvance(amount: number, description: string, name:string, idMission: number) : Promise<Advance | undefined> {
-    const params = new HttpParams().set('amount', amount).set('description', description).set('name', name).set('idMission',idMission);
+  public createNewAdvance(amount: number, description: string, name:string, idMission: number, idUser: number) : Promise<Advance | undefined> {
+    const params = new HttpParams().set('amount', amount).set('description', description).set('name', name).set('userId', idUser).set('idMission',idMission);
     return this.http.get<Advance>('/api/advance/new', {params}).toPromise();
   }
 
