@@ -5,7 +5,6 @@
 
 
 .btn{
-  margin-top: 65px;
   margin-right: 5px;
   display: inline-block;
   background-color: rgba(66, 135, 245,0.7);
@@ -20,4 +19,14 @@
   -o-transition: all 0.5s;
   transition: all 0.5s;
   cursor: pointer;
+}
+
+.modal-footer{
+  margin-top: 20px;
+}
+
+#category-row{
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid;
 }
