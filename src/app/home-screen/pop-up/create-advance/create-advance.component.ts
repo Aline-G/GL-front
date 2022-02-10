@@ -27,11 +27,12 @@ export class CreateAdvanceComponent implements OnInit {
   level = 'danger';
 
   missions! : Mission[];
+  userId!:number;
 
   constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog){ }
 
   public createNewAdvance() : void {
-    this.apiService.createNewAdvance(this.advanceAmount,this.advanceDescription, this.advanceName, this.advanceMission).then(() =>{
+    this.apiService.createNewAdvance(this.advanceAmount,this.advanceDescription, this.advanceName, this.advanceMission, this.userId).then(() =>{
       this.level = 'success';
       this.header = 'Succès création de la  ligne';
       this.errorMessage = 'Création de la ligne réalisée avec succès';
@@ -77,6 +78,14 @@ export class CreateAdvanceComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+
+    this.apiService.getActualUser().subscribe({
+      next: (res) => {
+        this.userId = res;
+      },
+      error: (e) => console.error(e)
+    });
+
   }
 
 }
