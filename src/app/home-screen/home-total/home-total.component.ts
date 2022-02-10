@@ -26,10 +26,10 @@ export class HomeTotalComponent implements OnInit {
 
     setTimeout(() =>
     this.apiService.getTotalExpenseBill(this.actualUser).then(res => this.total = res).catch((e) => console.error(e))
-      , 400);
+      , 1000);
     setTimeout(() =>
     this.apiService.getNumberBillsNonValidated(this.actualUser).then(res => this.listNonValidated = res).catch((e) => console.error(e))
-      , 400);
+      , 1000);
 
 
   }
