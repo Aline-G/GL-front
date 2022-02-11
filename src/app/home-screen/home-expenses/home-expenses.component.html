@@ -41,8 +41,8 @@
         <td class="trash table-primary">{{lineBill.idExpenseBill}}</td>
         <td class="trash table-primary">{{lineBill.amount}}</td>
         <td class="trash table-primary">{{lineBill.category}}</td>
-        <td class="trash table-primary" *ngIf="lineBill.isValidated === true"> Validée </td>
-        <td class="trash table-primary" *ngIf="!lineBill.isValidated"> Non validée </td>
+        <td class="trash table-primary"> {{lineBill.state}}</td>
+
         <td class="trash table-primary">{{lineBill.date}}</td>
         <td class="trash table-primary">{{lineBill.description}}</td>
         <td class="trash table-primary"></td>

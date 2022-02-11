@@ -190,6 +190,16 @@ export class ApiService {
     return this.http.get<Advance>('/api/advance/refusal',{params}).toPromise();
   }
 
+  public lineBillValidation(id:number): Promise<HttpStatusCode | undefined>{
+    const params = new HttpParams().set('lineBillId', id);
+    return this.http.get<HttpStatusCode>('/api/linebill/validation',{params}).toPromise();
+  }
+
+  public lineBillRefusal(id:number): Promise<HttpStatusCode | undefined>{
+    const params = new HttpParams().set('lineBillId', id);
+    return this.http.get<HttpStatusCode>('/api/linebill/refusal',{params}).toPromise();
+  }
+
   public expenseBillValidation(id : number):Promise<ExpenseBill | undefined>{
     const params = new HttpParams().set('expenseBillId', id);
     return this.http.get<ExpenseBill>('/api/expensebill/validation',{params}).toPromise();

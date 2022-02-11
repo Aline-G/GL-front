@@ -41,4 +41,11 @@ export class PopUpNoteComponent implements OnInit {
     this.apiService.expenseBillRefusal(this.expenseBill.id);
     window.location.reload();
   }
+
+  lineBillValid(idLineBill: number) {
+    this.apiService.lineBillValidation(idLineBill);
+  }
+  lineBillRefuse(idLineBill: number) {
+    this.apiService.lineBillRefusal(idLineBill);
+  }
 }

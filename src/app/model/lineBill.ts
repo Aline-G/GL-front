@@ -1,9 +1,15 @@
 import {Mission} from "./mission";
 
+enum LineBillStates {
+  DRAFT = "DRAFT",
+  VALIDATED = "VALIDATED",
+  REFUSED = "REFUSED"
+}
+
 export class LineBill{
   id: number;
   amount: number;
-  isValidated: boolean;
+  state: LineBillStates;
   amountWithoutTaxes : number;
   tva : number;
   date : Date;
@@ -23,14 +29,12 @@ export class LineBill{
   paymentMethod : string;
 
 
-
-
-  constructor(id: number, amount: number, isValidated :boolean, tva:number, date:Date, mission: Mission, country: string, idExpenseBill: number,
+  constructor(id: number, amount: number, state :LineBillStates, tva:number, date:Date, mission: Mission, country: string, idExpenseBill: number,
               description : string, category :string, conveyance : string, registrationNumber : string, amountWithoutTaxes : number,
               vehicle :string, fiscalHorsePower:string, guestsNames : string, rPlace:string, hPlace :string, km: number, paymentMethod:string) {
     this.id = id;
     this.amount = amount;
-    this.isValidated = isValidated;
+    this.state = state;
     this.tva = tva;
     this.date = date;
     this.mission=mission;

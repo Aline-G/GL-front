@@ -46,16 +46,43 @@
           </thead>
           <tbody>
             <tr *ngFor="let lineBill of lineBills ">
-              <td class="trash table-primary">{{lineBill.id}}</td>
-              <td class="trash table-primary">{{lineBill.mission.name}}</td>
-              <td class="trash table-primary">{{lineBill.idExpenseBill}}</td>
-              <td class="trash table-primary">{{lineBill.amount}}</td>
-              <td class="trash table-primary">{{lineBill.category}}</td>
-              <td class="trash table-primary" *ngIf="lineBill.isValidated == true"> Validée </td>
-              <td class="trash table-primary" *ngIf="!lineBill.isValidated"> Non validée </td>
-              <td class="trash table-primary">{{lineBill.date}}</td>
-              <td class="trash table-primary">{{lineBill.description}}</td>
-              <td class="trash table-primary">Non</td>
+
+              <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.id}}</td>
+              <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.id}}</td>
+              <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.id}}</td>
+
+              <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.mission.name}}</td>
+              <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.mission.name}}</td>
+              <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.mission.name}}</td>
+
+              <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.idExpenseBill}}</td>
+              <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.idExpenseBill}}</td>
+              <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.idExpenseBill}}</td>
+
+              <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.amount}}</td>
+              <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.amount}}</td>
+              <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.amount}}</td>
+
+              <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.category}}</td>
+              <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.category}}</td>
+              <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.category}}</td>
+
+              <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.state}}</td>
+              <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.state}}</td>
+              <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.state}}</td>
+
+              <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.date}}</td>
+              <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.date}}</td>
+              <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.date}}</td>
+
+              <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.description}}</td>
+              <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.description}}</td>
+              <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.description}}</td>
+
+              <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">Non</td>
+              <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >Non</td>
+              <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >Non</td>
+
             </tr>
 
             <tr *ngFor="let advance of advances ">
