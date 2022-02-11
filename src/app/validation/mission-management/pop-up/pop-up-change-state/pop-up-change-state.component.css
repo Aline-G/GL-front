@@ -14,7 +14,7 @@ button:hover {
 }
 
 /* Float cancel and delete buttons and add an equal width */
-.finishedbtn, .suspendedbtn, .inprogressbtn, .incomingbtn {
+.finishedbtn, .suspendedbtn, .inprogressbtn, .incomingbtn, .incomingbtndisabled,.finishedbtndisabled {
   float: left;
   width: 33%;
 }
@@ -27,7 +27,7 @@ button:hover {
 
 /* Add a color to the delete button */
 .suspendedbtn {
-  background-color: #A2A5AD;
+  background-color: #fa4444;
   color: black;
 }
 
@@ -35,8 +35,17 @@ button:hover {
   background-color: #3377FF;
   color: black;
 }
+.finishedbtndisabled{
+  background-color: #A2A5AD;
+  color: black;
+}
 
 .incomingbtn {
   background-color: #E7E72C;
+  color: black;
+}
+
+.incomingbtndisabled{
+  background-color: #A2A5AD;
   color: black;
 }

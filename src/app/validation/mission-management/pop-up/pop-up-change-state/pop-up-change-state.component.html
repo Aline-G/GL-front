@@ -17,19 +17,19 @@
   <div class="container-fluid">
     <h3>Dans quel état souhaitez vous passez la note : {{id}} ? </h3>
       <div *ngIf="currentState === 0 ">
-        <button type="button" class="incomingbtn" (click)="changeState(3)">INCOMING</button>
-        <button type="button" class="finishedbtn" (click)="changeState(1)">FINISHED</button>
+        <button type="button" class="incomingbtndisabled" (click)="changeState(3)" disabled>INCOMING</button>
         <button type="button" class="suspendedbtn" (click)="changeState(2)">SUSPENDED</button>
+        <button type="button" class="finishedbtn" (click)="changeState(1)">FINISHED</button>
       </div>
 
-      <div *ngIf="currentState === 1 ">
+      <!--<div *ngIf="currentState === 1 ">
         <button type="button" class="incomingbtn" (click)="changeState(3)">INCOMING</button>
         <button type="button" class="inprogressbtn" (click)="changeState(0)">IN PROGRESS</button>
         <button type="button" class="suspendedbtn" (click)="changeState(2)">SUSPENDED</button>
-      </div>
+      </div>-->
 
      <div *ngIf="currentState === 2 ">
-        <button type="button" class="incomingbtn" (click)="changeState(3)">INCOMING</button>
+        <button type="button" class="incomingbtndisabled" (click)="changeState(3)" disabled>INCOMING</button>
         <button type="button" class="inprogressbtn" (click)="changeState(0)">IN PROGRESS</button>
         <button type="button" class="finishedbtn" (click)="changeState(1)">FINISHED</button>
 
@@ -37,8 +37,8 @@
 
     <div *ngIf="currentState === 3 ">
       <button type="button" class="inprogressbtn" (click)="changeState(0)">IN PROGRESS</button>
-      <button type="button" class="finishedbtn" (click)="changeState(1)">FINISHED</button>
       <button type="button" class="suspendedbtn" (click)="changeState(2)">SUSPENDED</button>
+      <button type="button" class="finishedbtndisabled" (click)="changeState(1)" disabled>FINISHED</button>
     </div>
 
   </div>
