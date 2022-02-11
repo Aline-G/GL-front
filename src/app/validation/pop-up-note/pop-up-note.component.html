@@ -47,15 +47,43 @@
           </thead>
           <tbody>
           <tr *ngFor="let lineBill of lineBills ">
-            <td>{{lineBill.id}}</td>
-            <td>{{lineBill.mission.name}}</td>
-            <td>{{lineBill.idExpenseBill}}</td>
-            <td>{{lineBill.amount}}</td>
-            <td>{{lineBill.category}}</td>
-            <td>{{lineBill.state}} </td>
-            <td>{{lineBill.date}}</td>
-            <td>{{lineBill.description}}</td>
-            <td>Non</td>
+            <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.id}}</td>
+            <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.id}}</td>
+            <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.id}}</td>
+
+            <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.mission.name}}</td>
+            <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.mission.name}}</td>
+            <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.mission.name}}</td>
+
+            <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.idExpenseBill}}</td>
+            <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.idExpenseBill}}</td>
+            <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.idExpenseBill}}</td>
+
+            <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.amount}}</td>
+            <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.amount}}</td>
+            <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.amount}}</td>
+
+            <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.category}}</td>
+            <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.category}}</td>
+            <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.category}}</td>
+
+            <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.state}}</td>
+            <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.state}}</td>
+            <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.state}}</td>
+
+            <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.date}}</td>
+            <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.date}}</td>
+            <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.date}}</td>
+
+            <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">{{lineBill.description}}</td>
+            <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success" >{{lineBill.description}}</td>
+            <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger" >{{lineBill.description}}</td>
+
+            <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">Non</td>
+            <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success">Non</td>
+            <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger">Non</td>
+
+            <td *ngIf="lineBill.state === 'DRAFT'" class="table-warning">
             <button (click)="lineBillValid(lineBill.id)">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -66,7 +94,31 @@
                 <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
                 <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
               </svg>
-            </button>
+            </button></td>
+            <td *ngIf="lineBill.state === 'VALIDATED'" class="table-success">
+              <button (click)="lineBillValid(lineBill.id)" disabled>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                  <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                </svg>
+              </button>
+              <button (click)="lineBillRefuse(lineBill.id)" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                  <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+              </button></td>
+            <td *ngIf="lineBill.state === 'REFUSED'" class="table-danger">
+              <button (click)="lineBillValid(lineBill.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                  <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                </svg>
+              </button>
+              <button (click)="lineBillRefuse(lineBill.id)" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                  <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+              </button></td>
           </tr>
           </tbody>
         </table>
