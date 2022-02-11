@@ -6,8 +6,6 @@ import {Mission} from "../../../model/mission";
 import {AlertErrorComponent} from "../../../alert-error/alert-error.component";
 import {SharedService} from "../../../services/dynamical-functions/SharedService";
 import {MatDialog} from "@angular/material/dialog";
-import {catchError} from "rxjs";
-import {ConfirmationDeleteComponent} from "../confirmation-delete/confirmation-delete.component";
 
 @Component({
   selector: 'app-create-line',
@@ -78,7 +76,7 @@ export class CreateLineComponent implements OnInit {
     });
   }
 
-  private getDismissReason(reason: any): string {
+  private static getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -100,7 +98,8 @@ export class CreateLineComponent implements OnInit {
     this.apiService.getMissionList()
       .subscribe({
         next: (res) => {
-          this.missions = res;
+          this.missions = res.filter(
+            mission => mission.state=="IN_PROGRESS" || mission.state=="INCOMING")
         },
         error: (e) => console.error(e)
       });

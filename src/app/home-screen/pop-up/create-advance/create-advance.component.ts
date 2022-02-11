@@ -58,7 +58,7 @@ export class CreateAdvanceComponent implements OnInit {
     });
   }
 
-  private getDismissReason(reason: any): string {
+  private static getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -74,7 +74,8 @@ export class CreateAdvanceComponent implements OnInit {
     this.apiService.getMissionList()
       .subscribe({
         next: (res) => {
-          this.missions = res;
+          this.missions = res.filter(
+            mission => mission.state=="IN_PROGRESS" || mission.state=="INCOMING")
         },
         error: (e) => console.error(e)
       });
