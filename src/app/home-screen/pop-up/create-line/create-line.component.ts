@@ -1,4 +1,5 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
+import { HttpResponse, HttpEventType } from '@angular/common/http';
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ApiService} from "../../../services/api.service";
 import {ExpenseBill} from "../../../model/expenseBill";
@@ -6,6 +7,8 @@ import {Mission} from "../../../model/mission";
 import {AlertErrorComponent} from "../../../alert-error/alert-error.component";
 import {SharedService} from "../../../services/dynamical-functions/SharedService";
 import {MatDialog} from "@angular/material/dialog";
+import {UploadFileService} from "../../../services/upload-file.service";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-line',
@@ -47,13 +50,20 @@ export class CreateLineComponent implements OnInit {
   expenseBills!: ExpenseBill[];
   missions! : Mission[];
 
+  //Paramètres pour le download de justificatifs
+    progress = 0;
+    message = '';
+    fileInfos!: Observable<any>;
+
 /* paramètres pour la génération de l'erreur*/
+  selectedFiles!: FileList;
+  currentFileUpload!: File;
   errorMessage = '';
   header = 'Echec création de ligne';
   level = 'danger';
 
 
-  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog) {
+  constructor(private modalService: NgbModal, private apiService: ApiService, private sharedService : SharedService, private dialogRef : MatDialog, private uploadService: UploadFileService ) {
     sharedService.clickOnPlusEvent.subscribe(
       (billId: number) => {
         console.log(billId);
@@ -86,6 +96,37 @@ export class CreateLineComponent implements OnInit {
     }
   }
 
+  //Méthodes pour upload un justificatif
+
+    selectFile(files : Event) {
+
+      this.selectedFiles = (<HTMLInputElement>files.target).files!;
+
+      if (this.selectedFiles && this.selectedFiles.length > 0) {
+        this.currentFileUpload = this.selectedFiles[0];
+        console.log(this.currentFileUpload.name);
+        console.log(this.currentFileUpload.size);
+        console.log(this.currentFileUpload.type);
+      }
+    }
+
+
+    upload() {
+      this.progress = 0;
+      this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+          if (event.type === HttpEventType.UploadProgress) {
+            if(event.total){
+              const total: number = event.total;
+              this.progress = Math.round(100 * event.loaded / total);
+            }
+          } else if (event instanceof HttpResponse) {
+            alert('File Successfully Uploaded');
+          }
+        }
+      );
+    }
+
+
   ngOnInit(): void {
     this.apiService.getExpenseBillList()
       .subscribe({
@@ -103,7 +144,6 @@ export class CreateLineComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
-
 
   }
 
